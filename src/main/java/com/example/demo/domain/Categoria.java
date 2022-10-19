@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class Categorias {
+public class Categoria {
 
     @Id
     @SequenceGenerator(name = "categorias_sequence", sequenceName = "categorias_sequence")
@@ -16,10 +16,10 @@ public class Categorias {
     private String descripcion;
     private String imagen;
 
-    public Categorias() {
+    public Categoria() {
     }
 
-    public Categorias(Long id, String titulo, String descripcion, String imagen) {
+    public Categoria(Long id, String titulo, String descripcion, String imagen) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
