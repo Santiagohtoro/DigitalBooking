@@ -2,15 +2,16 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 //import Search from "./components/Search";
-import './Styles/body.module.scss'
+import "./Styles/body.module.scss";
+import Categories from "./components/Categories";
 
 function App() {
   return (
-  <div>
-    <Header></Header>
-    <Footer></Footer>
-    
-  </div>
+    <div>
+      <Header></Header>
+      <Categories />
+      <Footer></Footer>
+    </div>
   );
 }
 
