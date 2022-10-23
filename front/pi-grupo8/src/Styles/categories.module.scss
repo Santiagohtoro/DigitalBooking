@@ -11,3 +11,17 @@
         color: var(--text-color);
     }
 }
+
+@media (max-width: 768px){
+    .categoriesBlock{
+        width: 90%;
+        .categoriesContainer{
+            flex-wrap: wrap;
+        }
+    }    
+}
+@media (max-width: 425px){
+    .categoriesContainer{
+        flex-direction: column;
+    }
+}
