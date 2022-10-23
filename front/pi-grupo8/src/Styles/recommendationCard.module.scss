@@ -1,0 +1,21 @@
+@use './variables';
+
+.recommendationCard{
+    background-color: yellow;
+    flex: 0 1 49%;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    height: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    .recommendationImg{
+        background-color: red;
+        width: 45%;
+        border-radius: 8px;
+        img{
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+}

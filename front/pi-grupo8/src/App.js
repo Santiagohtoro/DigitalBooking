@@ -4,13 +4,15 @@ import Footer from "./components/Footer";
 //import Search from "./components/Search";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
+import RecommendationList from "./components/RecommendationList";
 
 function App() {
   return (
     <div>
       <Header></Header>
       <Categories />
-      <Footer></Footer>
+      <RecommendationList />
+      {/*<Footer></Footer>*/}
     </div>
   );
 }
