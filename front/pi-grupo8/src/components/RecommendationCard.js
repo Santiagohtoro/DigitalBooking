@@ -9,9 +9,15 @@ function RecommendationCard(props) {
       <div className={styles.recommendationImg}>
         <img src={picture} alt="hotel room" />
       </div>
-      <div>
-        <h3>Card text</h3>
-        <button>Ver más</button>
+      <div className={styles.recommendationText}>
+        <div className={styles.recommendationName}>
+          <span>Hotel</span>
+          <h2>Hermitage Hotel</h2>
+        </div>
+        <div className={styles.recommendationRating}>
+          <span>8</span>
+          <p>Muy bueno</p>
+        </div>
       </div>
     </div>
   );

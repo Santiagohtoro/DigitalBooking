@@ -1,7 +1,7 @@
 @use './variables';
 
 .recommendationCard{
-    background-color: yellow;
+   background-color: white;
     flex: 0 1 49%;
     box-shadow: var(--shadow);
     border-radius: 8px;
@@ -9,13 +9,46 @@
     margin-bottom: 1rem;
     display: flex;
     .recommendationImg{
-        background-color: red;
         width: 45%;
-        border-radius: 8px;
         img{
             width: 100%;
             object-fit: cover;
             height: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+    }
+    .recommendationText{
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;        
+        .recommendationName{
+            
+            h2{
+                margin-top: -1rem;
+            }
+        }
+    }
+    .recommendationRating{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        span{
+            background-color: var(--text-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: -1rem ;
+        }
+        p{
+           font-weight: bold; 
+           color: var(--text-color);   
+           text-align: right;       
         }
     }
 }
