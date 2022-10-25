@@ -26,8 +26,15 @@
         display: flex;
         justify-content: space-between;
         width: 95%; 
-        margin-bottom: -2rem;       
+        margin-bottom: -3.5rem;       
         .recommendationName{
+            span{
+                margin-right: 0.2rem;
+                font-weight: 500;
+            }
+            .stars{
+                color: var(--accent-color);
+            }
             h2{
                 margin-top: -1rem;
         }
@@ -58,9 +65,22 @@
         padding-left: 1.2rem;
         color: var(--text-color);
         font-weight: 500;
-        span{
+        .recommendationMap{
             color: var(--accent-color);
             font-weight: bold;
+        }
+        .recommendationAmmenities{
+            display: flex;
+            gap: 0.5rem;
+            margin-top: -1rem;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .recommendationLocation{
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding-top: 0.5;
         }
     }
     .recommendationComment{
