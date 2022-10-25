@@ -1,0 +1,40 @@
+@use './variables';
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    background-color: var(--accent-color);
+    min-width: calc(100vw - 5rem);
+    position: absolute;
+    bottom: 0;
+    .containerTextCopy{
+        .copyText{
+            color: var(--background-color);
+            font-weight: 700;
+            .logoCopy{
+                height: 12px;
+                width: 12px;
+                color: var(--background-color);
+            }
+        }
+    }
+    .footerLogoContainer{
+        display: flex;
+        gap: 1rem;
+        .logo{
+            height: 30px;
+            width: 30px;
+            fill: var(--background-color);
+        }
+    }
+    
+}
+
+
+
+
+
+

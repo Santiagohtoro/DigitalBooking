@@ -1,0 +1,43 @@
+@use './variables';
+
+.categoryCard{
+    flex: 0 1 23%;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    height: 100%;
+    .categoryCardImg{
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+        img{
+            width: 100%;
+            border-top-left-radius:8px;
+            border-top-right-radius:8px;
+            
+        }
+    }
+    .categoryCardText{
+        height: 20%;
+        color: var(--text-color);
+        padding-left: 0.5rem;
+        p {
+            margin-top: -1.2rem;
+            color: var(--primary-color);
+            
+        }
+        h3 {
+            margin-top: 0.5rem;
+        }
+    }
+    
+}
+
+@media (max-width: 768px){
+    .categoryCard{
+        flex: 0 1 48%;
+        margin-bottom:1.5rem ;
+    }
+}
+
+
+
