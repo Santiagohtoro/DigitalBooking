@@ -1,0 +1,27 @@
+@use './variables';
+
+.categoriesBlock{
+    width: 95%;
+    margin: 0 auto;
+    .categoriesContainer{
+        display: flex;
+        justify-content: space-between;
+    }
+    h2{
+        color: var(--text-color);
+    }
+}
+
+@media (max-width: 768px){
+    .categoriesBlock{
+        width: 90%;
+        .categoriesContainer{
+            flex-wrap: wrap;
+        }
+    }    
+}
+@media (max-width: 425px){
+    .categoriesContainer{
+        flex-direction: column;
+    }
+}

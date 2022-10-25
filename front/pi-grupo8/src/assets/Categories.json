@@ -1,0 +1,35 @@
+[
+    {
+        "id": "1",
+        "category": {
+            "name": "Hoteles",
+            "amount": "807.105",
+            "picture": "https://img1.10bestmedia.com/Images/Photos/378649/Park-Hyatt-New-York-Manhattan-Sky-Suite-Master-Bedroom-low-res_54_990x660.jpg"
+        }
+        
+    },
+    {
+        "id": "2",
+        "category": {
+            "name": "Hostels",
+            "amount": "807.105",
+            "picture": "https://www.hostelworld.com/blog/wp-content/uploads/2018/09/hostel-room-types-12.jpg"
+        }
+    },
+    {
+        "id": "3",
+        "category": {
+            "name": "Departamentos",
+            "amount": "807.105",
+            "picture": "https://www.thespruce.com/thmb/aV9jwpHYSB0gfdveHadFx3UovtM=/2048x1365/filters:fill(auto,1)/perfect-studio-apartment-layouts-to-inspire-4124066-hero-86a20ac386734170914645029e7bb568.jpg"
+        }
+    },
+    {
+        "id": "4",
+        "category": {
+            "name": "Bed and breakfast",
+            "amount": "807.105",
+            "picture": "https://hotelpropeller.com/wp-content/uploads/2013/04/Bed-and-Breakfast-Facebook-Page.jpg"
+        }
+    }   
+]
