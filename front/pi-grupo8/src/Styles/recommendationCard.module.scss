@@ -98,10 +98,27 @@
             background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 0.8rem 11rem;
+            width: 95%;
+            padding: 0.9rem 0rem;
             border-radius: 5px;
             margin-bottom: 0.8rem;
             font-weight: bold;
         }
     }
 }
+
+/*@media (max-width: 768px){
+    .recommendationCard{
+        width: 100%;
+        img{
+            flex: 1 0 50%;
+        }
+    }
+}*/
+
+@media (max-width: 425px){
+    .recommendationCard{
+        flex-direction: column;
+    }
+}
+
