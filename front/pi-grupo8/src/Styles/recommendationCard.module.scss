@@ -8,8 +8,9 @@
     height: 100%;
     margin-bottom: 1rem;
     display: flex;
+    padding-right: 0.5rem;
     .recommendationImg{
-        width: 45%;
+        width: 100%;
         img{
             width: 100%;
             object-fit: cover;
@@ -24,13 +25,13 @@
         padding: 1rem;
         display: flex;
         justify-content: space-between;
-        width: 100%;        
+        width: 95%; 
+        margin-bottom: -2rem;       
         .recommendationName{
-            
             h2{
                 margin-top: -1rem;
-            }
         }
+       }
     }
     .recommendationRating{
         display: flex;
@@ -49,6 +50,38 @@
            font-weight: bold; 
            color: var(--text-color);   
            text-align: right;       
+        }
+    }
+    .recommendationDescription{
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.2rem;
+        color: var(--text-color);
+        font-weight: 500;
+        span{
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+    }
+    .recommendationComment{
+        margin-top: 2rem;
+        a{
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: bold;
+
+        }
+    }
+    .recommendationButton{
+        text-align: center;
+        button{
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 11rem;
+            border-radius: 5px;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
         }
     }
 }
