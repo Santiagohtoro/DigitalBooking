@@ -10,8 +10,7 @@ function App() {
   return (
     <div>
       <Header></Header>
-      <FormLogin/>
-      {/*<Categories/>*/}
+      <Categories/>
       <Footer></Footer>
     </div>
   );

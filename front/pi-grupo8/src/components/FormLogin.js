@@ -17,7 +17,7 @@ export default function FormLogin(){
     return(
         <>
             <div id="container">
-                <h2>Iniciar Sesión</h2>
+                <h2>Iniciar sesión</h2>
                 <form>
                     <label>Correo electrónico</label>
                     <input type="text"></input>
