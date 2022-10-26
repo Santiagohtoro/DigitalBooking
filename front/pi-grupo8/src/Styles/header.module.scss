@@ -32,3 +32,21 @@
     }
 }
 
+@media (max-width: 768px){
+    .container{
+        p{
+            display: none;
+        }
+    }
+}
+@media (max-width: 425px){
+    .logginButton{
+        display: none;
+    }
+    header{
+        img{
+            margin: 0 -1rem;
+        }
+    }
+}
+

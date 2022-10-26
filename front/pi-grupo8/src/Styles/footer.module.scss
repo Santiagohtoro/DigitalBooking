@@ -8,8 +8,6 @@
     padding-right: 2.5rem;
     background-color: var(--accent-color);
     min-width: calc(100vw - 5rem);
-    position: absolute;
-    bottom: 0;
     .containerTextCopy{
         .copyText{
             color: var(--background-color);
@@ -32,6 +30,18 @@
     }
     
 }
+
+@media (max-width: 426px){
+    .footer{
+        .footerLogoContainer{
+            display: none;
+        }
+        .copyText{
+            margin-left: -1rem;
+        }
+    }
+}
+
 
 
 
