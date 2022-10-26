@@ -7,6 +7,9 @@
     display: flex;
     justify-content: space-between;
     height: 80px;
+    .menu{
+        display: none;
+    }
     .container{
         display: flex;
         margin:15px 40px 15px 40px;
@@ -39,11 +42,21 @@
         }
     }
 }
+
+
 @media (max-width: 425px){
     .logginButton{
         display: none;
     }
-    header{
+    .header{
+        .menu{
+            display: block;
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
         img{
             margin: 0 -1rem;
         }
