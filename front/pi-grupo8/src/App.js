@@ -13,10 +13,10 @@ function App() {
   return (
     <div className={styles.appContainer}>
         <Routes>
-        <Route path="/" element={<><Header/><Footer/></>}>
-            <Route path="home" element={<><Search/><Categories/><RecommendationList/></>}></Route>
-            <Route path="login" element={<FormLogin/>}></Route>
-        </Route>
+          <Route path="/" element={<><Header/></>}>
+              <Route path="home" element={<><Search/><Categories/><RecommendationList/><Footer/></>}></Route>
+              <Route path="login" element={<><FormLogin/><Footer/></>}></Route>
+          </Route>
         </Routes>
     </div>
   );
