@@ -5,10 +5,12 @@ import twitter from '../assets/twitter.svg';
 import instagram from '../assets/instagram.svg';
 import copyright from '../assets/copyright-regular.svg';
 import styles from '../Styles/footer.module.scss';
+import { Outlet } from "react-router-dom";
 
 
 export default function Footer() {
     return(
+        <>
         <footer className={styles.footer}>
             <div className={styles.containerTextCopy}>
                 <p className={styles.copyText}><img className={styles.logoCopy} src={copyright} alt="copyright logo"/>2022 Digital Booking</p>
@@ -20,6 +22,8 @@ export default function Footer() {
                 <img className={styles.logo} src={instagram} alt="instagram logo"/>
             </div>
         </footer>
+        <Outlet/>
+        </>
     )
     
 }

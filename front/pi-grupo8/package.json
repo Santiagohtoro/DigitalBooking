@@ -15,11 +15,8 @@
     "react-calendar": "^3.9.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-router-dom": "^6.4.2",
-=======
     "react-multi-date-picker": "^3.3.4",
->>>>>>> search
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "react-select": "^5.5.5",
     "sass": "^1.55.0",

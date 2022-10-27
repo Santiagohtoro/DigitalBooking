@@ -4,6 +4,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import places from '../assets/places.json'
 import DatePicker, { Calendar , DateObject} from "react-multi-date-picker"
 import Styles from '../Styles/search.module.scss';
+import { Outlet } from "react-router-dom";
 
 
 
@@ -20,6 +21,7 @@ export default function Search() {
     
   
     return (
+      <>
         <section className={Styles.container}>
             <div className={Styles.containerElements}>
             
@@ -70,5 +72,7 @@ export default function Search() {
             </div>
             
         </section>
+        <Outlet/>
+        </>
     );
 }

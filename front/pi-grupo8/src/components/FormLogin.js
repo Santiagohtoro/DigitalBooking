@@ -6,7 +6,7 @@ import App from '../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate, Link} from "react-router-dom";
 const users = [{name: "Melina", email: "meli@gmail.com", password:"Meli123!"}, {name: "Flor", email: "flor@gmail.com", password:"flor123."}, {name: "Celi", email: "celi@gmail.com", password:"CELI123"}]
 
 
@@ -86,6 +86,7 @@ export default function FormLogin(){
 
         }
     return(
+
         <>
             <div id="container">
                 <h2>Iniciar sesión</h2>
@@ -101,7 +102,10 @@ export default function FormLogin(){
                     <p>Aún no tienes cuenta? <a href='./FormRegistro'>Regístrate</a></p>
                 </form>
             </div>
+
+            <Outlet/>
         </>
 
     )
+
 }
