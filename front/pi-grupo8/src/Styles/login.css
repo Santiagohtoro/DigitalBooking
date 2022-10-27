@@ -171,3 +171,19 @@ a{
 a:link{
     color: #4285F4
 }
+
+#emailInput, #passInput{
+    visibility: visible;
+}
+
+.wrong{
+    border: 1px red solid;
+    font-size: 10px;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.error{
+    font-size: 12px;
+    color: red;
+}
