@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Service.CategoriaService;
-import com.example.demo.domain.Categoria;
+import com.example.demo.Model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class CategoriaController {
         if(c == null){
             return new ResponseEntity("No se encontró una categoría con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity(c, HttpStatus.OK);
+            return new ResponseEntity("Se ha encontrado con ese id la categoría: " + c.getTitulo(), HttpStatus.OK);
         }
     }
 
@@ -34,7 +34,7 @@ public class CategoriaController {
         if(cats == null){
             return new ResponseEntity("No hay categorías disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity(cats, HttpStatus.OK);
+            return new ResponseEntity("Se han encontrado las siguientes categorias: " + cats.listIterator() , HttpStatus.OK);
         }
     }
 
@@ -43,7 +43,8 @@ public class CategoriaController {
             if(categoria.getTitulo() == null || categoria.getDescripcion() == null || categoria.getImagen() == null){
                 return new ResponseEntity("No se puede crear la categoría porque hay datos faltantes", HttpStatus.NOT_ACCEPTABLE);
             } else{
-              return new ResponseEntity(categoriaService.create(categoria), HttpStatus.OK);
+                categoriaService.create(categoria);
+              return new ResponseEntity("Se ha creado la categoría: " + categoria.getTitulo(), HttpStatus.OK);
         }
     }
 
