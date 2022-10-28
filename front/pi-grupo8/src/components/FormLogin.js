@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import "../Styles/login.css"
-import App from '../App';
+
+//import "../Styles/login.css"
+import styles from '../Styles/login.module.scss';
 // import MaterialIcon from 'material-icons-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import { Navigate, Outlet, useNavigate, Link} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 const users = [{name: "Melina", email: "meli@gmail.com", password:"Meli123!"}, {name: "Flor", email: "flor@gmail.com", password:"flor123."}, {name: "Celi", email: "celi@gmail.com", password:"CELI123"}]
 
 
@@ -88,18 +88,19 @@ export default function FormLogin(){
     return(
 
         <>
-            <div id="container">
-                <h2>Iniciar sesión</h2>
-                <form onSubmit={onSubmit}>
+            <div className={styles.container}>
+                <h2 className={styles.loginTitle}>Iniciar sesión</h2>
+                <form className={styles.formLogin} onSubmit={onSubmit}>
                     <label>Correo electrónico</label>
                     <input type="email" required onChange={onChangeMail} id="emailInput"></input>
                     <label>Contraseña</label>
-                    <input type={showPassword ? 'text' : 'password'} required onChange={onChangePassword} id="passInput"></input> 
-                    <i onClick={toggleShowPassword}>{showPassword ? <FontAwesomeIcon icon={faEyeSlash} class="icon" size="lg" style={{color: "#607D8B"}}/> : <FontAwesomeIcon icon={faEye} class="icon" size="lg" style={{color: "#607D8B"}}/> }</i>
-                    {((showInvalidEmail && !showInvalidPassword)||(showInvalidPassword && !showInvalidEmail) || (showInvalidPassword && showInvalidEmail))? <p class="error">El email y/o la contraseña ingresados son inválidos.</p> : ""}
-
-                    <button type='submit'>Ingresar</button>
-                    <p>Aún no tienes cuenta? <a href='./FormRegistro'>Regístrate</a></p>
+                    <div className={styles.passwordWrapper}>
+                        <input type={showPassword ? 'text' : 'password'} required onChange={onChangePassword} id="passInput"></input> 
+                        <i onClick={toggleShowPassword}>{showPassword ? <FontAwesomeIcon icon={faEyeSlash} class="icon" size="lg" style={{color: "#607D8B"}}/> : <FontAwesomeIcon icon={faEye} class="icon" size="lg" style={{color: "#607D8B"}}/> }</i>
+                        {((showInvalidEmail && !showInvalidPassword)||(showInvalidPassword && !showInvalidEmail) || (showInvalidPassword && showInvalidEmail))? <p class="error">El email y/o la contraseña ingresados son inválidos.</p> : ""}
+                    </div>    
+                    <button className={styles.btnLogin} type='submit'>Ingresar</button>
+                    <p>¿Aún no tienes cuenta? <a href='./FormRegistro'>Regístrate</a></p>
                 </form>
             </div>
 

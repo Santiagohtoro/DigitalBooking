@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import places from "../assets/places.json";
-import DatePicker, { Calendar, DateObject } from "react-multi-date-picker";
+import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
 import { Outlet } from "react-router-dom";
 
