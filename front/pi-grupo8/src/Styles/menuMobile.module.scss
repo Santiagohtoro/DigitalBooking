@@ -1,0 +1,77 @@
+@use './variables';
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    .containerTop{
+        background-color: var(--accent-color);   
+        height: 30vh;
+        font-family: var(--typography);
+        color: white;
+        display: flex;
+        align-items: flex-end;
+        padding-right: 1.5rem;
+        justify-content: space-between;
+        span{
+            align-self: flex-start;
+            justify-self: flex-start;
+            padding: 1.5rem;
+        }
+        .userName{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            p{
+                border-radius: 50%;
+                background-color: white;
+                color: var(--text-color);
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+            h3{
+                color: var(--text-color);
+                font-size: 1rem;
+            }
+        }
+    }
+    .containerBottom{
+        background-color: white;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-right: 1.5rem;
+        .logOut{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            height: 100%;
+            padding-bottom: 2rem;
+            font-size: 1rem;
+            span{
+                color: var(--accent-color);
+                font-size: 1rem;
+            }
+        }
+        .menuOptions{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            
+        } 
+    }
+}
