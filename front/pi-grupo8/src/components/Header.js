@@ -38,19 +38,20 @@ export default function Header() {
         <div className={styles.menu}>
           <FontAwesomeIcon icon={faBars} onClick={handleClick} />
         </div>
+        <div className={styles.btnContainer}>
+          <button className={styles.logginButton}>Crear cuenta</button>
+          <button className={styles.logginButton} onClick={onClick}>
+            Iniciar sesión
+          </button>
+        </div>
         {isMenuVisible ? (
           <MenuMobile
             isMenuVisible={isMenuVisible}
             setIsMenuVisible={setIsMenuVisible}
           />
         ) : null}
-        <div className={styles.container}>
-          <button className={styles.logginButton}>Crear cuenta</button>
-          <button className={styles.logginButton} onClick={onClick}>
-            Iniciar sesión
-          </button>
-        </div>
       </header>
+
       <Outlet />
     </>
   );

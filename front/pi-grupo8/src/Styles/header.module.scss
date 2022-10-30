@@ -5,22 +5,30 @@
 .header{
     background-color:var(--background-color);
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 10%;
+    position: fixed;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-shadow: var(--shadow);
     .menu{
         display: none;
     }
     .container{
         display: flex;
-        margin:15px 40px 15px 40px;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--typography);
+        font-style: italic;
+        text-decoration: none;
+        color: var(--text-color);
+        
+    }
+    .btnContainer{
+        display: flex;
         gap: 0.5rem;
         align-items: center;
-        .link{
-            font-family: var(--typography);
-            font-style: italic;
-            text-decoration: none;
-            color: var(--text-color);
-        }
         .logginButton{
             height: 40px;
             width: 12rem;
@@ -41,25 +49,29 @@
         p{
             display: none;
         }
+        img{
+            width: 80%;
+            
+        }
     }
 }
 
-
 @media (max-width: 426px){
-    .logginButton{
-        display: none;
-    }
     .header{
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        .btnContainer{
+            display: none;
+       }
         .menu{
             display: block;
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
             font-size: 1.5rem;
             color: var(--text-color);
         }
         img{
-            margin: 0 -1rem;
+            width: 60%;
+            
         }
     }
 }
