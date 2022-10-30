@@ -7,7 +7,7 @@ import { faFacebook } from "@fortawesome/free-solid-svg-icons";
 function MenuMobile(props) {
   const { setIsMenuVisible } = props;
 
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   const closeMenu = () => {
     setIsMenuVisible(false);
