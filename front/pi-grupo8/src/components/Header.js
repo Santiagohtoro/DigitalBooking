@@ -15,6 +15,11 @@ export default function Header() {
     navigate("/login");
   }
 
+  function register(e) {
+    e.preventDefault();
+    navigate("/register");
+    }
+
   function displayHome(e) {
     e.preventDefault();
     navigate("/home");
@@ -39,7 +44,7 @@ export default function Header() {
           <FontAwesomeIcon icon={faBars} onClick={handleClick} />
         </div>
         <div className={styles.btnContainer}>
-          <button className={styles.logginButton}>Crear cuenta</button>
+          <button className={styles.logginButton} onClick={register}>Crear cuenta</button>
           <button className={styles.logginButton} onClick={onClick}>
             Iniciar sesión
           </button>
