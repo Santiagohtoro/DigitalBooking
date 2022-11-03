@@ -56,21 +56,65 @@ function ProductDetail() {
           <hr />
           <div className={styles.ammenitiesDetails}>
             <div className={styles.ammenitiesIcons}>
-              <FontAwesomeIcon icon={faKitchenSet} />
-              <span>Cocina</span>
-              <FontAwesomeIcon icon={faTv} />
-              <span>Televisor</span>
-              <FontAwesomeIcon icon={faSnowflake} />
-              <span>Aire acondicionado</span>
-              <FontAwesomeIcon icon={faPaw} />
-              <span>Apto mascotas</span>
-              <FontAwesomeIcon icon={faCar} />
-              <span>Estacionamiento gratuito</span>
-              <FontAwesomeIcon icon={faSwimmer} />
-              <span>Pileta</span>
-              <FontAwesomeIcon icon={faWifi} />
-              <span>Wifi</span>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faKitchenSet} className={styles.icon} />
+                <span>Cocina</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faTv} className={styles.icon} />
+                <span>Televisor</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faSnowflake} className={styles.icon} />
+                <span>Aire acondicionado</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faPaw} className={styles.icon} />
+                <span>Apto mascotas</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faCar} className={styles.icon} />
+                <span>Estacionamiento gratuito</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faSwimmer} className={styles.icon} />
+                <span>Pileta</span>
+              </div>
+              <div className={styles.ammenitiesItems}>
+                <FontAwesomeIcon icon={faWifi} className={styles.icon} />
+                <span>Wifi</span>
+              </div>
             </div>
+          </div>
+        </div>
+        <div className={styles.containerPolicy}>
+          <div className={styles.containerInfo}>
+            <h2>¿Qué tenés que saber?</h2>
+            <hr />
+            <section className={styles.policies}>
+              <div>
+                <h3>Normas de la casa</h3>
+                <p>Check-out: 10:00</p>
+                <p>No se permiten fiestas</p>
+                <p>No fumar</p>
+              </div>
+              <div>
+                <h3>Salud y seguridad</h3>
+                <p>
+                  Se aplican las pautas de distanciamiento social y otras normas
+                  relacionadas con el coronavirus
+                </p>
+                <p>Detector de humo</p>
+                <p>Depósito de seguridad</p>
+              </div>
+              <div>
+                <h3>Política de cancelación</h3>
+                <p>
+                  Agregá las fechas de tu viaje para obtener los detalles de
+                  cancelación de esta estadía.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </div>
