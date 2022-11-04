@@ -92,13 +92,13 @@ function ProductDetail() {
             <h2>¿Qué tenés que saber?</h2>
             <hr />
             <section className={styles.policies}>
-              <div>
+              <div className={styles.policiesDetail}>
                 <h3>Normas de la casa</h3>
                 <p>Check-out: 10:00</p>
                 <p>No se permiten fiestas</p>
                 <p>No fumar</p>
               </div>
-              <div>
+              <div className={styles.policiesDetail}>
                 <h3>Salud y seguridad</h3>
                 <p>
                   Se aplican las pautas de distanciamiento social y otras normas
@@ -107,7 +107,7 @@ function ProductDetail() {
                 <p>Detector de humo</p>
                 <p>Depósito de seguridad</p>
               </div>
-              <div>
+              <div className={styles.policiesDetail}>
                 <h3>Política de cancelación</h3>
                 <p>
                   Agregá las fechas de tu viaje para obtener los detalles de

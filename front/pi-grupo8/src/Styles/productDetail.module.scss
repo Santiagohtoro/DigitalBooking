@@ -1,5 +1,7 @@
 @use './variables';
 
+
+
 .container{
     padding-top: 5.9rem;  
     background-color: white; 
@@ -16,7 +18,7 @@
             display: flex;
             flex-direction: column;
             color: white;
-            padding-left: 2rem;
+            padding-left: 2.7rem;
             h4{
                 font-size: 1.5rem;
             }
@@ -36,7 +38,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 1rem 2rem 0.5rem;
+            padding: 1rem 2.5rem 0.5rem;
             .locationIcon{
                 display: flex;
                 p{
@@ -100,7 +102,10 @@
         }
     }
     .containerPolicy{
-        width: 100%;
+        background-color: white;
+        max-width: 2500px;
+        width: 95%;
+        margin: 1rem auto;
         hr{
             background-color: var(--accent-color);
             height: 1px;
@@ -112,12 +117,10 @@
             margin: 2rem 0 1rem;
         }
         .containerInfo{
-            max-width: 2500px;
-            width: 95%;
-            margin: 2.5rem auto;
             .policies{
                 display: flex;
-                gap: 10rem;
+                justify-content: space-between;
+                width: 80%;
                 h3{
                     margin-bottom: 0.5rem;
                 }
@@ -131,10 +134,85 @@
     }
 }
 
-/*-------------------Media queries--------------------*/
+/*-------------------Media queries TABLET--------------------*/
 @media (max-width: 768px){
-       
+    .container{
+        .containerPolicy{
+            .containerInfo{
+                .policies{
+                    width: 100%;
+                    flex-wrap: wrap;
+                    .policiesDetail{
+                        flex: 1 0 50%;
+                        max-width: 50%;
+                        
+                    }
+                }
+            }
+        }
+    }
+    .container{
+        padding-top: 5rem;
+    }
+    .container{
+        .location{
+            .locationInfo{
+                padding-left: 1.5rem;
+            }
+        } 
+    }
+          
 }
+
+/*-------------------Media queries MOBILE--------------------*/
 @media (max-width: 426px){
-    
+    .container{
+        padding-top: 5rem; 
+        background-color: white;
+        .containerPolicy{
+            width: 100%;
+            h2{
+                padding: 1rem 1rem 0rem;
+            }
+            .containerInfo{
+                .policies{
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    padding: 0 1.5rem;
+                    
+                    
+                }
+            }
+        }
+    }
+    .container{
+        .ammenities{
+            h2{
+                padding: 1rem 1rem 0rem;
+            }
+            .ammenitiesDetails{
+                .ammenitiesIcons{
+                    padding: 0 1.5rem;
+                    .ammenitiesItems{
+                        flex: 0 1 40%;
+                    }
+                }
+            }
+        }  
+    }
+    .container{
+        .containerDescription{
+            .description{
+                width: 90%;
+            }
+        } 
+    }
+    .container{
+        .location{
+            .locationInfo{
+                padding-left: 1.5rem;
+            }
+        } 
+    }
+   
 }
