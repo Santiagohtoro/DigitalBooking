@@ -10,6 +10,7 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 function ProductDetail() {
   return (
@@ -21,8 +22,10 @@ function ProductDetail() {
             <h4>Hermitage Hotel</h4>
             <div />
           </div>
-          <div className={styles.icon}>
-            <FontAwesomeIcon icon={faChevronLeft} />
+          <div>
+            <NavLink to="/home" className={styles.icon}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </NavLink>
           </div>
         </div>
         <div className={styles.location}>
@@ -90,7 +93,7 @@ function ProductDetail() {
         <div className={styles.containerPolicy}>
           <div className={styles.containerInfo}>
             <h2>¿Qué tenés que saber?</h2>
-            <hr />
+            <hr className={styles.line} />
             <section className={styles.policies}>
               <div className={styles.policiesDetail}>
                 <h3>Normas de la casa</h3>
