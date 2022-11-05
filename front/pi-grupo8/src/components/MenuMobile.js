@@ -3,9 +3,12 @@ import styles from "../Styles/menuMobile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation } from "react-router-dom";
 
 function MenuMobile(props) {
   const { setIsMenuVisible } = props;
+  const location = useLocation();
+  console.log(location);
 
   const isLoggedIn = false;
 
@@ -44,10 +47,25 @@ function MenuMobile(props) {
           </div>
         ) : (
           <div className={styles.menuOptions}>
-            <div>
-              <p>Crear cuenta</p>
-              <p>Iniciar sesión</p>
-            </div>
+            {location.pathname == "/home" ? (
+              <div>
+                <Link to="/register" onClick={closeMenu}>
+                  <p>Crear cuenta</p>
+                </Link>
+                <Link to="/login" onClick={closeMenu}>
+                  <p>Iniciar sesión</p>
+                </Link>
+              </div>
+            ) : location.pathname == "/register" ? (
+              <Link to="/login" onClick={closeMenu}>
+                <p>Iniciar sesión</p>
+              </Link>
+            ) : (
+              <Link to="/register" onClick={closeMenu}>
+                <p>Crear cuenta</p>
+              </Link>
+            )}
+
             <div>Social media</div>
           </div>
         )}
