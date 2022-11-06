@@ -24,12 +24,17 @@
         color: white;
         display: flex;
         align-items: flex-end;
-        padding-right: 1.5rem;
+        padding: 0 1.5rem 1rem;
         justify-content: space-between;
         span{
             align-self: flex-start;
             justify-self: flex-start;
             padding: 1.5rem;
+            font-size: 2rem;
+        }
+        h4{
+            font-size: 1.5rem;
+
         }
         .userName{
             display: flex;
@@ -56,7 +61,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        padding-right: 1.5rem;
+        padding: 0 1.5rem;
         .logOut{
             display: flex;
             flex-direction: column;
@@ -69,6 +74,9 @@
                 color: var(--accent-color);
                 font-size: 1rem;
             }
+            p{
+                margin-bottom: 1rem;
+            }
         }
         .menuOptions{
             display: flex;
@@ -76,6 +84,22 @@
             height: 100%;
             justify-content: space-between;
             padding: 1.5rem 0;
+            width: 100%;
+            text-align: right;
+            hr{
+                width: 100%;
+                margin-bottom: 1.5rem;
+                border: 0.1px solid var(--text-color);
+        
+            }
+            a{
+                text-decoration: none;
+                font-size: 1rem;
+                p{
+                    margin-bottom: 1.5rem;
+                    
+                }
+            }
         }
         .logosContainer{
             display: flex;

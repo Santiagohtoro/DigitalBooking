@@ -2,8 +2,8 @@ import React from "react";
 import styles from "../Styles/menuMobile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
+import SocialMedia from "./SocialMedia";
 
 function MenuMobile(props) {
   const { setIsMenuVisible } = props;
@@ -38,12 +38,7 @@ function MenuMobile(props) {
             <p>
               ¿Deseas <span>cerrar sesión?</span>
             </p>
-            <div className={styles.logosContainer}>
-              <p>F</p>
-              <p>T</p>
-              <p>I</p>
-              <p>L</p>
-            </div>
+            <SocialMedia />
           </div>
         ) : (
           <div className={styles.menuOptions}>
@@ -52,6 +47,7 @@ function MenuMobile(props) {
                 <Link to="/register" onClick={closeMenu}>
                   <p>Crear cuenta</p>
                 </Link>
+                <hr />
                 <Link to="/login" onClick={closeMenu}>
                   <p>Iniciar sesión</p>
                 </Link>
@@ -66,7 +62,7 @@ function MenuMobile(props) {
               </Link>
             )}
 
-            <div>Social media</div>
+            <SocialMedia />
           </div>
         )}
       </div>
