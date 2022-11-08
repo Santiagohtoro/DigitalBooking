@@ -1,2 +1,8 @@
-package com.example.demo.Model;public class Caracteristica {
+package com.example.demo.Model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Caracteristica {
+
 }

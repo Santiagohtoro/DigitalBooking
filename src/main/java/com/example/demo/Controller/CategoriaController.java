@@ -34,7 +34,7 @@ public class CategoriaController {
         if(cats == null){
             return new ResponseEntity("No hay categorías disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes categorias: " + cats.listIterator() , HttpStatus.OK);
+            return new ResponseEntity("Se han encontrado las siguientes categorias: " + cats, HttpStatus.OK);
         }
     }
 
@@ -48,14 +48,14 @@ public class CategoriaController {
         }
     }
 
-    @DeleteMapping("/eliminar")
-    public ResponseEntity delete(Long id){
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity delete(@PathVariable Long id){
         Categoria cat = categoriaService.findById(id);
-        if(cat == null){
-            return new ResponseEntity("No se pudo eliminar porque no se encontró la categoría con el id: " + id, HttpStatus.BAD_REQUEST);
-        } else {
+        if(cat != null){
             categoriaService.delete(id);
-            return new ResponseEntity("Se ha eliminado la categoría" + cat.getTitulo() + " con éxito", HttpStatus.OK);
+            return new ResponseEntity("Se ha eliminado la categoría " + cat.getTitulo() + " con éxito", HttpStatus.OK);
+        } else {
+            return new ResponseEntity("No se pudo eliminar porque no se encontró la categoría con el id: " + id, HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -1,2 +1,7 @@
-package com.example.demo.Model;public class Imagen {
+package com.example.demo.Model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Imagen {
 }

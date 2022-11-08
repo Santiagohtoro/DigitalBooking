@@ -1,2 +1,7 @@
-package com.example.demo.Model;public class Ciudad {
+package com.example.demo.Model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Ciudad {
 }
