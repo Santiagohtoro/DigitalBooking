@@ -1,13 +1,9 @@
 package com.example.demo.Model;
 
-
 import javax.persistence.*;
-
-
 
 @Entity
 public class Categoria {
-
     @Id
     @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
@@ -66,3 +62,4 @@ public class Categoria {
                 '}';
     }
 }
+
