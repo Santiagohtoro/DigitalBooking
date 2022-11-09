@@ -23,8 +23,12 @@ public class Producto {
     @JsonIgnore
     private Set<Imagen> imagenes = new HashSet<>();
     private String descripcion;
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JoinTable(
+            name = "rel_products_chars",
+            joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="FK_CHAR", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private boolean isAvailable;
     @JoinTable(
@@ -121,5 +125,18 @@ public class Producto {
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto de" +
+                "id: " + id +
+                ", titulo: " + titulo + '\'' +
+                ", categoria: " + categoria +
+                ", ciudad: " + ciudad +
+                ", descripcion: " + descripcion + '\'' +
+                ", caracteristicas: " + caracteristicas +
+                ", disponibilidad: " + isAvailable +
+                "y politicas: " + politicas;
     }
 }

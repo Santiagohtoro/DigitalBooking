@@ -36,13 +36,13 @@ public class CiudadService {
         return ciudadRepository.findAll();
     }
 
-    public Ciudad findByTitulo(String titulo){
-        return ciudadRepository.findByTitulo(titulo);
+    public Ciudad findByNombre(String nombre){
+        return ciudadRepository.findByNombre(nombre);
     }
 
     public Ciudad create(Ciudad ciudad){
-        if(findByTitulo(ciudad.getTitulo()) != null){
-            return findByTitulo(ciudad.getTitulo());
+        if(findByNombre(ciudad.getCiudad()) != null){
+            return findByNombre(ciudad.getCiudad());
         } else {
             return ciudadRepository.save(ciudad);
         }
