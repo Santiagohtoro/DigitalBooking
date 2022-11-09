@@ -17,13 +17,15 @@ public class Imagen {
     @JoinColumn(name="id_categoria")
     private Categoria categoria;
 
-    public Imagen() {
-    }
+
 
     public Imagen(Long id, String titulo, String url) {
         this.id = id;
         this.titulo = titulo;
         this.url = url;
+    }
+
+    public Imagen() {
     }
 
     public Long getId() {
@@ -48,5 +50,13 @@ public class Imagen {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Imagen de " +
+                "id: " + id +
+                ", titulo: " + titulo + '\'' +
+                "y url: " + url + '\'';
     }
 }

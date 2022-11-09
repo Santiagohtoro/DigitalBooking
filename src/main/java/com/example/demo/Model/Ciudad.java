@@ -38,11 +38,6 @@ public class Ciudad {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "id: " + id;
-    }
-
     public String getCiudad() {
         return ciudad;
     }
@@ -57,5 +52,13 @@ public class Ciudad {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    @Override
+    public String toString() {
+        return "Ciudad de " +
+                "id: " + id +
+                ", nombre: " + ciudad + '\'' +
+                ", pais: " + pais + '\'';
     }
 }

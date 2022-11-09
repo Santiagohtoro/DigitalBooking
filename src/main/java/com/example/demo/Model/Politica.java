@@ -11,7 +11,7 @@ public class Politica {
     private Long id;
     private String titulo;
     private String descripcion;
-    @ManyToMany(mappedBy = "politica")
+    @ManyToMany(mappedBy = "politicas")
     private Set<Producto> productos;
 
     public Politica(Long id, String titulo, String descripcion, Set<Producto> productos) {
@@ -54,5 +54,14 @@ public class Politica {
 
     public void setProductos(Set<Producto> productos) {
         this.productos = productos;
+    }
+
+    @Override
+    public String toString() {
+        return "Politica de " +
+                "id: " + id +
+                ", titulo: " + titulo + '\'' +
+                ", descripcion: " + descripcion + '\'' +
+                ", productos: " + productos;
     }
 }

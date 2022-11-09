@@ -1,19 +1,19 @@
 package com.example.demo.Model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Caracteristica {
-
     @Id
     @SequenceGenerator(name = "caracteristica_sequence", sequenceName = "caracteristica_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "caracteristica_sequence")
     private Long id;
     private String titulo;
     private String descripcion;
-    @ManyToMany(mappedBy = "caracteristica")
-    private Set<Producto> productos;
+    @ManyToMany(mappedBy = "caracteristicas", cascade = CascadeType.ALL)
+    private Set<Producto> productos = new HashSet<>();
     
 
     public Caracteristica() {

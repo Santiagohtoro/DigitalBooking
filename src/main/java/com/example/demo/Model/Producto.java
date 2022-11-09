@@ -126,4 +126,17 @@ public class Producto {
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
+
+    @Override
+    public String toString() {
+        return "Producto de" +
+                "id: " + id +
+                ", titulo: " + titulo + '\'' +
+                ", categoria: " + categoria +
+                ", ciudad: " + ciudad +
+                ", descripcion: " + descripcion + '\'' +
+                ", caracteristicas: " + caracteristicas +
+                ", disponibilidad: " + isAvailable +
+                "y politicas: " + politicas;
+    }
 }
