@@ -25,28 +25,28 @@ public class CiudadController {
         if(c == null){
             return new ResponseEntity("No se encontró una ciudad con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la ciudad: " + c.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity("Se ha encontrado con ese id la ciudad: " + c.getCiudad(), HttpStatus.OK);
         }
     }
 
     @GetMapping("/todos")
     public ResponseEntity findAll(){
-        List<Ciudad> cats = ciudadService.findAll();
+        List<Ciudad> city = ciudadService.findAll();
 
-        if(ciud == null){
+        if(city == null){
             return new ResponseEntity("No hay ciudades disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes ciudades: " + ciud.listIterator() , HttpStatus.OK);
+            return new ResponseEntity("Se han encontrado las siguientes ciudades: " + city.listIterator() , HttpStatus.OK);
         }
     }
 
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Ciudad ciudad){
-            if(ciudad.getTitulo() == null || ciudad.getDescripcion() == null || ciudad.getImagen() == null){
+            if(ciudad.getCiudad() == null || ciudad.getPais() == null){
                 return new ResponseEntity("No se puede crear la ciudad porque hay datos faltantes", HttpStatus.NOT_ACCEPTABLE);
             } else{
                 ciudadService.create(ciudad);
-              return new ResponseEntity("Se ha creado la ciudad: " + ciudad.getTitulo(), HttpStatus.OK);
+              return new ResponseEntity("Se ha creado la ciudad: " + ciudad.getCiudad(), HttpStatus.OK);
         }
     }
 
@@ -57,7 +57,7 @@ public class CiudadController {
             return new ResponseEntity("No se pudo eliminar porque no se encontró la ciudad con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
             ciudadService.delete(id);
-            return new ResponseEntity("Se ha eliminado la ciudad" + ciud.getTitulo() + " con éxito", HttpStatus.OK);
+            return new ResponseEntity("Se ha eliminado la ciudad" + ciud.getCiudad() + " con éxito", HttpStatus.OK);
         }
     }
 
@@ -67,7 +67,7 @@ public class CiudadController {
             return new ResponseEntity("No se ha podido actualizar porque no se encontró la ciudad con el id: " + ciudad.getId(), HttpStatus.BAD_REQUEST);
         } else {
             ciudadService.update(ciudad);
-            return new ResponseEntity("Se ha actualizado la ciudad " + ciudad.getTitulo() + " con éxito", HttpStatus.OK);
+            return new ResponseEntity("Se ha actualizado la ciudad " + ciudad.getCiudad() + " con éxito", HttpStatus.OK);
         }
     }
 

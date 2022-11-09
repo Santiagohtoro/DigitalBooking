@@ -23,8 +23,12 @@ public class Producto {
     @JsonIgnore
     private Set<Imagen> imagenes = new HashSet<>();
     private String descripcion;
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JoinTable(
+            name = "rel_products_chars",
+            joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="FK_CHAR", nullable = false)
+    )
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private boolean isAvailable;
     @JoinTable(

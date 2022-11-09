@@ -31,7 +31,7 @@ public class CaracteristicaController {
 
     @GetMapping("/todos")
     public ResponseEntity findAll(){
-        List<Caracteristica> cats = caracteristicaService.findAll();
+        List<Caracteristica> caract = caracteristicaService.findAll();
 
         if(caract == null){
             return new ResponseEntity("No hay caracteristicas disponibles", HttpStatus.BAD_REQUEST);
@@ -42,7 +42,7 @@ public class CaracteristicaController {
 
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Caracteristica caracteristica){
-            if(caracteristica.getTitulo() == null || caracteristica.getDescripcion() == null || caracteristica.getImagen() == null){
+            if(caracteristica.getTitulo() == null || caracteristica.getDescripcion() == null){
                 return new ResponseEntity("No se puede crear la caracteristica porque hay datos faltantes", HttpStatus.NOT_ACCEPTABLE);
             } else{
                 caracteristicaService.create(caracteristica);

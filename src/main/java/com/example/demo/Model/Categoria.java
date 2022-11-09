@@ -10,12 +10,13 @@ public class Categoria {
     private Long id;
     private String titulo;
     private String descripcion;
-    private String imagen;
+    @OneToOne(mappedBy = "categoria")
+    private Imagen imagen;
 
     public Categoria() {
     }
 
-    public Categoria(Long id, String titulo, String descripcion, String imagen) {
+    public Categoria(Long id, String titulo, String descripcion, Imagen imagen) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -46,11 +47,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public String getImagen() {
+    public Imagen getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(Imagen imagen) {
         this.imagen = imagen;
     }
 

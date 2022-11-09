@@ -1,7 +1,52 @@
 package com.example.demo.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Imagen {
+    @Id
+    @SequenceGenerator(name = "producto_sequence", sequenceName = "producto_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_sequence")
+    private Long id;
+    private String titulo;
+    private String url;
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
+    @OneToOne
+    @JoinColumn(name="id_categoria")
+    private Categoria categoria;
+
+    public Imagen() {
+    }
+
+    public Imagen(Long id, String titulo, String url) {
+        this.id = id;
+        this.titulo = titulo;
+        this.url = url;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
