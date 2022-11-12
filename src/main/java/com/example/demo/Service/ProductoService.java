@@ -29,6 +29,14 @@ public class ProductoService {
         }
     }
 
+    public List<Producto> findByCiudad(String ciudad){
+        if (productoRepository.findByCiudad(ciudad) != null){
+            return productoRepository.findByCiudad(ciudad);
+        } else {
+            return null;
+        }
+    }
+
     public List<Producto> findAll(){
         return productoRepository.findAll();
     }

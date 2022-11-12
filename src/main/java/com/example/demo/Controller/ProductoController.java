@@ -38,6 +38,19 @@ public class ProductoController {
         }
     }
 
+    @GetMapping("/{ciudad}")
+    public ResponseEntity findByCiudad(@PathVariable String ciudad){
+        List<Producto> productos = productoService.findByCiudad(ciudad);
+
+        if(productos == null){
+            return new ResponseEntity("No hay productos disponibles en esa ciudad", HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity("Se han encontrado los siguientes productos en esa ciudad: " + productos, HttpStatus.OK);
+        }
+    }
+
+
+
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Producto producto){
         if(producto.getTitulo() == null || producto.getDescripcion() == null || producto.getCategoria() == null || producto.getCiudad() == null || producto.getCaracteristicas() == null || producto.getPoliticas() == null ){
