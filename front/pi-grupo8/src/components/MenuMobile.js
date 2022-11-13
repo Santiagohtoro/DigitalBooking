@@ -6,11 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import SocialMedia from "./SocialMedia";
 
 function MenuMobile(props) {
-  const { setIsMenuVisible } = props;
+  const { setIsMenuVisible, isLoggedIn } = props;
   const location = useLocation();
   console.log(location);
-
-  const isLoggedIn = false;
 
   const closeMenu = () => {
     setIsMenuVisible(false);

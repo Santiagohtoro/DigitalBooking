@@ -24,6 +24,27 @@
         text-decoration: none;
         color: var(--text-color);
         
+        
+    }
+    .userNameDesktop{
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+        p{
+            border-radius: 50%;
+            background-color: var(--text-color);
+            color: white;
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+        h3{
+            color: var(--accent-color);
+        }
+        span{
+            
+            font-size: 1.5rem;
+        }
     }
     .btnContainer{
         display: flex;
@@ -72,6 +93,9 @@
         img{
             width: 60%;
             
+        }
+        .userNameDesktop{
+            display: none;
         }
     }
 }
