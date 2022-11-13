@@ -22,9 +22,9 @@ function MenuMobile(props) {
         </span>
         {isLoggedIn ? (
           <div className={styles.userName}>
-            <p>CR</p>
+            <p>JP</p>
             <h4>Hola,</h4>
-            <h3>Celina Rojas</h3>
+            <h3>Juan Perez</h3>
           </div>
         ) : (
           <h4>MENÚ</h4>

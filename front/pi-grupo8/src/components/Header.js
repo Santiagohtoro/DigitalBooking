@@ -10,7 +10,7 @@ export default function Header() {
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
   const location = useLocation();
 
-  const isLoggedIn = false;
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const navigate = useNavigate();
   function onClick(e) {
@@ -26,6 +26,12 @@ export default function Header() {
   function displayHome(e) {
     e.preventDefault();
     navigate("/home");
+  }
+
+  function logout(e) {
+    e.preventDefault();
+    navigate("/home");
+    setIsLoggedIn(false);
   }
 
   const handleClick = () => {
@@ -69,13 +75,13 @@ export default function Header() {
           </div>
         ) : (
           <div className={styles.userNameDesktop}>
-            <p>CR</p>
+            <p>JP</p>
             <div>
               <h4>Hola,</h4>
-              <h3>Celina Rojas</h3>
+              <h3>Juan Perez</h3>
             </div>
             <span>
-              <FontAwesomeIcon icon={faXmark} />
+              <FontAwesomeIcon icon={faXmark} onClick={logout} />
             </span>
           </div>
         )}
