@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
+import BookingSuccess from "./components/BookingSuccess";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";
@@ -57,6 +58,15 @@ function App() {
             element={
               <>
                 <ProductDetail />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
+            path="bookingSuccess"
+            element={
+              <>
+                <BookingSuccess />
                 <Footer />
               </>
             }
