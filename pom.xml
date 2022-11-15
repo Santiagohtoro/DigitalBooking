@@ -65,6 +65,9 @@
 	</dependencies>
 
 	<build>
+		<finalName>
+			digitalbooking
+		</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
