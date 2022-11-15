@@ -32,7 +32,7 @@ build-frontend-job:       # This job runs in the build stage, which runs first.
 
 deploy-frontend-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  imaage: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   script:
     - echo "Web application deploying..."
     - aws s3 cp front/pi-grupo8/build/*
