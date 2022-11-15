@@ -19,7 +19,7 @@ stages:          # List of stages for jobs, and their order of execution
 
 build-frontend-job:       # This job runs in the build stage, which runs first.
   stage: build
-  image: node:fermium-slim
+  image: node
   script:
     - echo "Compiling the React app..."
     - cd front/pi-grupo8
