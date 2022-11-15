@@ -35,5 +35,5 @@ deploy-frontend-job:      # This job runs in the deploy stage.
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   script:
     - echo "Web application deploying..."
-    - aws s3 cp front/pi-grupo8/build/*
+    - aws s3 cp front/pi-grupo8/build/* s3://digitalbooking-grupo8
     - echo "Web application successfully deployed."
