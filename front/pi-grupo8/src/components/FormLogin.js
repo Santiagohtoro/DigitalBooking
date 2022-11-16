@@ -39,8 +39,8 @@ export default function FormLogin(){
             if(email && email.match(regexMail)){
                 if(password && password.match(regexPassword)){
                     users.forEach(user => {
-                        if(email == user.email){
-                            if(password == user.password){
+                        if(email === user.email){
+                            if(password === user.password){
                                 // navigate("../index.js")
                             } else {
                                 document.getElementById("passInput").classList.add("wrong")
@@ -63,8 +63,8 @@ export default function FormLogin(){
             if(password && password.match(regexPassword)){
                 if(email && email.match(regexMail)){
                     users.forEach(user => {
-                        if(password == user.password){
-                            if(email == user.email){
+                        if(password === user.password){
+                            if(email === user.email){
                                 // navigate("../index.js")
                             } else {
                                 document.getElementById("emailInput").classList.add("wrong")

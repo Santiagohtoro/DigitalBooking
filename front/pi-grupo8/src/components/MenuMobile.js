@@ -40,7 +40,7 @@ function MenuMobile(props) {
           </div>
         ) : (
           <div className={styles.menuOptions}>
-            {location.pathname == "/home" ? (
+            {location.pathname === "/home" ? (
               <div>
                 <Link to="/register" onClick={closeMenu}>
                   <p>Crear cuenta</p>
@@ -50,7 +50,7 @@ function MenuMobile(props) {
                   <p>Iniciar sesión</p>
                 </Link>
               </div>
-            ) : location.pathname == "/register" ? (
+            ) : location.pathname === "/register" ? (
               <Link to="/login" onClick={closeMenu}>
                 <p>Iniciar sesión</p>
               </Link>
