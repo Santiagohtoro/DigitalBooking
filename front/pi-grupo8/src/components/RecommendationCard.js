@@ -45,7 +45,7 @@ function RecommendationCard(props) {
           <p className={styles.recommendationComment}>
             American shorthair tabby, for donskoy or american shorthair for
             malkin. Savannah tiger. Devonshire rex ocicat egyptian mau cornish
-            rex so kitty. <a href="#">Más...</a>
+            rex so kitty. <a href="#url">Más...</a>
           </p>
         </div>
         <div className={styles.recommendationButton}>
