@@ -26,10 +26,6 @@ build-frontend-job:       # This job runs in the build stage, which runs first.
     - npm ci
     - npm run build
     - echo "Compile complete."
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
-      changes:
-        - front/pi-grupo8/*/
   artifacts:
     paths:
         - front/pi-grupo8/build
@@ -41,10 +37,7 @@ deploy-frontend-job:      # This job runs in the deploy stage.
     - echo "Web application deploying..."
     - aws s3 cp --recursive front/pi-grupo8/build s3://digitalbooking-grupo8
     - echo "Web application successfully deployed."
-  rules:
-    - if: $CI_COMMIT_BRANCH == "development"
-      changes:
-        - front/pi-grupo8/*/
+
 
 build-backend-job:
   stage: build
@@ -52,10 +45,6 @@ build-backend-job:
   script:
     - echo "Compiling the Spring boot app..."
     - mvn clean install
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
-      changes:
-        - src/*/
   artifacts:
     paths:
       - target/digitalbooking.jar
@@ -79,8 +68,5 @@ deploy-backend-job:
     - echo "API loaded successfully"
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start digitalbooking.service"
     - echo "API successfully deployed."
-  rules:
-    - if: $CI_COMMIT_BRANCH == "development"
-      changes:
-        - src/*/
+
   
