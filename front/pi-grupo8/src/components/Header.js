@@ -54,24 +54,24 @@ export default function Header() {
         </div>
         {!isLoggedIn ? (
           <div className={styles.btnContainer}>
-            {location.pathname === "/home" ? (
-              <>
-                <button className={styles.logginButton} onClick={register}>
-                  Crear cuenta
-                </button>
-                <button className={styles.logginButton} onClick={onClick}>
-                  Iniciar sesión
-                </button>
-              </>
+            {location.pathname === "/register" ? (
+              <button className={styles.logginButton} onClick={onClick}>
+                Iniciar sesión
+              </button>
             ) : location.pathname === "/login" ? (
               <button className={styles.logginButton} onClick={register}>
                 Crear cuenta
               </button>
-            ) : location.pathname === "/register" ? (
-              <button className={styles.logginButton} onClick={onClick}>
-                Iniciar sesión
-              </button>
-            ) : null}
+            ) : (
+              <>
+                <button className={styles.logginButton} onClick={onClick}>
+                  Iniciar sesión
+                </button>
+                <button className={styles.logginButton} onClick={register}>
+                  Crear cuenta
+                </button>
+              </>
+            )}
           </div>
         ) : (
           <div className={styles.userNameDesktop}>
