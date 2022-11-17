@@ -23,7 +23,7 @@ public class ImagenController {
         if(img == null){
             return new ResponseEntity("No se encontró una imagen con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la imagen: " + img.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity( img, HttpStatus.OK);
         }
     }
 
@@ -34,7 +34,7 @@ public class ImagenController {
         if(imagenes == null){
             return new ResponseEntity("No hay imagenes disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes imagenes: " + imagenes, HttpStatus.OK);
+            return new ResponseEntity(imagenes, HttpStatus.OK);
         }
     }
 

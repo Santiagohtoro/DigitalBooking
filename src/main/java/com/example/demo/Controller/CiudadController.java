@@ -25,7 +25,7 @@ public class CiudadController {
         if(c == null){
             return new ResponseEntity("No se encontró una ciudad con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la ciudad: " + c.getCiudad(), HttpStatus.OK);
+            return new ResponseEntity(c, HttpStatus.OK);
         }
     }
 
@@ -36,7 +36,7 @@ public class CiudadController {
         if(city == null){
             return new ResponseEntity("No hay ciudades disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes ciudades: " + city.listIterator() , HttpStatus.OK);
+            return new ResponseEntity(city , HttpStatus.OK);
         }
     }
 

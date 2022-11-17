@@ -23,7 +23,7 @@ public class ProductoController {
         if(prod == null){
             return new ResponseEntity("No se encontró un producto con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id el producto: " + prod.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity(prod, HttpStatus.OK);
         }
     }
 
@@ -34,7 +34,7 @@ public class ProductoController {
         if(productos == null){
             return new ResponseEntity("No hay productos disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado los siguientes productos: " + productos, HttpStatus.OK);
+            return new ResponseEntity(productos, HttpStatus.OK);
         }
     }
 
