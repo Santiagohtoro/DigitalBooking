@@ -26,6 +26,10 @@ build-frontend-job:       # This job runs in the build stage, which runs first.
     - npm ci
     - npm run build
     - echo "Compile complete."
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
+      changes:
+        - front/pi-grupo8/*/
   artifacts:
     paths:
         - front/pi-grupo8/build
@@ -37,3 +41,46 @@ deploy-frontend-job:      # This job runs in the deploy stage.
     - echo "Web application deploying..."
     - aws s3 cp --recursive front/pi-grupo8/build s3://digitalbooking-grupo8
     - echo "Web application successfully deployed."
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+      changes:
+        - front/pi-grupo8/*/
+
+build-backend-job:
+  stage: build
+  image: maven:latest
+  script:
+    - echo "Compiling the Spring boot app..."
+    - mvn clean install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
+      changes:
+        - src/*/
+  artifacts:
+    paths:
+      - target/digitalbooking.jar
+
+
+
+deploy-backend-job:
+  stage: deploy
+  image: alpine:3.11
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+  script:
+    - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl stop digitalbooking.service"
+    - scp target/digitalbooking.jar ec2-user@$DEPLOY_SERVER_IP:~/proyecto-integrador
+    - echo "API loaded successfully"
+    - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start digitalbooking.service"
+    - echo "API successfully deployed."
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+      changes:
+        - src/*/
+  
