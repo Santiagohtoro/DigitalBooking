@@ -29,7 +29,7 @@ build-frontend-job:       # This job runs in the build stage, which runs first.
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
       changes:
-        - front/pi-grupo8/*/
+        - front/pi-grupo8/*
   artifacts:
     paths:
         - front/pi-grupo8/build
@@ -44,7 +44,7 @@ deploy-frontend-job:      # This job runs in the deploy stage.
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
       changes:
-        - frontend/*/
+        - frontend/*
 
 build-backend-job:
   stage: build
@@ -55,7 +55,7 @@ build-backend-job:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
       changes:
-        - src/*/
+        - src/*
   artifacts:
     paths:
       - target/digitalbooking.jar
@@ -82,5 +82,5 @@ deploy-backend-job:
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
       changes:
-        - src/*/
+        - src/*
   
