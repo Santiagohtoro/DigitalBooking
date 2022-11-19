@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../Styles/productDetail.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faKitchenSet } from "@fortawesome/free-solid-svg-icons";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
@@ -10,24 +9,13 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import ProductTitle from "./ProductTitle";
 
 function ProductDetail() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.name}>
-            <p>Hotel</p>
-            <h4>Hermitage Hotel</h4>
-            <div />
-          </div>
-          <div>
-            <NavLink to="/home" className={styles.icon}>
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </NavLink>
-          </div>
-        </div>
+        <ProductTitle category="Hotel" title="Hermitage" />
         <div className={styles.location}>
           <div className={styles.locationInfo}>
             <div className={styles.locationIcon}>

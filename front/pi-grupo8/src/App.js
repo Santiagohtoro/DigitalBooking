@@ -71,6 +71,15 @@ function App() {
               </>
             }
           ></Route>
+          <Route
+            path="booking"
+            element={
+              <>
+                <Booking />
+                <Footer />
+              </>
+            }
+          ></Route>
         </Route>
       </Routes>
     </div>
