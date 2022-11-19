@@ -25,7 +25,7 @@ public class CaracteristicaController {
         if(c == null){
             return new ResponseEntity("No se encontró una caracteristica con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la caracteristica: " + c.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity(c, HttpStatus.OK);
         }
     }
 
@@ -36,7 +36,7 @@ public class CaracteristicaController {
         if(caract == null){
             return new ResponseEntity("No hay caracteristicas disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes caracteristicas: " + caract.listIterator() , HttpStatus.OK);
+            return new ResponseEntity(caract , HttpStatus.OK);
         }
     }
 

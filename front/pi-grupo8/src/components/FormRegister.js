@@ -25,11 +25,11 @@ const [setPassword] = React.useState()
             document.getElementById("passInput").classList.remove("wrong")
         }
 
-        function onChangePassword(e){
+        /*function onChangePassword(e){
             e.preventDefault()
             setPassword(e.target.value)
             document.getElementById("passInput").classList.remove("wrong")
-        }
+        }*/
 
     return(
         <>
@@ -60,7 +60,7 @@ const [setPassword] = React.useState()
                     </form>
 
 
-                        <p>¿Ya tienes una cuenta? <a className={styles.link} href='#'> <nav><Link to='./FormLogin'>Iniciar sesión</Link></nav></a></p>
+                        <p>¿Ya tienes una cuenta? <a className={styles.link} href='#url'> <nav><Link to='./FormLogin'>Iniciar sesión</Link></nav></a></p>
             </div>
 
             <Outlet/>

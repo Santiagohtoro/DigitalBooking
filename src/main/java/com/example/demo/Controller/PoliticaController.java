@@ -23,7 +23,7 @@ public class PoliticaController {
         if(pol == null){
             return new ResponseEntity("No se encontró una politica con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la politica: " + pol.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity(pol, HttpStatus.OK);
         }
     }
 
@@ -34,7 +34,7 @@ public class PoliticaController {
         if(politicas == null){
             return new ResponseEntity("No hay politicas disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes politicas: " + politicas, HttpStatus.OK);
+            return new ResponseEntity(politicas, HttpStatus.OK);
         }
     }
 

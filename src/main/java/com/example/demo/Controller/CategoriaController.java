@@ -23,7 +23,7 @@ public class CategoriaController {
         if(c == null){
             return new ResponseEntity("No se encontró una categoría con el id: " + id, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se ha encontrado con ese id la categoría: " + c.getTitulo(), HttpStatus.OK);
+            return new ResponseEntity(c, HttpStatus.OK);
         }
     }
 
@@ -34,7 +34,7 @@ public class CategoriaController {
         if(cats == null){
             return new ResponseEntity("No hay categorías disponibles", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado las siguientes categorias: " + cats, HttpStatus.OK);
+            return new ResponseEntity(cats, HttpStatus.OK);
         }
     }
 

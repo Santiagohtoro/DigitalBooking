@@ -12,7 +12,6 @@ body{
     justify-content: center;
     width: 30%;
     margin: 100px auto;
-    z-index: -1;
     .title{
         color:var(--accent-color);
         text-align: center;
@@ -116,6 +115,7 @@ body{
 
 }
 
+
     @media (max-width: 768px){
     
         .container{
@@ -132,7 +132,14 @@ body{
             }
     
         }
-    }    
+    } 
+    
+    @media (max-width: 426px){
+        .container{
+            z-index: -1;
+            
+        }
+    }
 
 
 

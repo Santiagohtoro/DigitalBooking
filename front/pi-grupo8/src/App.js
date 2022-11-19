@@ -10,7 +10,7 @@ import styles from "./Styles/app.module.scss";
 import "./Styles/body.module.scss";
 import FormLogin from "./components/FormLogin";
 import FormRegister from "./components/FormRegister";
-import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 
 function App() {
   return (
