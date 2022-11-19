@@ -75,7 +75,7 @@ deploy-backend-job:
     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
   script:
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl stop digitalbooking.service"
-    - scp target/digitalbooking.jar ec2-user@$DEPLOY_SERVER_IP:~/proyecto-integrador
+    - scp target/digitalbooking.jar ec2-user@$DEPLOY_SERVER_IP:~/apiproyecto
     - echo "API loaded successfully"
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start digitalbooking.service"
     - echo "API successfully deployed."
