@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
 import BookingSuccess from "./components/BookingSuccess";
+import Booking from "./components/Booking";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";

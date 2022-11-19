@@ -3,7 +3,6 @@
 body{
     font-family: var(--typography);
     background-color: var(--form-background);
-    
 }
 
 .container {
@@ -12,7 +11,7 @@ body{
     justify-content: center;
     width: 30%;
     margin: 100px auto;
-    
+    height: calc(100vh - 7rem - 10rem);
     .loginTitle{
         color:var(--accent-color);
         text-align: center;
@@ -72,23 +71,17 @@ body{
 
 
 @media (max-width: 768px){
-    
     .container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 70%;
-        height: 90%;
-        
     }
     .formLogin{
         .btnLogin{
             width: 100%;
         }
-
     }
-    
-    
 }
 
 @media (max-width: 426px){
@@ -97,9 +90,7 @@ body{
         flex-direction: column;
         justify-content: center;
         width: 70%;
-        height: 90%;
         z-index: -1;
-        
     }
 }
 

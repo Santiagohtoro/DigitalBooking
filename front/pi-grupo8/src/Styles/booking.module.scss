@@ -1,0 +1,24 @@
+@use './variables';
+
+.grid{
+    display: flex;
+    width: 95%;
+    margin: 1rem auto;
+    .gridRight{
+        flex: 1 0 30%;
+    }
+    .gridLeft{
+        flex: 1 0 70%;
+    }
+}
+
+/*-------------------Media queries TABLET--------------------*/
+@media (max-width: 768px){
+    .grid{
+        flex-direction: column;
+    }
+}
+
+/*-------------------Media queries MOBILE--------------------*/
+@media (max-width: 426px){
+}

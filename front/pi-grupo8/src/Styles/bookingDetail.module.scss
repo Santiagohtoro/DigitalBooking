@@ -1,0 +1,55 @@
+@use './variables';
+
+
+.container{
+    background-color: white;
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+    border-radius: 8px;
+    .info{
+        padding: 1rem;
+        span{
+            color: lightgray;
+            margin-bottom: 1rem;
+        }
+        h4{
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+        .stars{
+            color: var(--accent-color);
+        }
+        p{
+            margin-top: 0.8rem;
+        }
+    }
+    h3{
+        padding: 1rem;
+    }
+    img{
+        width: 100%;
+    }
+    .dates{
+        padding: 1rem;
+        hr{
+            border: 0.1px solid lightgray;
+            margin: 1.5rem 0;
+        }
+        .check{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .btnContainer{
+        display: flex;
+        justify-content: center;
+        .btn{
+            margin: 1rem;
+            padding: 0.5rem 5rem;
+            border-radius: 6px;
+            background-color: var(--accent-color);
+            border: none;
+            color: white;
+        }
+    }
+}

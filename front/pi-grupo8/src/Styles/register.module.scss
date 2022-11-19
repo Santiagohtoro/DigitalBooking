@@ -11,21 +11,17 @@ body{
     flex-direction: column;
     justify-content: center;
     width: 30%;
+    height: calc(100vh - 7rem - 10rem);
     margin: 100px auto;
     .title{
         color:var(--accent-color);
         text-align: center;
         margin-bottom: 1rem;
     }  
-    
-
-
     .userName{
         display: flex;
         gap: 1rem;
         margin-bottom: 1.5rem;
-
-
         input {
             background: var(--background-color);
             width: 100%;
@@ -36,12 +32,8 @@ body{
             padding: 0;
             margin-top: 0.5rem;
             padding-left: 10px;
-            
         }
-        
     }
-    
-
     .register{
         color:var(--text-color);
         width: 100%;
@@ -51,7 +43,6 @@ body{
         padding: 0;
         margin-bottom: 1.5rem;       
     }
-
     input {
         background: var(--background-color);
         width: 100%;
@@ -123,7 +114,6 @@ body{
             flex-direction: column;
             justify-content: center;
             width: 70%;
-            height: 90%;
             
         }
         .formLogin{
@@ -137,7 +127,6 @@ body{
     @media (max-width: 426px){
         .container{
             z-index: -1;
-            
         }
     }
 
