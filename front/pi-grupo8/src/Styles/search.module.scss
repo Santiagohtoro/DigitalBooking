@@ -4,7 +4,7 @@
   background-color: #545776;
   display: flex;
   flex-direction: column;
-  padding-top: 8%;
+  padding-top: 12vh;
   .containerElements {
     display: flex;
     flex-direction: column;
@@ -71,5 +71,45 @@
   font-weight: 700;
   border-radius: 5px;
   border: none;
+}
+
+/*-------------------Media queries TABLET--------------------*/
+@media (max-width: 768px){
+  .container{
+    .containerElements{
+      .containerInputs{
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 1rem;
+        .selectCity{
+          width: 30%;
+        }
+        .selectDay{
+          width: 100%;
+        }
+      }
+      .search{
+        width: 20%;
+      }
+    }   
+  }
+}
+
+/*-------------------Media queries MOBILE--------------------*/
+@media (max-width: 580px){
+    .container{
+      .containerElements{
+        .slogan{
+          text-align: center;
+          width: 95%;
+        }
+        .containerInputs{
+          flex-direction: column;
+          .selectCity{
+            width: 90%;
+          }
+        }
+      }
+    }
 }
 

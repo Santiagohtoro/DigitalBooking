@@ -50,6 +50,57 @@
             background-color: var(--accent-color);
             border: none;
             color: white;
+            font-weight: bold;
+        }
+    }
+}
+/*-------------------Media queries TABLET--------------------*/
+@media (max-width: 768px){
+    .card{
+        display: flex;
+        .img img{
+            border-radius: 8px;
+            height: 100%;
+        }
+        .img{
+            flex: 1 0 50%;
+            margin: 0 0 0.5rem 0.5rem; 
+        }
+        .text{
+            flex: 1 0 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.8rem;
+            height: 100%;  
+            .info{
+                padding: 0 1rem; 
+                span{
+                    margin-bottom: 0;
+                }
+                h4{
+                    margin: 0;
+                }
+            }
+            .dates{
+                padding: 0 1rem;
+                hr{
+                    margin: 0.6rem 0;
+                }
+            }
+            .btnContainer .btn{
+                padding: 0.8rem 6.5rem;
+            }    
+            
+        }
+    }
+}
+
+/*-------------------Media queries MOBILE--------------------*/
+@media (max-width: 630px){
+    .card{
+        flex-direction: column;
+        .img{
+            margin: 0.5rem; 
         }
     }
 }

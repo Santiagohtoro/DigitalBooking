@@ -9,37 +9,43 @@ function BookingDetail() {
   return (
     <div className={styles.container}>
       <h3>Detalle de la reserva</h3>
-      <img src={hotel1} alt="room" />
-      <div className={styles.info}>
-        <span>Hotel</span>
-        <h4>Hermitage Hotel</h4>
-        <div className={styles.stars}>
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
+      <div className={styles.card}>
+        <div className={styles.img}>
+          <img src={hotel1} alt="room" />
         </div>
-        <p>
-          <FontAwesomeIcon icon={faLocationDot} /> Av.Colón 1643, Buenos Aires,
-          Ciudad Autónoma de Buenos Aires, Argentina
-        </p>
-      </div>
-      <div className={styles.dates}>
-        <hr />
-        <div className={styles.check}>
-          <span>Check in</span>
-          <span>___/___/___</span>
+        <div className={styles.text}>
+          <div className={styles.info}>
+            <span>Hotel</span>
+            <h4>Hermitage Hotel</h4>
+            <div className={styles.stars}>
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <p>
+              <FontAwesomeIcon icon={faLocationDot} /> Av.Colón 1643, Buenos
+              Aires, Ciudad Autónoma de Buenos Aires, Argentina
+            </p>
+          </div>
+          <div className={styles.dates}>
+            <hr />
+            <div className={styles.check}>
+              <span>Check in</span>
+              <span>___/___/___</span>
+            </div>
+            <hr />
+            <div className={styles.check}>
+              <span>Check out</span>
+              <span>___/___/___</span>
+            </div>
+            <hr />
+          </div>
+          <div className={styles.btnContainer}>
+            <button className={styles.btn}>Confirmar reserva</button>
+          </div>
         </div>
-        <hr />
-        <div className={styles.check}>
-          <span>Check out</span>
-          <span>___/___/___</span>
-        </div>
-        <hr />
-      </div>
-      <div className={styles.btnContainer}>
-        <button className={styles.btn}>Confirmar reserva</button>
       </div>
     </div>
   );
