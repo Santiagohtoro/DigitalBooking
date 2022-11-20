@@ -19,6 +19,9 @@ public class Ciudad {
     @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<AppUser> users = new HashSet<>();
     
 
     public Ciudad() {

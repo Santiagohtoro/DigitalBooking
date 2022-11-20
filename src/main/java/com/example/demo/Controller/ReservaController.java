@@ -1,2 +1,4 @@
-package com.example.demo.Controller;public class ReservaController {
+package com.example.demo.Controller;
+
+public class ReservaController {
 }

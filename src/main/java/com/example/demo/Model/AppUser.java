@@ -15,13 +15,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User implements UserDetails {
+public class AppUser implements UserDetails {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
     private String nombre;
     private String apellido;
+    private String username;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -29,14 +30,14 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(mappedBy = "user",  cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
-    public User(@NotBlank String name, @NotBlank String surname, @Email String email, String encode, AppUserRoles user, @NotBlank Ciudad city) {
+    public AppUser(@NotBlank String name, @NotBlank String surname, @Email String email, String encode, AppUserRoles user, @NotBlank Ciudad city) {
     }
 
-    public User(Long id, String nombre, String apellido, String email, String password, AppUserRoles appUserRole, Ciudad ciudad) {
+    public AppUser(Long id, String nombre, String apellido, String email, String password, AppUserRoles appUserRole, Ciudad ciudad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -130,6 +131,14 @@ public class User implements UserDetails {
 
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 }
 
