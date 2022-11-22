@@ -4,6 +4,7 @@ import com.example.demo.Configuration.*;
 import com.example.demo.Model.AppUser;
 import com.example.demo.Model.AppUserRoles;
 import com.example.demo.Service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ import javax.validation.Valid;
 
 @RestController
 public class AuthenticationController {
+
+    private static final Logger logger = Logger.getLogger(AuthenticationController.class);
+
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -34,9 +38,11 @@ public class AuthenticationController {
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest registerRequest, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+            logger.error("Datos inválidos");
             return new ResponseEntity("Datos invalidos", HttpStatus.BAD_REQUEST);
         }
         if (userService.loadUserByEmail(registerRequest.getEmail())) {
+            logger.error("El correo ya está registrado");
             return new ResponseEntity("El correo ya está registrado", HttpStatus.BAD_REQUEST);
         }
         AppUser user = new AppUser(registerRequest.getName(),
@@ -46,7 +52,7 @@ public class AuthenticationController {
                 AppUserRoles.USER,
                 registerRequest.getCity());
 
-
+        logger.info("Usuario creado exitosamente");
         return new ResponseEntity("Usuario creado exitosamente", HttpStatus.CREATED);
     }
 
