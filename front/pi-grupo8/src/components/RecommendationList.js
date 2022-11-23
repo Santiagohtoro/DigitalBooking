@@ -7,17 +7,24 @@ import { Outlet } from "react-router-dom";
 function RecommendationList() {
   return (
     <>
-    <section className={styles.recommendationsBackground}>
-      <div className={styles.recommendationsBlock}>
-        <h2>Recomendaciones</h2>
-        <div className={styles.recommendationsContainer}>
-          {recommendations.map((r) => (
-            <RecommendationCard picture={r.img} key={r.id}/>
-          ))}
+      <section className={styles.recommendationsBackground}>
+        <div className={styles.recommendationsBlock}>
+          <h2>Recomendaciones</h2>
+          <div className={styles.recommendationsContainer}>
+            {recommendations.map((r) => (
+              <RecommendationCard
+                picture={r.img}
+                key={r.id}
+                title={r.title}
+                category={r.category}
+                location={r.location}
+                id={r.id}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-    <Outlet/>
+      </section>
+      <Outlet />
     </>
   );
 }

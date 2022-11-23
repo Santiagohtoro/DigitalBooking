@@ -5,9 +5,10 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function RecommendationCard(props) {
-  const { picture } = props;
+  const { picture, title, category, location, id } = props;
 
   return (
     <div className={styles.recommendationCard}>
@@ -17,7 +18,7 @@ function RecommendationCard(props) {
       <div className={styles.recommendationInfo}>
         <div className={styles.recommendationText}>
           <div className={styles.recommendationName}>
-            <span>Hotel</span>
+            <span>{category}</span>
             <span className={styles.stars}>
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faStar} />
@@ -25,7 +26,7 @@ function RecommendationCard(props) {
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faStar} />
             </span>
-            <h2>Hermitage Hotel</h2>
+            <h2>{title}</h2>
           </div>
           <div className={styles.recommendationRating}>
             <span>8</span>
@@ -35,7 +36,7 @@ function RecommendationCard(props) {
         <div className={styles.recommendationDescription}>
           <p className={styles.recommendationLocation}>
             <FontAwesomeIcon icon={faLocationDot} />
-            <p>A 940 del centro</p>
+            <p>{location}</p>
             <span className={styles.recommendationMap}>MOSTRAR EN EL MAPA</span>
           </p>
           <span className={styles.recommendationAmmenities}>
@@ -49,7 +50,9 @@ function RecommendationCard(props) {
           </p>
         </div>
         <div className={styles.recommendationButton}>
-          <button>Ver más</button>
+          <button>
+            <Link to={`product/${id}`}>Ver más</Link>
+          </button>
         </div>
       </div>
     </div>

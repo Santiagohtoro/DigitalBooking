@@ -11,7 +11,7 @@ import styles from "./Styles/app.module.scss";
 import "./Styles/body.module.scss";
 import FormLogin from "./components/FormLogin";
 import FormRegister from "./components/FormRegister";
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -55,7 +55,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="product"
+            path="/home/product/:id"
             element={
               <>
                 <ProductDetail />
