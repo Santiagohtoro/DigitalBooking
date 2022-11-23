@@ -10,7 +10,8 @@ public class Categoria {
     private Long id;
     private String titulo;
     private String descripcion;
-    @OneToOne(mappedBy = "categoria")
+    @OneToOne
+    @JoinColumn(name="id_imagen")
     private Imagen imagen;
 
     public Categoria() {
