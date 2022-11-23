@@ -52,10 +52,6 @@ build-backend-job:
   script:
     - echo "Compiling the Spring boot app..."
     - mvn clean install
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "development"
-      changes:
-        - src/*
   artifacts:
     paths:
       - target/digitalbooking.jar
@@ -79,8 +75,4 @@ deploy-backend-job:
     - echo "API loaded successfully"
     - ssh ec2-user@$DEPLOY_SERVER_IP "sudo systemctl start digitalbooking.service"
     - echo "API successfully deployed."
-  rules:
-    - if: $CI_COMMIT_BRANCH == "development"
-      changes:
-        - src/*
   
