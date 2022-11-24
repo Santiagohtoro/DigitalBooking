@@ -1,5 +1,5 @@
 package com.example.demo.Model;
 
-public enum AppUserRoles {
+public enum UserRoles {
     USER, ADMIN
 }

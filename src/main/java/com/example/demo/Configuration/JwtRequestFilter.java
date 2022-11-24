@@ -1,5 +1,7 @@
 package com.example.demo.Configuration;
 
+import com.example.demo.Service.AppUserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,31 +19,33 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
+    private static final Logger logger = Logger.getLogger(JwtRequestFilter.class);
+
     @Autowired
-    private UserDetailsService userDetailsService;
+    JwtUtil jwtUtil;
     @Autowired
-    private JwtUtil jwtUtil;
+    AppUserService appUserService;
+
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        final String authorizationHeader = httpServletRequest.getHeader("Authorization");
-        String username= null;
-        String jwt = null;
-
-        if(authorizationHeader != null &&  authorizationHeader.startsWith("Bearer")) {
-            jwt = authorizationHeader.substring(7);
-            username = jwtUtil.extractUserName(jwt);
-        }
-
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails  = this.userDetailsService.loadUserByUsername(username);
-            if(jwtUtil.validateToken(jwt, userDetails)) {
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken  = new UsernamePasswordAuthenticationToken(userDetails,
-                        null, userDetails.getAuthorities());
-                usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        try {
+            String token = getToken(request);
+            if (token != null && jwtUtil.validateToken(token)) {
+                logger.info("");
+                String emailUser = jwtUtil.getEmailFromToken(token);
+                UserDetails userDetails = appUserService.loadUserByUsername(emailUser);
+                UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(userDetails,
+                                null, userDetails.getAuthorities());
+                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                logger.info("Usuario con email: " + emailUser + " autenticado");
+                SecurityContextHolder.getContext().setAuthentication(auth);
             }
+        } catch (Exception e) {
+            logger.error("Fallo en el metodo doFilterInternal " + e.getMessage());
         }
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+        filterChain.doFilter(request, response);
     }
 
     private String getToken(HttpServletRequest request) {
@@ -51,5 +55,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             return header.substring(7);
         return null;
     }
+
 
 }

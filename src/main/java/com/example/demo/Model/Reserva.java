@@ -19,9 +19,9 @@ public class Reserva {
     private Producto producto;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private AppUser user;
+    private User user;
 
-    public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, AppUser usuario) {
+    public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, User usuario) {
         this.id = id;
         this.horaReserva = horaReserva;
         this.fechaInicial = fechaInicial;
@@ -70,11 +70,11 @@ public class Reserva {
         this.producto = producto;
     }
 
-    public AppUser getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(AppUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
