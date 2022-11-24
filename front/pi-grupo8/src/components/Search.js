@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
+import "react-multi-date-picker/styles/colors/teal.css";
 import { Outlet } from "react-router-dom";
 import useApiCities from "../api-cities/useApiCities";
 
@@ -49,6 +50,7 @@ export default function Search() {
               ))}
             </select>
             <DatePicker
+              className="teal"
               inputClass={`${Styles.selectDay} ${Styles.select}`}
               value={values}
               onChange={setValues}

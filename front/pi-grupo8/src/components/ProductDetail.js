@@ -16,9 +16,16 @@ import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
 import useApiMaps from "../api-maps/useApiMaps";
-import  { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import  { useState, useEffect} from "react";
+
 
 function ProductDetail() {
+  const navigate = useNavigate();
+  function redirectBooking(e) {
+      e.preventDefault();
+      navigate("/booking");
+  }
   const { data, getData } = useApiMaps();
   const [values, setValues] = useState([new DateObject()]);
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
@@ -129,13 +136,13 @@ function ProductDetail() {
                 />
               <div className={styles.bookingContainer}>
                   <h5 className={styles.textBooking}>Agregá tus fechas de viaje para obtener precios exactos</h5>
-                  <button className={styles.buttonBooking} >
+                  <button className={styles.buttonBooking} onClick={redirectBooking}>
                     Iniciar reservas
                   </button>
                 </div> 
             </div>
         </div>
-        <></>
+        
         <ProductPolicies />
       </div>
     </>
