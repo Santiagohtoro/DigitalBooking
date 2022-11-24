@@ -1,4 +1,8 @@
-import React from "react";
+import React  from "react";
+import "../Styles/calendar.css";
+import  { Calendar, DateObject } from "react-multi-date-picker";
+import "react-multi-date-picker/styles/colors/teal.css";
+import calendar from "../Styles/calendar.module.scss";
 import styles from "../Styles/productDetail.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +15,33 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
+import useApiMaps from "../api-maps/useApiMaps";
+import  { useState, useEffect } from "react";
 
 function ProductDetail() {
+  const { data, getData } = useApiMaps();
+  const [values, setValues] = useState([new DateObject()]);
+  const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log(data)
   return (
+    
     <>
       <div className={styles.container}>
         <ProductTitle category="Hotel" title="Hermitage" />
@@ -79,6 +107,35 @@ function ProductDetail() {
             </div>
           </div>
         </div>
+        <div className={styles.calendar}>
+         <h3 className={styles.dateTitle}>Fechas disponibles</h3> 
+         <div className={styles.alignContent}>
+            <Calendar
+              className= {`teal ${calendar.container}` }
+              
+                value={values}
+                onChange={setValues}
+                containerStyle="days"
+                  range
+                  numberOfMonths={2}
+                  weekDays={weekDays}
+                  months={months}
+                  
+                  styles={{}}
+                
+                  
+                  disableMonthPicker
+                  disableYearPicker
+                />
+              <div className={styles.bookingContainer}>
+                  <h5 className={styles.textBooking}>Agregá tus fechas de viaje para obtener precios exactos</h5>
+                  <button className={styles.buttonBooking} >
+                    Iniciar reservas
+                  </button>
+                </div> 
+            </div>
+        </div>
+        <></>
         <ProductPolicies />
       </div>
     </>
