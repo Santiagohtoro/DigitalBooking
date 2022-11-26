@@ -9,7 +9,7 @@ import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";
 import styles from "./Styles/app.module.scss";
 import "./Styles/body.module.scss";
-import FormLogin from "./components/FormLogin";
+import Login from "./components/Login";
 import FormRegister from "./components/FormRegister";
 import { Route, Routes } from "react-router-dom";
 
@@ -40,7 +40,7 @@ function App() {
             path="login"
             element={
               <>
-                <FormLogin />
+                <Login />
                 <Footer />
               </>
             }
