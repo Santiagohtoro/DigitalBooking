@@ -16,9 +16,6 @@ export default function Register() {
     setShowPassword(!showPassword);
   }
 
-  console.log(values);
-  console.log(errors);
-
   return (
     <>
       <div className={styles.container}>
@@ -63,31 +60,32 @@ export default function Register() {
           </div>
 
           <div className={styles.userData}>
-            <label className={styles.register}>Contraseña</label>
-            <input
-              className={styles.password}
-              type={showPassword ? "text" : "password"}
-              required
-              name="password"
-              defaultValue={values.password}
-              onChange={handleChange}
-            />
-            <i onClick={toggleShowPassword}>
-              {showPassword ? (
-                <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  class="icon"
-                  style={{ color: "#607D8B" }}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={faEye}
-                  class="icon"
-                  size="lg"
-                  style={{ color: "#607D8B" }}
-                />
-              )}
-            </i>
+            <label>Contraseña</label>
+            <div className={styles.passWrapper}>
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                name="password"
+                defaultValue={values.password}
+                onChange={handleChange}
+              />
+              <i onClick={toggleShowPassword}>
+                {showPassword ? (
+                  <FontAwesomeIcon
+                    icon={faEyeSlash}
+                    class="icon"
+                    style={{ color: "#607D8B" }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    class="icon"
+                    size="lg"
+                    style={{ color: "#607D8B" }}
+                  />
+                )}
+              </i>
+            </div>
             {errors.password && <span>{errors.password}</span>}
           </div>
 

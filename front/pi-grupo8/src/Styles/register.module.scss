@@ -2,7 +2,7 @@
 
 .container{
     width: 60%;
-    max-width: 900px;
+    max-width: 600px;
     margin: 15vh auto;
     h2{
         text-align: center;
@@ -36,15 +36,14 @@
                 margin: 0.5rem 0;
                 padding: 0.5rem;
             }
-            .password{
+            .passWrapper{
                 position: relative;
             }
             i{
                 position: absolute;
-                top: 53%;
-                right: 21%;
+                top: 30%;
+                right: 2%;
                 width: 20px;
-                height: 20px;
             }
         }
         .btn{
@@ -62,10 +61,35 @@
             }
             p{
                 text-align: center;
+                a{
+                    text-decoration: none;
+                    color: var(--accent-color);
+                }
             }
         }
     }
 }
 
+@media (max-width: 768px){
+    .container {
+        form{
+            .btn{
+                width: 50%;
+            }
+        }
+    }   
+}
 
-
+@media (max-width: 500px){
+    .container {
+        width: 90%;
+        form{
+            .userFullName{
+                flex-direction: column;
+            }
+            .btn{
+                width: 100%;
+            }
+        }
+    }   
+}
