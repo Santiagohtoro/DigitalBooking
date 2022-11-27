@@ -10,7 +10,7 @@ import RecommendationList from "./components/RecommendationList";
 import styles from "./Styles/app.module.scss";
 import "./Styles/body.module.scss";
 import Login from "./components/Login";
-import FormRegister from "./components/FormRegister";
+import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
             path="register"
             element={
               <>
-                <FormRegister />
+                <Register />
                 <Footer />
               </>
             }

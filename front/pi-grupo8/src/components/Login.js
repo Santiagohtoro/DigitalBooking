@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import useFormLogin from "../hooks/useFormLogin";
-import validateInfo from "./validateInfo";
+import validateInfo from "../validators/validateInfoLogin";
 
 function Login() {
   const { handleChange, values, handleSubmit, errors } =
