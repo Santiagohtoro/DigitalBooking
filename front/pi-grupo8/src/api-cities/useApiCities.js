@@ -10,6 +10,7 @@ const useApiCities = () => {
     const response = await axios.get(`${baseUrl}/ciudades/todos`);
     setData(response.data);
   };
+  
   return { data, getData };
 };
 

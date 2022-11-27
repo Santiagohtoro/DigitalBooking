@@ -18,16 +18,32 @@ import ProductPolicies from "./ProductPolicies";
 import useApiMaps from "../api-maps/useApiMaps";
 import { useNavigate } from "react-router-dom";
 import  { useState, useEffect} from "react";
+import MapRender from "./MapRender";
+
+
+
 
 
 function ProductDetail() {
+  const info = useApiMaps();
+  console.log(info);
+ /* 
+    
+    
+
+    console.log(data.data[0].lat)
+    console.log(data.data[0].lon)
+*/
   const navigate = useNavigate();
   function redirectBooking(e) {
       e.preventDefault();
       navigate("/booking");
   }
-  const { data, getData } = useApiMaps();
+
+
+
   const [values, setValues] = useState([new DateObject()]);
+  
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const months = [
     "Enero",
@@ -43,10 +59,7 @@ function ProductDetail() {
     "Noviembre",
     "Diciembre",
   ];
-  useEffect(() => {
-    getData();
-  }, []);
-  console.log(data)
+  
   return (
     
     <>
@@ -142,7 +155,9 @@ function ProductDetail() {
                 </div> 
             </div>
         </div>
-        
+        <div className={styles.containerMap}>
+          <MapRender value={info}/>
+        </div>
         <ProductPolicies />
       </div>
     </>
