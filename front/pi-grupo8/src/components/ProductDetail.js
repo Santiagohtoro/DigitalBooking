@@ -1,8 +1,6 @@
 import React  from "react";
 import "../Styles/calendar.css";
-import  { Calendar, DateObject } from "react-multi-date-picker";
 import "react-multi-date-picker/styles/colors/teal.css";
-import calendar from "../Styles/calendar.module.scss";
 import styles from "../Styles/productDetail.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -15,25 +13,19 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
-import useApiMaps from "../api-maps/useApiMaps";
 import { useNavigate } from "react-router-dom";
-import  { useState, useEffect} from "react";
 import MapRender from "./MapRender";
-
+import CalendarBooking from "./CalendarBooking";
+import Gallery from "./Gallery";
+import useApiMaps from "../api-maps/useApiMaps";
 
 
 
 
 function ProductDetail() {
-  const info = useApiMaps();
+  const  {info}  = useApiMaps();
   console.log(info);
- /* 
-    
-    
 
-    console.log(data.data[0].lat)
-    console.log(data.data[0].lon)
-*/
   const navigate = useNavigate();
   function redirectBooking(e) {
       e.preventDefault();
@@ -42,23 +34,6 @@ function ProductDetail() {
 
 
 
-  const [values, setValues] = useState([new DateObject()]);
-  
-  const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
   
   return (
     
@@ -75,6 +50,7 @@ function ProductDetail() {
           </div>
         </div>
         <div className={styles.containerDescription}>
+          <Gallery/>
           <div className={styles.description}>
             <h1>Alójate en el corazón de Buenos Aires</h1>
             <p>
@@ -130,23 +106,8 @@ function ProductDetail() {
         <div className={styles.calendar}>
          <h3 className={styles.dateTitle}>Fechas disponibles</h3> 
          <div className={styles.alignContent}>
-            <Calendar
-              className= {`teal ${calendar.container}` }
-              
-                value={values}
-                onChange={setValues}
-                containerStyle="days"
-                  range
-                  numberOfMonths={2}
-                  weekDays={weekDays}
-                  months={months}
-                  
-                  styles={{}}
-                
-                  
-                  disableMonthPicker
-                  disableYearPicker
-                />
+            <CalendarBooking></CalendarBooking>
+            
               <div className={styles.bookingContainer}>
                   <h5 className={styles.textBooking}>Agregá tus fechas de viaje para obtener precios exactos</h5>
                   <button className={styles.buttonBooking} onClick={redirectBooking}>
@@ -156,7 +117,11 @@ function ProductDetail() {
             </div>
         </div>
         <div className={styles.containerMap}>
-          <MapRender value={info}/>
+          <section className={styles.titleMap}>
+            <h2>¿Donde vas a estar?</h2>   
+            <hr />
+          </section>
+          <MapRender information={info}/>
         </div>
         <ProductPolicies />
       </div>

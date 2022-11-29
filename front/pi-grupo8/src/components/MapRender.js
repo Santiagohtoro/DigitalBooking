@@ -3,18 +3,20 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import React, { useRef, useEffect, useState } from 'react';
 import styleMap from "../Styles/map.module.scss";
+//import useApiMaps from "../api-maps/useApiMaps";
 
 export default function MapRender(props){
-    console.log(props.value.data[0].lat);
-    let latitude = JSON.parse(props.value.data[0].lat);
-    console.log(latitude)
+   
+   
+    
+   
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2VyYXN4IiwiYSI6ImNsYXhlNWhpYjBvbGozbm54MW0xZWhvcTMifQ.GcUtEA2i-AMAeY9Qy_rpdQ';
 
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-59.136058);
-    const [lat, setLat] = useState(-37.335209);
-    const [zoom, setZoom] = useState(20);
+    const [lng ] = useState(-57.54018523105511);
+    const [lat] = useState(-38.007855172650494);
+    const [zoom] = useState(19);
     
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -24,12 +26,13 @@ export default function MapRender(props){
         center: [lng, lat],
         zoom: zoom
         });
-        });
+    });
       
     return (
         <div>
       <div ref={mapContainer} className={styleMap.mapContainer}/>
+      
       </div>
-
+        
       );
 }
