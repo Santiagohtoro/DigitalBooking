@@ -21,6 +21,9 @@ public class Reserva {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Reserva() {
+    }
+
     public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, User usuario) {
         this.id = id;
         this.horaReserva = horaReserva;

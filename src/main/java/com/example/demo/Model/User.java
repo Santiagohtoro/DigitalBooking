@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name="users")
 public class User {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
@@ -31,6 +32,8 @@ public class User {
     @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
+    public User() {
+    }
 
     public User(String name, String surname, String email, String password, Ciudad city) {
         this.nombre = name;
