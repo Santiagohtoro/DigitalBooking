@@ -17,7 +17,6 @@ public class Ciudad {
     private String ciudad;
     private String pais;
     @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
     
 

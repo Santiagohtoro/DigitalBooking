@@ -16,11 +16,11 @@ public class Reserva {
     private LocalTime horaReserva;
     private LocalDate fechaInicial;
     private LocalDate fechaFin;
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser user;

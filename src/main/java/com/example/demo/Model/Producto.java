@@ -15,16 +15,13 @@ public class Producto {
     private String titulo;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Imagen> imagenes = new HashSet<>();
     private String descripcion;
     @JoinTable(
