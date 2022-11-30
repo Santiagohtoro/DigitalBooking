@@ -3,6 +3,7 @@ import calendar from "../Styles/calendar.module.scss";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
 import BookingDetail from "./BookingDetail";
+import CheckInHours from "./CheckInHours";
 import styles from "../Styles/booking.module.scss";
 import { Calendar, DateObject } from "react-multi-date-picker";
 import "react-multi-date-picker/styles/colors/teal.css";
@@ -51,6 +52,8 @@ function Booking() {
               />
             </div>
           </div>
+          <h2 className={styles.checkInTitle}>Tu horario de llegada</h2>
+          <CheckInHours />
         </div>
 
         <div className={styles.gridRight}>
