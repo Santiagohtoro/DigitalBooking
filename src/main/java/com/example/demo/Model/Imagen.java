@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,8 +13,10 @@ public class Imagen {
     private String titulo;
     private String url;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "producto_id")
     private Producto producto;
+    @JsonIgnore
     @OneToOne(mappedBy = "imagen")
     private Categoria categoria;
 
