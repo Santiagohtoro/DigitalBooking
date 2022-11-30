@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,7 @@ public class Categoria {
     private String titulo;
     private String descripcion;
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name="id_imagen")
     private Imagen imagen;
 
