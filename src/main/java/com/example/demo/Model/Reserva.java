@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,9 +16,11 @@ public class Reserva {
     private LocalTime horaReserva;
     private LocalDate fechaInicial;
     private LocalDate fechaFin;
+
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser user;

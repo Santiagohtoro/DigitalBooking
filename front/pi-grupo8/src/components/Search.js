@@ -29,7 +29,7 @@ export default function Search() {
 
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
 
   console.log(data);
   return (

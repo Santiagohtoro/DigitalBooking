@@ -59,7 +59,8 @@
 @media (max-width: 426px){
         .containerPolicy{
             width: 100%;
-            h2{
+            h2{ 
+                
                 padding: 1rem 1rem 0rem;
             }
             .containerInfo{
@@ -72,4 +73,8 @@
                 }
             }
         }
+        h3, p{
+            width: 90vw;
+        }
+        
     }

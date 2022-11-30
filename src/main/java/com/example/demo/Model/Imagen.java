@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Imagen {
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
+
     @OneToOne(mappedBy = "imagen")
     private Categoria categoria;
 
