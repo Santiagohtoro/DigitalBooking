@@ -22,8 +22,13 @@
         }
     }    
 }
+
 @media (max-width: 426px){
-    .categoriesContainer{
-        flex-direction: column;
+    .categoriesBlock{
+        .categoriesContainer{
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
     }
+    
 }
