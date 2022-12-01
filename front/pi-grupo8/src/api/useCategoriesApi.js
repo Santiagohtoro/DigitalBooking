@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = "http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081";
 
 const useCategoriesApi = () => {
   const [data, setData] = React.useState([]);
