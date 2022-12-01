@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import RecommendationCard from "./RecommendationCard";
-import recommendations from "../assets/Recommendations.json";
 import styles from "../Styles/recommendationList.module.scss";
 import { Outlet } from "react-router-dom";
 import useApiProducts from "../api-products/useApiProducts";
