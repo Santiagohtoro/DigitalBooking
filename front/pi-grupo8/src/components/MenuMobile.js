@@ -6,11 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import SocialMedia from "./SocialMedia";
 
 function MenuMobile(props) {
-  const { setIsMenuVisible } = props;
+  const { setIsMenuVisible, isLoggedIn } = props;
   const location = useLocation();
   console.log(location);
-
-  const isLoggedIn = false;
 
   const closeMenu = () => {
     setIsMenuVisible(false);
@@ -24,9 +22,9 @@ function MenuMobile(props) {
         </span>
         {isLoggedIn ? (
           <div className={styles.userName}>
-            <p>CR</p>
+            <p>JP</p>
             <h4>Hola,</h4>
-            <h3>Celina Rojas</h3>
+            <h3>Juan Perez</h3>
           </div>
         ) : (
           <h4>MENÚ</h4>
@@ -42,7 +40,7 @@ function MenuMobile(props) {
           </div>
         ) : (
           <div className={styles.menuOptions}>
-            {location.pathname == "/home" ? (
+            {location.pathname === "/home" ? (
               <div>
                 <Link to="/register" onClick={closeMenu}>
                   <p>Crear cuenta</p>
@@ -52,7 +50,7 @@ function MenuMobile(props) {
                   <p>Iniciar sesión</p>
                 </Link>
               </div>
-            ) : location.pathname == "/register" ? (
+            ) : location.pathname === "/register" ? (
               <Link to="/login" onClick={closeMenu}>
                 <p>Iniciar sesión</p>
               </Link>

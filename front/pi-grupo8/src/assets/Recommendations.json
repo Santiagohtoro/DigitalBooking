@@ -2,59 +2,59 @@
     {
         "id": "1",
         "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "category": "Hotel",
+        "title": "Hermitage Hotel",
+        "location": "A 500 metros del centro",
         "description": ""       
     },
     {
         "id": "2",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/apartments/apartment1.jpg",
+        "category": "Apartment",
+        "title": "Apartment DH",
+        "location": "Muy cerca de la playa",
         "description": ""       
     },{
         "id": "3",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/apartments/apartment2.jpg",
+        "category": "Apartment",
+        "title": "Spacious apartment",
+        "location": "A 900 metros del aeropuerto",
         "description": ""       
     },{
         "id": "4",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/bedBreakfast/bb1.jpg",
+        "category": "Bed and Breakfast",
+        "title": "Holiday Inn BB",
+        "location": "Cerca del shopping",
         "description": ""       
     },{
         "id": "5",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/bedBreakfast/bb3.jpg",
+        "category": "Bed and Breakfast",
+        "title": "Morning BB",
+        "location": "Zona residencial",
         "description": ""       
     },{
         "id": "6",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/hostels/hostel1.jpg",
+        "category": "Hostels",
+        "title": "StayOkey Hostel",
+        "location": "Puntos turísticos",
         "description": ""       
     },{
         "id": "7",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/hostels/hostel2.jpg",
+        "category": "Hostels",
+        "title": "Prince Hostel",
+        "location": "A pasos de la playa",
         "description": ""       
     },{
         "id": "8",
-        "img": "https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg",
-        "category": "",
-        "title": "",
-        "location": "",
+        "img": "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/hostels/hostel3.jpg",
+        "category": "Hostels",
+        "title": "South Hostel",
+        "location": "Zona comercial",
         "description": ""       
     }
 ]

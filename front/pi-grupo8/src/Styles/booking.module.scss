@@ -1,0 +1,36 @@
+@use './variables';
+
+.formTitle{
+    color:var(--text-color);
+    width: 95%;
+    margin: 1.5rem auto 0.8rem;
+}
+
+.checkInTitle{
+    color:var(--text-color);
+    width: 95%;
+    margin: 1.5rem auto 0.8rem 0.3rem;
+}
+
+.grid{
+    display: flex;
+    width: 95%;
+    margin: 1rem auto;
+    .gridRight{
+        flex: 1 0 30%;
+    }
+    .gridLeft{
+        flex: 1 0 70%;
+    }
+}
+
+/*-------------------Media queries TABLET--------------------*/
+@media (max-width: 768px){
+    .grid{
+        flex-direction: column;
+    }
+}
+
+/*-------------------Media queries MOBILE--------------------*/
+@media (max-width: 426px){
+}

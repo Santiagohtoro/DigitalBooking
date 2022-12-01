@@ -1,7 +1,8 @@
-import React from "react";
+import React  from "react";
+import "../Styles/calendar.css";
+import "react-multi-date-picker/styles/colors/teal.css";
 import styles from "../Styles/productDetail.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faKitchenSet } from "@fortawesome/free-solid-svg-icons";
 import { faTv } from "@fortawesome/free-solid-svg-icons";
@@ -10,24 +11,35 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import ProductTitle from "./ProductTitle";
+import ProductPolicies from "./ProductPolicies";
+import { useNavigate } from "react-router-dom";
+import MapRender from "./MapRender";
+import CalendarBooking from "./CalendarBooking";
+import Gallery from "./Gallery";
+import useApiMaps from "../api-maps/useApiMaps";
+
+
+
 
 function ProductDetail() {
+  const  {info}  = useApiMaps();
+  console.log(info);
+
+  const navigate = useNavigate();
+  function redirectBooking(e) {
+      e.preventDefault();
+      navigate("/booking");
+  }
+
+
+
+  
   return (
+    
     <>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.name}>
-            <p>Hotel</p>
-            <h4>Hermitage Hotel</h4>
-            <div />
-          </div>
-          <div>
-            <NavLink to="/home" className={styles.icon}>
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </NavLink>
-          </div>
-        </div>
+        <ProductTitle category="Hotel" title="Hermitage" />
         <div className={styles.location}>
           <div className={styles.locationInfo}>
             <div className={styles.locationIcon}>
@@ -38,6 +50,7 @@ function ProductDetail() {
           </div>
         </div>
         <div className={styles.containerDescription}>
+          <Gallery/>
           <div className={styles.description}>
             <h1>Alójate en el corazón de Buenos Aires</h1>
             <p>
@@ -90,36 +103,27 @@ function ProductDetail() {
             </div>
           </div>
         </div>
-        <div className={styles.containerPolicy}>
-          <div className={styles.containerInfo}>
-            <h2>¿Qué tenés que saber?</h2>
-            <hr className={styles.line} />
-            <section className={styles.policies}>
-              <div className={styles.policiesDetail}>
-                <h3>Normas de la casa</h3>
-                <p>Check-out: 10:00</p>
-                <p>No se permiten fiestas</p>
-                <p>No fumar</p>
-              </div>
-              <div className={styles.policiesDetail}>
-                <h3>Salud y seguridad</h3>
-                <p>
-                  Se aplican las pautas de distanciamiento social y otras normas
-                  relacionadas con el coronavirus
-                </p>
-                <p>Detector de humo</p>
-                <p>Depósito de seguridad</p>
-              </div>
-              <div className={styles.policiesDetail}>
-                <h3>Política de cancelación</h3>
-                <p>
-                  Agregá las fechas de tu viaje para obtener los detalles de
-                  cancelación de esta estadía.
-                </p>
-              </div>
-            </section>
-          </div>
+        <div className={styles.calendar}>
+         <h3 className={styles.dateTitle}>Fechas disponibles</h3> 
+         <div className={styles.alignContent}>
+            <CalendarBooking></CalendarBooking>
+            
+              <div className={styles.bookingContainer}>
+                  <h5 className={styles.textBooking}>Agregá tus fechas de viaje para obtener precios exactos</h5>
+                  <button className={styles.buttonBooking} onClick={redirectBooking}>
+                    Iniciar reservas
+                  </button>
+                </div> 
+            </div>
         </div>
+        <div className={styles.containerMap}>
+          <section className={styles.titleMap}>
+            <h2>¿Donde vas a estar?</h2>   
+            <hr />
+          </section>
+          <MapRender information={info}/>
+        </div>
+        <ProductPolicies />
       </div>
     </>
   );

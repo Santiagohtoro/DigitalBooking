@@ -13,14 +13,15 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_sequence")
     private Long id;
     private String titulo;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
+
     @ManyToOne
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Imagen> imagenes = new HashSet<>();
     private String descripcion;
     @JoinTable(
@@ -28,6 +29,7 @@ public class Producto {
             joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
             inverseJoinColumns = @JoinColumn(name="FK_CHAR", nullable = false)
     )
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Caracteristica> caracteristicas = new HashSet<>();
     private boolean isAvailable;
@@ -36,6 +38,7 @@ public class Producto {
             joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
             inverseJoinColumns = @JoinColumn(name="FK_POLICY", nullable = false)
     )
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Politica> politicas = new HashSet<>();
 

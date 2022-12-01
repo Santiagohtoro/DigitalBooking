@@ -5,6 +5,7 @@ import com.example.demo.Repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +38,16 @@ public class ProductoService {
         }
     }
 
-    public List<Producto> findAll(){
+ /*   public List<Producto> findAll(){
         return productoRepository.findAll();
     }
+    */
 
+    public List<Producto> findAll(){
+        List<Producto> producto = productoRepository.findAll();
+        Collections.shuffle(producto);
+        return producto;
+    }
     public Producto findByTitulo(String titulo){
         return productoRepository.findByTitulo(titulo);
     }

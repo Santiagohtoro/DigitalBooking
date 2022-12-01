@@ -2,14 +2,16 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
+import BookingSuccess from "./components/BookingSuccess";
+import Booking from "./components/Booking";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";
 import styles from "./Styles/app.module.scss";
 import "./Styles/body.module.scss";
-import FormLogin from "./components/FormLogin";
-import FormRegister from "./components/FormRegister";
-import { BrowserRouter, Route, Routes, Router } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -38,7 +40,7 @@ function App() {
             path="login"
             element={
               <>
-                <FormLogin />
+                <Login />
                 <Footer />
               </>
             }
@@ -47,16 +49,34 @@ function App() {
             path="register"
             element={
               <>
-                <FormRegister />
+                <Register />
                 <Footer />
               </>
             }
           ></Route>
           <Route
-            path="product"
+            path="/home/product/:id"
             element={
               <>
                 <ProductDetail />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
+            path="bookingSuccess"
+            element={
+              <>
+                <BookingSuccess />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
+            path="booking"
+            element={
+              <>
+                <Booking />
                 <Footer />
               </>
             }

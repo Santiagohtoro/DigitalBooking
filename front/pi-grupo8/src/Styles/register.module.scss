@@ -1,138 +1,95 @@
 @use './variables';
 
-body{
-    font-family: var(--typography);
-    background-color: var(--form-background);
-    
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%;
-    margin: 100px auto;
-    z-index: -1;
-    .title{
-        color:var(--accent-color);
+.container{
+    width: 60%;
+    max-width: 600px;
+    margin: 15vh auto;
+    h2{
         text-align: center;
+        color: var(--accent-color);
+        font-size: 2rem;
         margin-bottom: 1rem;
-    }  
-    
-
-
-    .userName{
+    }
+    form{
         display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-
-
-        input {
-            background: var(--background-color);
-            width: 100%;
-            height: 40px;
-            border: 0px;
-            box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
-            border-radius: 5px;
-            padding: 0;
-            margin-top: 0.5rem;
-            padding-left: 10px;
-            
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1rem;
+        color: var(--text-color);
+        span{
+            color: red;
         }
-        
-    }
-    
-
-    .register{
-        color:var(--text-color);
-        width: 100%;
-        height: 30px;
-        border: 0px;
-        border-radius: 5px;
-        padding: 0;
-        margin-bottom: 1.5rem;       
-    }
-
-    input {
-        background: var(--background-color);
-        width: 100%;
-        height: 40px;
-        border: 0px;
-        box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
-        border-radius: 5px;
-        padding: 0;
-        margin-bottom: 1.5rem;
-        margin-top: 0.5rem;
-        padding-left: 10px;
-    }
-
-    .button {
-        display: flex;
-        justify-content: center;
-    }
-
-    .btnRegister {
-        outline: none;
-        margin-top: 150px;
-        background: var(--accent-color);
-        color:var(--background-color);
-        width: 30%;
-        height: 40px;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-        border: 0px;
-        border-radius: 5px;
-        font-family: var(--typography);
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        width: 33.33%;
-
-    }
-
-    p{
-        font-size: 12px;
-        font-weight: 500;
-        text-align: center;
-        color:var(--text-color);
-        a{
-            text-decoration: none;
-        }
-        a:link{
-            color: var(--links-color);
-        }
-    }
-
-    .passwordWrapper{
-        position: relative;
-        height: 30px;
-        i{
-            position: absolute;
-            top: 60%;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-        }
-
-}
-
-}
-
-    @media (max-width: 768px){
-    
-        .container{
+        .userFullName{
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 70%;
-            height: 90%;
-            
+            gap: 1rem;
+            width: 100%;
+            label{
+                flex: 1 0 40%;
+                input{
+                    margin: 0.5rem 0;
+                    padding: 0.5rem;
+                }
+            }
         }
-        .formLogin{
-            .btnLogin{
+        .userData{
+            input{
+                margin: 0.5rem 0;
+                padding: 0.5rem;
+            }
+            .passWrapper{
+                position: relative;
+            }
+            i{
+                position: absolute;
+                top: 30%;
+                right: 2%;
+                width: 20px;
+            }
+        }
+        .btn{
+            align-self: center;
+            width: 30%;
+            button{
+                background-color: var(--accent-color);
+                color: white;
+                border: none;
+                padding: 0.9rem 0rem;
+                border-radius: 5px;
+                margin-bottom: 0.8rem;
+                font-weight: bold;
                 width: 100%;
             }
-    
+            p{
+                text-align: center;
+                a{
+                    text-decoration: none;
+                    color: var(--accent-color);
+                }
+            }
         }
-    }    
+    }
+}
 
+@media (max-width: 768px){
+    .container {
+        form{
+            .btn{
+                width: 50%;
+            }
+        }
+    }   
+}
 
-
+@media (max-width: 500px){
+    .container {
+        width: 90%;
+        form{
+            .userFullName{
+                flex-direction: column;
+            }
+            .btn{
+                width: 100%;
+            }
+        }
+    }   
+}

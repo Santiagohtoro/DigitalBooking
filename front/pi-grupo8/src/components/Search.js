@@ -1,12 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import places from "../assets/places.json";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
+import "react-multi-date-picker/styles/colors/teal.css";
 import { Outlet } from "react-router-dom";
+import useApiCities from "../api-cities/useApiCities";
 
 export default function Search() {
+  const { data, getData } = useApiCities();
   const [values, setValues] = useState([new DateObject()]);
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const months = [
@@ -25,6 +27,11 @@ export default function Search() {
   ];
   const datePickerRef = useRef();
 
+  useEffect(() => {
+    getData();
+  },[]);
+
+  console.log(data);
   return (
     <>
       <section className={Styles.container}>
@@ -34,15 +41,16 @@ export default function Search() {
           </h1>
           <div className={Styles.containerInputs}>
             <select className={`${Styles.selectCity} ${Styles.select}`}>
-              {places.map((place) => (
-                <option className={Styles.optionCity}>
+              {data.map((place) => (
+                <option className={Styles.optionCity} key={place.id}>
                   <FontAwesomeIcon icon={faLocationDot} />
-                  {place.city},{" "}
-                  <span className={Styles.special}> {place.country}</span>
+                  {place.ciudad},{" "}
+                  <span className={Styles.special}> {place.pais}</span>
                 </option>
               ))}
             </select>
             <DatePicker
+              className="teal"
               inputClass={`${Styles.selectDay} ${Styles.select}`}
               value={values}
               onChange={setValues}

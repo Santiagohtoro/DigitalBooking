@@ -1,0 +1,25 @@
+@use './variables';
+
+
+.container{
+    box-shadow: var(--shadow);
+    width: 95%;
+    border-radius: 8px;
+    padding: 2rem 1.5rem 2rem 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .info{
+        display: flex;
+        gap: 0.5rem;
+    }
+    select{
+        width: 40%;
+        border: none;
+        box-shadow: var(--shadow);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+    }
+}
