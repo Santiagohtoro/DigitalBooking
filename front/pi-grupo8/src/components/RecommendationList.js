@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import RecommendationCard from "./RecommendationCard";
 import styles from "../Styles/recommendationList.module.scss";
 import { Outlet } from "react-router-dom";
-import useApiProducts from "../api-products/useApiProducts";
+import useApiProducts from "../api/useApiProducts";
 
 function RecommendationList() {
   const { data, getData } = useApiProducts();
   useEffect(() => {
     getData();
+    // eslint-disable-next-line
   }, []);
 
   const products = data.map((r) => (

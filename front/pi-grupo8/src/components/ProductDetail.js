@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import "../Styles/calendar.css";
 import "react-multi-date-picker/styles/colors/teal.css";
 import styles from "../Styles/productDetail.module.scss";
@@ -17,26 +17,19 @@ import { useNavigate } from "react-router-dom";
 import MapRender from "./MapRender";
 import CalendarBooking from "./CalendarBooking";
 import Gallery from "./Gallery";
-import useApiMaps from "../api-maps/useApiMaps";
-
-
-
+import useApiMaps from "../api/useApiMaps";
 
 function ProductDetail() {
-  const  {info}  = useApiMaps();
+  const { info } = useApiMaps();
   console.log(info);
 
   const navigate = useNavigate();
   function redirectBooking(e) {
-      e.preventDefault();
-      navigate("/booking");
+    e.preventDefault();
+    navigate("/booking");
   }
 
-
-
-  
   return (
-    
     <>
       <div className={styles.container}>
         <ProductTitle category="Hotel" title="Hermitage" />
@@ -50,7 +43,7 @@ function ProductDetail() {
           </div>
         </div>
         <div className={styles.containerDescription}>
-          <Gallery/>
+          <Gallery />
           <div className={styles.description}>
             <h1>Alójate en el corazón de Buenos Aires</h1>
             <p>
@@ -104,24 +97,29 @@ function ProductDetail() {
           </div>
         </div>
         <div className={styles.calendar}>
-         <h3 className={styles.dateTitle}>Fechas disponibles</h3> 
-         <div className={styles.alignContent}>
+          <h3 className={styles.dateTitle}>Fechas disponibles</h3>
+          <div className={styles.alignContent}>
             <CalendarBooking></CalendarBooking>
-            
-              <div className={styles.bookingContainer}>
-                  <h5 className={styles.textBooking}>Agregá tus fechas de viaje para obtener precios exactos</h5>
-                  <button className={styles.buttonBooking} onClick={redirectBooking}>
-                    Iniciar reservas
-                  </button>
-                </div> 
+
+            <div className={styles.bookingContainer}>
+              <h5 className={styles.textBooking}>
+                Agregá tus fechas de viaje para obtener precios exactos
+              </h5>
+              <button
+                className={styles.buttonBooking}
+                onClick={redirectBooking}
+              >
+                Iniciar reservas
+              </button>
             </div>
+          </div>
         </div>
         <div className={styles.containerMap}>
           <section className={styles.titleMap}>
-            <h2>¿Donde vas a estar?</h2>   
+            <h2>¿Donde vas a estar?</h2>
             <hr />
           </section>
-          <MapRender information={info}/>
+          <MapRender information={info} />
         </div>
         <ProductPolicies />
       </div>

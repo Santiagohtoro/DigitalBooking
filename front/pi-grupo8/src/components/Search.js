@@ -5,7 +5,7 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
 import "react-multi-date-picker/styles/colors/teal.css";
 import { Outlet } from "react-router-dom";
-import useApiCities from "../api-cities/useApiCities";
+import useApiCities from "../api/useApiCities";
 
 export default function Search() {
   const { data, getData } = useApiCities();
@@ -29,7 +29,8 @@ export default function Search() {
 
   useEffect(() => {
     getData();
-  },[]);
+    // eslint-disable-next-line
+  }, []);
 
   console.log(data);
   return (
