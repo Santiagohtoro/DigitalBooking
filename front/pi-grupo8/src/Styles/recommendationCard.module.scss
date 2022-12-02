@@ -121,6 +121,18 @@
 @media (max-width: 426px){
     .recommendationCard{
         flex-direction: column;
+        padding: 0;
+        .recommendationText{
+            display: block;
+            position: relative;
+            .recommendationRating{
+                position: absolute;
+                top: 10%;
+                right: 5%;
+            }
+
+        }
     }
+
 }
 

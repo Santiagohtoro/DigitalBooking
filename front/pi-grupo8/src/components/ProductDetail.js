@@ -37,7 +37,7 @@ function ProductDetail() {
   
   return (
     
-    <>
+
       <div className={styles.container}>
         <ProductTitle category="Hotel" title="Hermitage" />
         <div className={styles.location}>
@@ -125,7 +125,7 @@ function ProductDetail() {
         </div>
         <ProductPolicies />
       </div>
-    </>
+
   );
 }
 

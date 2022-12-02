@@ -2,11 +2,10 @@ import React from "react";
 import CategoryCard from "./CategoryCard";
 import categories from "../assets/Categories.json";
 import styles from "../Styles/categories.module.scss";
-import { Outlet } from "react-router-dom";
+
 
 function Categories() {
   return (
-    <>
     <div className={styles.categoriesBlock}>
       <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.categoriesContainer}>
@@ -22,8 +21,7 @@ function Categories() {
         )}
       </div>
     </div>
-    <Outlet/>
-    </>
+
   );
 }
 

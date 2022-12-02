@@ -30,7 +30,6 @@ export default function CalendarBooking(props){
     
     return (
       
-        <>
         
         <Calendar
               className= {`teal ${calendar.container}` }
@@ -48,10 +47,10 @@ export default function CalendarBooking(props){
                   
                   disableMonthPicker
                   disableYearPicker
-
+                
                 />
                 
-        </>
+
         
     );
 }
