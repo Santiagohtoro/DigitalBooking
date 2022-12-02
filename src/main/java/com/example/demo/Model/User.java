@@ -25,7 +25,7 @@ public class User {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "roles_id")
     private Role role;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
     @OneToMany(mappedBy = "user",  cascade = CascadeType.ALL)

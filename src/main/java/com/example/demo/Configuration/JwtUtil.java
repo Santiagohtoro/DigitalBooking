@@ -22,7 +22,7 @@ public class JwtUtil {
 
     private SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     @Value("${jwt.expiration}")
-    private int expiration;
+    private long expiration;
 
     public String generateToken(Authentication authentication) {
         Map<String, Object> claims = new HashMap<>();

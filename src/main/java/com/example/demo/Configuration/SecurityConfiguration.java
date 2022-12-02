@@ -63,32 +63,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/productos/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/productos/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/categorias/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/categorias/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/ciudades/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/ciudades/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/politicas/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/politicas/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/imagenes/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/imagenes/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/caracteristicas/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/caracteristicas/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/reservas/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/reservas/**").permitAll()
-                .anyRequest().authenticated();
-                /*.and()
+                //.antMatchers(HttpMethod.GET, "/productos/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/productos/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/categorias/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/categorias/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/ciudades/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/ciudades/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/politicas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/politicas/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/imagenes/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/imagenes/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/caracteristicas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/caracteristicas/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/reservas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/reservas/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                http.addFilterBefore(
-                jwtTokenFilter(),
-                UsernamePasswordAuthenticationFilter.class*/
+        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
-
+    //cors().and().
 }
