@@ -38,7 +38,16 @@ public class ProductoService {
         }
     }
 
- /*   public List<Producto> findAll(){
+    public List<Producto> findByCategoria(String categoria){
+        if (productoRepository.findByCategoria(categoria) != null){
+            return productoRepository.findByCategoria(categoria);
+        } else {
+            return null;
+        }
+    }
+
+
+    public List<Producto> findAll(){
         return productoRepository.findAll();
     }
     */

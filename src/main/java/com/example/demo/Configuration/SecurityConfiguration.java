@@ -1,65 +1,92 @@
 package com.example.demo.Configuration;
 
+import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
+import javax.servlet.http.HttpServletResponse;
+
+import static java.lang.String.format;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
-    private AppUserService userService;
-
+    AppUserService appUserService;
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    JwtEntryPoint jwtEntryPoint;
+
+    @Bean
+    public JwtRequestFilter jwtTokenFilter() {
+        return new JwtRequestFilter();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(appUserService).passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/authenticate", "/categorias", "/categorias/**", "/ciudades", "/ciudades/**","/productos","/productos/**","/politicas","/politicas/**","/user/**","/reservas","/reservas/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();
-    }
+                .antMatchers("/auth/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/productos/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/productos/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/categorias/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/categorias/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/ciudades/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/ciudades/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/politicas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/politicas/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/imagenes/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/imagenes/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/caracteristicas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/caracteristicas/**").permitAll()
+                //.antMatchers(HttpMethod.GET, "/reservas/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/reservas/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
     }
-
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder);
-        provider.setUserDetailsService(userService);
-        return provider;
-    }
-
-/*
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(Arrays.asList("*"));
-        //config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "*"));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowCredentials(true);
-        config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
-        UrlBasedCorsConfigurationSource cors = new UrlBasedCorsConfigurationSource();
-        cors.registerCorsConfiguration("/**", config);
-        return cors;
-    }*/
+    //cors().and().
 }
