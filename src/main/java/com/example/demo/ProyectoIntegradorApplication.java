@@ -20,21 +20,4 @@ public class ProyectoIntegradorApplication {
 
 		}
 
-		@Bean
-		public WebMvcConfigurer corsConfigure(){
-		return new WebMvcConfigurer() {
-
-			@Override
-			public void addCorsMappings(CorsRegistry registry){
-				registry
-						.addMapping("/**")
-						.allowedOrigins(CorsConfiguration.ALL)
-						.allowedMethods(CorsConfiguration.ALL)
-						.allowedHeaders(CorsConfiguration.ALL)
-						.exposedHeaders(CorsConfiguration.ALL);
-			};
-
-		};
-	}
-
 }
