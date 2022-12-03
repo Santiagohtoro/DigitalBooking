@@ -50,7 +50,7 @@ function RecommendationCard(props) {
         </div>
         <div className={styles.recommendationButton}>
           <button>
-            <Link to={`product/${id}`}>Ver más</Link>
+            <Link to={`/product/${id}`}>Ver más</Link>
           </button>
         </div>
       </div>

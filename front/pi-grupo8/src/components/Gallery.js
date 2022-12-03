@@ -2,27 +2,17 @@ import React from "react";
 import galleryStyle from "../Styles/gallery.module.scss";
 
 export default function Gallery({ imgs }) {
-  const link =
-    "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/hotels/hotel1.jpg";
+  const images = imgs?.map((img, i) =>
+    i < 5 ? (
+      <div key={img?.id} className={galleryStyle.item}>
+        <img src={img?.url} alt={img?.titulo} className={galleryStyle.image} />
+      </div>
+    ) : null
+  );
+
   return (
     <>
-      <div className={galleryStyle.container}>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-      </div>
+      <div className={galleryStyle.container}>{images}</div>
     </>
   );
 }

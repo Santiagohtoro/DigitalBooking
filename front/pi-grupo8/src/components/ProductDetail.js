@@ -21,16 +21,15 @@ import useApiMaps from "../api/useApiMaps";
 import useApiProductDetails from "../api/useApiProductDetails";
 
 function ProductDetail() {
-  let { id } = useParams();
-  const { data, getData } = useApiProductDetails(id);
   const { info } = useApiMaps();
-
   const navigate = useNavigate();
   function redirectBooking(e) {
     e.preventDefault();
     navigate("/booking");
   }
 
+  let { id } = useParams();
+  const { data, getData } = useApiProductDetails(id);
   useEffect(() => {
     getData();
     // eslint-disable-next-line
@@ -41,23 +40,23 @@ function ProductDetail() {
   return (
     <>
       <div className={styles.container}>
-        <ProductTitle category={data.categoria.titulo} title={data.titulo} />
+        <ProductTitle category={data?.categoria?.titulo} title={data.titulo} />
         <div className={styles.location}>
           <div className={styles.locationInfo}>
             <div className={styles.locationIcon}>
               <FontAwesomeIcon icon={faLocationDot} />
               <p>
-                {data.ciudad.ciudad}, {data.ciudad.pais}
+                {data?.ciudad?.ciudad}, {data?.ciudad?.pais}
               </p>
             </div>
             <span>A 940m del centro</span>
           </div>
         </div>
         <div className={styles.containerDescription}>
-          <Gallery />
+          <Gallery imgs={data?.imagenes} />
           <div className={styles.description}>
-            <h1>Alójate en el corazón de {data.ciudad.ciudad}</h1>
-            <p>{data.descripcion}</p>
+            <h1>Alójate en el corazón de {data?.ciudad?.ciudad}</h1>
+            <p>{data?.descripcion}</p>
           </div>
         </div>
         <div className={styles.ammenities}>
