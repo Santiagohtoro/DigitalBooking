@@ -46,12 +46,10 @@ public class ProductoService {
         }
     }
 
-
+/*
     public List<Producto> findAll(){
         return productoRepository.findAll();
-    }
-    */
-
+    }*/
     public List<Producto> findAll(){
         List<Producto> producto = productoRepository.findAll();
         Collections.shuffle(producto);
