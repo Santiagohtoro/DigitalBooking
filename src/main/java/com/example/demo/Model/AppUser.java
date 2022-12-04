@@ -1,51 +1,68 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.util.*;
 
-@Entity
+@Getter
+@Setter
 public class AppUser implements UserDetails {
-    @Id
-    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+
     private Long id;
-    private String nombre;
-    private String username;
+    private String name;
+    private String surname;
     private String email;
+    @JsonIgnore
     private String password;
-    @Enumerated(EnumType.STRING)
-    private AppUserRoles appUserRole;
+    private String city;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public AppUser() {
-    }
-
-    public AppUser(String nombre, String username, String email, String password, AppUserRoles appUserRole) {
-        this.nombre = nombre;
-        this.username = username;
+    public AppUser(Long id, String name, String surname, String email, String password, String city, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
         this.email = email;
         this.password = password;
-        this.appUserRole = appUserRole;
+        this.city = city;
+        this.authorities = authorities;
     }
 
-    public Long getId() {
-        return id;
+    public static AppUser build(User user) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getName().name());
+        authorities.add(authority);
+        return new AppUser(
+                user.getId(),
+                user.getNombre(),
+                user.getApellido(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getCiudad().getCiudad(),
+                authorities);
     }
 
-    public String getNombre() {
-        return nombre;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
+    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
@@ -68,38 +85,14 @@ public class AppUser implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(appUserRole.name());
-        return Collections.singletonList(grantedAuthority);
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AppUserRoles getAppUserRole() {
-        return appUserRole;
-    }
-
-    public void setAppUserRole(AppUserRoles appUserRole) {
-        this.appUserRole = appUserRole;
+    public String toString() {
+        return "AppUser{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
-

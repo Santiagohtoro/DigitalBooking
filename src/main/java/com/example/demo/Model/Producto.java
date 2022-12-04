@@ -41,6 +41,9 @@ public class Producto {
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Politica> politicas = new HashSet<>();
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Reserva> reservas = new HashSet<>();
 
 
     public Producto(Long id, String titulo, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, String descripcion, Set<Caracteristica> caracteristicas, boolean isAvailable, Set<Politica> politicas) {
@@ -60,10 +63,6 @@ public class Producto {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitulo() {

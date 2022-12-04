@@ -8,7 +8,7 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function RecommendationCard(props) {
-  const { picture, title, category, location, id } = props;
+  const { picture, title, category, location, id, description } = props;
 
   return (
     <div className={styles.recommendationCard}>
@@ -44,9 +44,8 @@ function RecommendationCard(props) {
             <FontAwesomeIcon icon={faSwimmer} />
           </span>
           <p className={styles.recommendationComment}>
-            American shorthair tabby, for donskoy or american shorthair for
-            malkin. Savannah tiger. Devonshire rex ocicat egyptian mau cornish
-            rex so kitty. <a href="#url">Más...</a>
+            {description}
+            <a href="#url">Más...</a>
           </p>
         </div>
         <div className={styles.recommendationButton}>
