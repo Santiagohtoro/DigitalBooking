@@ -30,8 +30,9 @@ export default function Search() {
   useEffect(() => {
     getData();
   }, []);
+  
 
-  console.log(data);
+  
   return (
     <>
       <section className={Styles.container}>
@@ -54,7 +55,7 @@ export default function Search() {
               inputClass={`${Styles.selectDay} ${Styles.select}`}
               value={values}
               onChange={setValues}
-              format="DD MMMM"
+              format="DD/MM/YY"
               range
               numberOfMonths={2}
               weekDays={weekDays}
