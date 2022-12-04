@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
 import BookingSuccess from "./components/BookingSuccess";
 import Booking from "./components/Booking";
+import AdminForm from "./components/AdminForm/AdminForm";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";
@@ -77,6 +78,15 @@ function App() {
             element={
               <>
                 <Booking />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
+            path="admin"
+            element={
+              <>
+                <AdminForm />
                 <Footer />
               </>
             }

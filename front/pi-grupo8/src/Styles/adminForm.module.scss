@@ -1,0 +1,21 @@
+@use './variables';
+
+h2{
+    color: var(--text-color);
+    width: 95%;
+    margin: 1.5rem auto;
+} 
+form{
+    width: 95%;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem 0;
+    color: var(--text-color);
+    .formContainer{
+        width: 95%;
+        margin: 0 auto;
+        
+    }
+}
