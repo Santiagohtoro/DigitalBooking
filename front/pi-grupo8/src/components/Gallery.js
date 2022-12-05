@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import galleryStyle from "../Styles/gallery.module.scss";
 
 export default function Gallery({ imgs }) {

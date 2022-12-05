@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "./MainLayout";
+import AdminForm from "./components/AdminForm/AdminForm";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="product/:id" element={<ProductDetail />}></Route>
           <Route path="bookingSuccess" element={<BookingSuccess />}></Route>
           <Route path="booking" element={<Booking />}></Route>
+          <Route path="admin" element={<AdminForm />}></Route>
         </Route>
       </Routes>
     </div>
