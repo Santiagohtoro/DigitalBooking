@@ -1,7 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React,{ useState} from 'react';
 import galleryStyle from '../Styles/gallery.module.scss';
 
 
+//Componente Galeria sin terminar
 
 
 
@@ -32,10 +33,10 @@ export default function Gallery() {
             },
         ]
         const [model, setModel] = useState(false);
-        const [tempmgSrc, setTempImgSrc] = useState('');
+        //const [tempmgSrc, setTempImgSrc] = useState('');
         const getImg=(imgSrc)=>{
             setModel(true);
-            setTempImgSrc(imgSrc);
+            //setTempImgSrc(imgSrc);
         }
 
     return(
