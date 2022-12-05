@@ -14,7 +14,7 @@ function ProductTitle(props) {
         <h4>{title}</h4>
         <div />
       </div>
-      <div>
+      <div className={styles.arrowIcon}>
         <NavLink to="/home" className={styles.icon}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </NavLink>

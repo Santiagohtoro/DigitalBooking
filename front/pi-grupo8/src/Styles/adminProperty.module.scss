@@ -36,3 +36,15 @@
         }
     }
 }
+
+
+/*-------------------Media queries MOBILE--------------------*/
+@media (max-width: 645px){
+    .propertyInfo{
+        .inputs{
+            flex-direction: column;
+            
+        }
+    }
+        
+}
