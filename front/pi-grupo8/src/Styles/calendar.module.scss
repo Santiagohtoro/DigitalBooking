@@ -5,7 +5,8 @@
     padding: 10px 20px;
     margin-top: 15px; 
     position: relative;
-    z-index: -999;   
+    z-index: -999;
+    
 }
 .daysContainer{
     display: flex;
@@ -17,4 +18,11 @@
 }
 .rmdp-top-class{
     justify-content: center;
+}
+
+
+@media (max-width: 570px){
+    .container{
+        display: none;
+    }
 }

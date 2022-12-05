@@ -13,10 +13,9 @@ public class Imagen {
     private String titulo;
     private String url;
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "producto_id")
     private Producto producto;
-    @JsonIgnore
+
     @OneToOne(mappedBy = "imagen")
     private Categoria categoria;
 
@@ -33,10 +32,6 @@ public class Imagen {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitulo() {

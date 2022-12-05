@@ -5,12 +5,11 @@
     flex: 0 1 49%;
     box-shadow: var(--shadow);
     border-radius: 8px;
-    height: 100%;
     margin-bottom: 1rem;
     display: flex;
     padding-right: 0.5rem;
     .recommendationImg{
-        width: 100%;
+        flex: 1 0 50%;
         img{
             width: 100%;
             object-fit: cover;
@@ -20,6 +19,11 @@
             border-bottom-right-radius: 8px;
             border-bottom-left-radius: 8px;
         }
+    }
+    .recommendationInfo{
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     }
     .recommendationText{
         padding: 1rem;
@@ -121,6 +125,18 @@
 @media (max-width: 426px){
     .recommendationCard{
         flex-direction: column;
+        padding: 0;
+        .recommendationText{
+            display: block;
+            position: relative;
+            .recommendationRating{
+                position: absolute;
+                top: 10%;
+                right: 5%;
+            }
+
+        }
     }
+
 }
 

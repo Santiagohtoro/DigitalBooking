@@ -13,7 +13,6 @@ public class Categoria {
     private String titulo;
     private String descripcion;
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name="id_imagen")
     private Imagen imagen;
 
@@ -29,10 +28,6 @@ public class Categoria {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitulo() {

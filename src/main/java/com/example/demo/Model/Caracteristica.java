@@ -15,7 +15,6 @@ public class Caracteristica {
     private String titulo;
     private String descripcion;
     @ManyToMany(mappedBy = "caracteristicas", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Producto> productos = new HashSet<>();
     
 
@@ -34,10 +33,6 @@ public class Caracteristica {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

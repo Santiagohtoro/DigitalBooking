@@ -4,8 +4,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
 import "react-multi-date-picker/styles/colors/teal.css";
-import { Outlet } from "react-router-dom";
-import useApiCities from "../api-cities/useApiCities";
+import useApiCities from "../api/useApiCities";
 
 export default function Search() {
   const { data, getData } = useApiCities();
@@ -29,12 +28,13 @@ export default function Search() {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line
   }, []);
   
 
   
   return (
-    <>
+
       <section className={Styles.container}>
         <div className={Styles.containerElements}>
           <h1 className={Styles.slogan}>
@@ -113,7 +113,6 @@ export default function Search() {
           </div>
         </div>
       </section>
-      <Outlet />
-    </>
+
   );
 }

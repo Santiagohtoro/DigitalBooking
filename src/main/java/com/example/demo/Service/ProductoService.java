@@ -38,11 +38,18 @@ public class ProductoService {
         }
     }
 
- /*   public List<Producto> findAll(){
-        return productoRepository.findAll();
+    public List<Producto> findByCategoria(String categoria){
+        if (productoRepository.findByCategoria(categoria) != null){
+            return productoRepository.findByCategoria(categoria);
+        } else {
+            return null;
+        }
     }
-    */
 
+/*
+    public List<Producto> findAll(){
+        return productoRepository.findAll();
+    }*/
     public List<Producto> findAll(){
         List<Producto> producto = productoRepository.findAll();
         Collections.shuffle(producto);

@@ -16,4 +16,7 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
 
     @Query(value = "SELECT * FROM producto WHERE CIUDAD = ?1", nativeQuery = true)
     List<Producto> findByCiudad(String ciudad);
+
+    @Query(value = "SELECT * FROM producto WHERE CATEGORIA = ?1", nativeQuery = true)
+    List<Producto> findByCategoria(String categoria);
 }

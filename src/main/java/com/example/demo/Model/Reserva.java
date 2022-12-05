@@ -1,7 +1,5 @@
 package com.example.demo.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,16 +14,17 @@ public class Reserva {
     private LocalTime horaReserva;
     private LocalDate fechaInicial;
     private LocalDate fechaFin;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private AppUser user;
+    private User user;
 
-    public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, AppUser usuario) {
+    public Reserva() {
+    }
+
+    public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, User usuario) {
         this.id = id;
         this.horaReserva = horaReserva;
         this.fechaInicial = fechaInicial;
@@ -74,11 +73,11 @@ public class Reserva {
         this.producto = producto;
     }
 
-    public AppUser getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(AppUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
