@@ -1,28 +1,33 @@
 import React from "react";
 import galleryStyle from "../Styles/gallery.module.scss";
 
-export default function Gallery() {
-  const link =
-    "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/products/hotels/hotel1.jpg";
+export default function Gallery({ imgs }) {
+  //Componente Galeria sin terminar
+  const [model, setModel] = useState(false);
+  //const [tempmgSrc, setTempImgSrc] = useState('');
+  const getImg = (imgSrc) => {
+    setModel(true);
+    //setTempImgSrc(imgSrc);
+  };
+
+  const images = imgs?.map((img, i) =>
+    i < 5 ? (
+      <div
+        key={img?.id}
+        className={galleryStyle.item}
+        onClick={() => getImg(img?.url)}
+      >
+        <img src={img?.url} alt={img?.titulo} className={galleryStyle.image} />
+      </div>
+    ) : null
+  );
+
   return (
     <>
-      <div className={galleryStyle.container}>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-        <div className={galleryStyle.item}>
-          <img src={link} alt="" className={galleryStyle.image} />
-        </div>
-      </div>
+      <div
+        className={model ? `{galleryStyle.modelOpen}` : `{galleryStyle.model}`}
+      ></div>
+      <div className={galleryStyle.container}>{images}</div>
     </>
   );
 }
