@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../Styles/login.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +19,7 @@ function Login() {
   console.log(values);
 
   return (
-    <>
+
       <div className={styles.container}>
         <h2 className={styles.loginTitle}>Iniciar sesión</h2>
         <form className={styles.formLogin} onSubmit={handleSubmit}>
@@ -61,8 +61,7 @@ function Login() {
         </form>
       </div>
 
-      <Outlet />
-    </>
+
   );
 }
 

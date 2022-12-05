@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-function BookingDetail() {
+function BookingDetail(props) {
+  console.log(props.dates);
   return (
     <div className={styles.container}>
       <h3>Detalle de la reserva</h3>
