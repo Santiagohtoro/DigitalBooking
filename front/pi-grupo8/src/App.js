@@ -1,5 +1,3 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
 import BookingSuccess from "./components/BookingSuccess";
@@ -12,6 +10,7 @@ import "./Styles/body.module.scss";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
+import MainLayout from "./MainLayout";
 
 function App() {
   return (
@@ -55,7 +54,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="product/:id"
+            path="/home/product/:id"
             element={
               <>
                 <ProductDetail />

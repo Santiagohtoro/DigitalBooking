@@ -38,7 +38,7 @@ function ProductDetail() {
   console.log("INFO", data);
 
   return (
-    <>
+
       <div className={styles.container}>
         <ProductTitle category={data?.categoria?.titulo} title={data.titulo} />
         <div className={styles.location}>
@@ -122,7 +122,7 @@ function ProductDetail() {
         </div>
         <ProductPolicies />
       </div>
-    </>
+    
   );
 }
 
