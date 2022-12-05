@@ -3,6 +3,8 @@ import styles from "../../Styles/adminForm.module.scss";
 import ProductTitle from "../ProductTitle";
 import Property from "./Property";
 import Attributes from "./Attributes";
+import Policies from "./Policies";
+import Images from "./Images";
 
 function AdminForm() {
   return (
@@ -13,10 +15,8 @@ function AdminForm() {
         <div className={styles.formContainer}>
           <Property />
           <Attributes />
-          {/*<Policies />
+          <Policies />
           <Images />
-          <div className={styles.policies}></div>
-          <div className={styles.imgs}></div>*/}
           <button type="submit">Crear</button>
         </div>
       </form>
