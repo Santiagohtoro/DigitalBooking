@@ -1,0 +1,27 @@
+@use './variables';
+
+h3{
+    margin: 1.5rem 0;
+    color: var(--text-color);
+}
+
+.container{
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    .inputContainer{
+        width: 95%;
+        margin: 0 auto;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        .icon{
+            font-size: 3.3rem;
+            color: var(--accent-color);
+        }
+        .input{
+            padding: 1.5rem;
+        }
+    }
+}

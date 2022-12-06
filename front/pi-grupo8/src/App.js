@@ -11,25 +11,29 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "./MainLayout";
+import AdminForm from "./components/AdminForm/AdminForm";
 
 function App() {
   return (
     <div className={styles.appContainer}>
       <Routes>
-        <Route path="/" element={<MainLayout/>}>
-          <Route index element={
-                <>
-                  <Search />
-                  <Categories />
-                  <RecommendationList />
-                </>
-              }
-            ></Route>
+        <Route path="/" element={<MainLayout />}>
+          <Route
+            index
+            element={
+              <>
+                <Search />
+                <Categories />
+                <RecommendationList />
+              </>
+            }
+          ></Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
-          <Route path="product/:id"element={ <ProductDetail /> }></Route>
-          <Route path="bookingSuccess" element={ <BookingSuccess />}></Route>
+          <Route path="product/:id" element={<ProductDetail />}></Route>
+          <Route path="bookingSuccess" element={<BookingSuccess />}></Route>
           <Route path="booking" element={<Booking />}></Route>
+          <Route path="admin" element={<AdminForm />}></Route>
         </Route>
       </Routes>
     </div>
