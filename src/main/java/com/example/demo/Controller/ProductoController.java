@@ -38,7 +38,7 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/c/{ciudad}")
+    @GetMapping("/ciudad/{ciudad}")
     public ResponseEntity findByCiudad(@PathVariable String ciudad){
         List<Producto> productos = productoService.findByCiudad(ciudad);
 
@@ -49,7 +49,7 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/cate/{categoria}")
+    @GetMapping("/categoria/{categoria}")
     public ResponseEntity findByCategoria(@PathVariable String categoria){
         List<Producto> productos = productoService.findByCategoria(categoria);
 
