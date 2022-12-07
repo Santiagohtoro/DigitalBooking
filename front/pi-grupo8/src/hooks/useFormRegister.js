@@ -9,30 +9,26 @@ const useFormRegister = (validateInfo) => {
     surname: "",
     email: "",
     password: "",
-    city: {
-      ciudad: "Buenos Aires",
-      pais: "Argentina",
-      productos: [],
-      users: [],
-    },
+    city: {},
   });
   const [errors, setErrors] = useState({});
 
-  const signup = async (name, surname, email, password, city) => {
+  const signup = async (values) => {
     setIsLoading(true);
     const response = await fetch(
       "http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/auth/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, surname, email, password, city }),
+        body: JSON.stringify(values),
       }
     );
+
     const json = await response.json();
 
     if (!response.ok) {
       setIsLoading(false);
-      console.log(json.error);
+      console.log(response);
     }
     if (response.ok) {
       //save the user to local storage
