@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
 const useFormRegister = (validateInfo) => {
-  const baseURL = "ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081";
-
   const { dispatch } = useAuthContext();
   const [isLoading, setIsLoading] = useState(null);
   const [values, setValues] = useState({
@@ -11,19 +9,23 @@ const useFormRegister = (validateInfo) => {
     surname: "",
     email: "",
     password: "",
-    password2: "",
+    city: {
+      ciudad: "Buenos Aires",
+      pais: "Argentina",
+      productos: [],
+      users: [],
+    },
   });
   const [errors, setErrors] = useState({});
 
-  const signup = async (name, surname, email, password, password2) => {
+  const signup = async (name, surname, email, password, city) => {
     setIsLoading(true);
     const response = await fetch(
-      `
-      ${baseURL}/auth/signup"`,
+      "http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/auth/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, surname, email, password, password2 }),
+        body: JSON.stringify({ name, surname, email, password, city }),
       }
     );
     const json = await response.json();
