@@ -1,10 +1,12 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Configuration.JwtUtil;
 import com.example.demo.Model.Reserva;
 import com.example.demo.Service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.List;
 public class ReservaController {
     @Autowired
     ReservaService reservaService;
+    @Autowired
+    JwtUtil jwtUtil;
+
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id){
         Reserva r = reservaService.findById(id);
@@ -37,6 +42,18 @@ public class ReservaController {
         }
     }
 
+    @GetMapping("/{idProducto}")
+    public ResponseEntity findByProduct(@PathVariable Long id_producto){
+        List<Reserva> rs = reservaService.findByProducto(id_producto);
+
+        if(rs == null){
+            return new ResponseEntity("No se encontró ninguna reserva del producto con el id: " + id_producto, HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity(rs, HttpStatus.OK);
+        }
+    }
+
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Reserva reserva){
         if(reserva.getFechaInicial() == null || reserva.getFechaFin()== null || reserva.getHoraReserva() == null){

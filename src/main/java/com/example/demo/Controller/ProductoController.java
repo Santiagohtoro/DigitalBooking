@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin
@@ -38,27 +39,31 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/ciudad/{ciudad}")
-    public ResponseEntity findByCiudad(@PathVariable String ciudad){
-        List<Producto> productos = productoService.findByCiudad(ciudad);
-
-        if(productos == null){
-            return new ResponseEntity("No hay productos disponibles en esa ciudad", HttpStatus.BAD_REQUEST);
-        } else {
-            return new ResponseEntity("Se han encontrado los siguientes productos en esa ciudad: " + productos, HttpStatus.OK);
-        }
-    }
-
     @GetMapping("/{categoria}")
     public ResponseEntity findByCategoria(@PathVariable String categoria){
-        List<Producto> productos = productoService.findByCiudad(categoria);
+        List<Producto> productos = productoService.findByCategoria(categoria);
 
         if(productos == null){
             return new ResponseEntity("No hay productos disponibles de esa categoria", HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity("Se han encontrado los siguientes productos de esa categoria: " + productos, HttpStatus.OK);
+            return new ResponseEntity(productos, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/filter")
+    public ResponseEntity findByFechaAndCiudad(@RequestBody String ciudad, LocalDate fechaInicio, LocalDate fechaFin){
+        List<Producto> productos = productoService.findByCityAndDate(ciudad, fechaInicio, fechaFin);
+
+        if(productos == null){
+            return new ResponseEntity("No hay productos disponibles en esa ciudad y fechas.", HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity(productos, HttpStatus.OK);
+        }
+    }
+
+
+
+
 
 
 
