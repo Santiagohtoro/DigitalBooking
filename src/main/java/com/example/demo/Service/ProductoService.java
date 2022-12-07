@@ -5,6 +5,7 @@ import com.example.demo.Repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,8 @@ import java.util.Optional;
 public class ProductoService {
     @Autowired
     private IProductoRepository productoRepository;
+    @Autowired
+    CiudadService ciudadService;
 
     public ProductoService(IProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
@@ -30,17 +33,17 @@ public class ProductoService {
         }
     }
 
-    public List<Producto> findByCiudad(String ciudad){
-        if (productoRepository.findByCiudad(ciudad) != null){
-            return productoRepository.findByCiudad(ciudad);
+    public List<Producto> findByCategoria(String categoria){
+        if (productoRepository.findByCategoria(categoria) != null){
+            return productoRepository.findByCategoria(categoria);
         } else {
             return null;
         }
     }
 
-    public List<Producto> findByCategoria(String categoria){
-        if (productoRepository.findByCategoria(categoria) != null){
-            return productoRepository.findByCategoria(categoria);
+    public List<Producto> findByCityAndDate(String city, LocalDate fechaInicio, LocalDate fechaFin){
+        if (productoRepository.findByCiudadAndFecha(city, fechaInicio, fechaFin) != null){
+            return productoRepository.findByCiudadAndFecha(city, fechaInicio, fechaFin);
         } else {
             return null;
         }
@@ -63,6 +66,9 @@ public class ProductoService {
         if(findByTitulo(producto.getTitulo()) != null){
             return findByTitulo(producto.getTitulo());
         } else {
+            if(ciudadService.findByNombre(producto.getCiudad().getCiudad())!= null){
+                producto.setCiudad(ciudadService.findByNombre(producto.getCiudad().getCiudad()));
+            }
             return productoRepository.save(producto);
         }
     }

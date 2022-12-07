@@ -5,6 +5,7 @@ import com.example.demo.Model.AppUser;
 import com.example.demo.Model.Role;
 import com.example.demo.Model.User;
 import com.example.demo.Model.UserRoles;
+import com.example.demo.Service.CiudadService;
 import com.example.demo.Service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,8 @@ public class AuthenticationController {
     private UserService userService;
     @Autowired
     private JwtUtil jwtUtil;
+    @Autowired
+    CiudadService ciudadService;
 
 
     @PostMapping("/signup")
@@ -48,11 +51,20 @@ public class AuthenticationController {
             logger.error("El correo ya está registrado");
             return new ResponseEntity("El correo ya está registrado", HttpStatus.BAD_REQUEST);
         }
-        User user = new User(registerRequest.getName(),
-                registerRequest.getSurname(),
-                registerRequest.getEmail(),
-                passwordEncoder.encode(registerRequest.getPassword()),
-                registerRequest.getCity());
+        User user;
+        if(ciudadService.findByNombre(registerRequest.getCity().getCiudad()) != null){
+            user = new User(registerRequest.getName(),
+                    registerRequest.getSurname(),
+                    registerRequest.getEmail(),
+                    passwordEncoder.encode(registerRequest.getPassword()),
+                    ciudadService.findByNombre(registerRequest.getCity().getCiudad()));
+        } else{
+            user = new User(registerRequest.getName(),
+                    registerRequest.getSurname(),
+                    registerRequest.getEmail(),
+                    passwordEncoder.encode(registerRequest.getPassword()),
+                    registerRequest.getCity());
+        }
         // Seteo el rol por defecto: USER
         Role role = new Role();
         role.setId(2);
