@@ -5,12 +5,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import styleMap from "../Styles/map.module.scss";
 //import useApiMaps from "../api-maps/useApiMaps";
 
-export default function MapRender(props){
+export default function MapRender(){
    
-   
-    
-   
-    mapboxgl.accessToken = 'pk.eyJ1Ijoia2VyYXN4IiwiYSI6ImNsYXhlNWhpYjBvbGozbm54MW0xZWhvcTMifQ.GcUtEA2i-AMAeY9Qy_rpdQ';
+    mapboxgl.accessToken = "pk.eyJ1Ijoibm92YXlvcnkiLCJhIjoiY2xiOGdwdjRkMGwxYTNycWNzdTJnZTN3cyJ9.682Jam3sMBM7jLwjgmP9Hg";
 
     const mapContainer = useRef(null);
     const map = useRef(null);

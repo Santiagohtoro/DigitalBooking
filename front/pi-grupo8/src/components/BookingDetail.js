@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-function BookingDetail() {
+
+function BookingDetail(props) {
+  const date = props.value
+  const dateSplit = date.split(",")
   return (
     <div className={styles.container}>
       <h3>Detalle de la reserva</h3>
@@ -33,12 +36,12 @@ function BookingDetail() {
             <hr />
             <div className={styles.check}>
               <span>Check in</span>
-              <span>___/___/___</span>
+              <span>{dateSplit[0]}</span>
             </div>
             <hr />
             <div className={styles.check}>
               <span>Check out</span>
-              <span>___/___/___</span>
+              <span>{dateSplit[1]}</span>
             </div>
             <hr />
           </div>

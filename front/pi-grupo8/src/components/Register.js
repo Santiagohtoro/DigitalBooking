@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../Styles/register.module.scss";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +17,7 @@ export default function Register() {
   }
 
   return (
-    <>
+
       <div className={styles.container}>
         <h2 className={styles.title}>Crear cuenta</h2>
 
@@ -112,7 +112,6 @@ export default function Register() {
         </form>
       </div>
 
-      <Outlet />
-    </>
+
   );
 }

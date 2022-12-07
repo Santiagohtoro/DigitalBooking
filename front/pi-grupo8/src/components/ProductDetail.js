@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/calendar.css";
 import "react-multi-date-picker/styles/colors/teal.css";
 import styles from "../Styles/productDetail.module.scss";
@@ -13,51 +13,50 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MapRender from "./MapRender";
 import CalendarBooking from "./CalendarBooking";
 import Gallery from "./Gallery";
 import useApiMaps from "../api/useApiMaps";
+import useApiProductDetails from "../api/useApiProductDetails";
 
 function ProductDetail() {
   const { info } = useApiMaps();
-  console.log(info);
-
   const navigate = useNavigate();
   function redirectBooking(e) {
     e.preventDefault();
     navigate("/booking");
   }
 
+  let { id } = useParams();
+  const { data, getData } = useApiProductDetails(id);
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, []);
+
+  console.log("INFO", data);
+
   return (
-    <>
+
       <div className={styles.container}>
-        <ProductTitle category="Hotel" title="Hermitage" />
+        <ProductTitle category={data?.categoria?.titulo} title={data.titulo} />
         <div className={styles.location}>
           <div className={styles.locationInfo}>
             <div className={styles.locationIcon}>
               <FontAwesomeIcon icon={faLocationDot} />
-              <p>Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina</p>
+              <p>
+                {data?.ciudad?.ciudad}, {data?.ciudad?.pais}
+              </p>
             </div>
             <span>A 940m del centro</span>
           </div>
         </div>
         <div className={styles.containerDescription}>
-          <Gallery />
+          <Gallery imgs={data?.imagenes} />
           <div className={styles.description}>
-            <h1>Alójate en el corazón de Buenos Aires</h1>
-            <p>
-              Himalayan savannah and turkish angora or devonshire rex for
-              grimalkin. Himalayan tiger cougar but mouser, but tom. Manx ocicat
-              yet siamese kitten. Tom british shorthair donskoy and himalayan
-              norwegian forest yet savannah.{" "}
-            </p>
-            <p>
-              Manx persian, kitten egyptian mau so abyssinian so tabby norwegian
-              forest. Kitty lynx and ocelot abyssinian so british shorthair,
-              lynx. Burmese. Bombay himalayan for havana brown munchkin, for
-              savannah yet turkish angora. Bobcat. Maine coon.{" "}
-            </p>
+            <h1>Alójate en el corazón de {data?.ciudad?.ciudad}</h1>
+            <p>{data?.descripcion}</p>
           </div>
         </div>
         <div className={styles.ammenities}>
@@ -123,7 +122,7 @@ function ProductDetail() {
         </div>
         <ProductPolicies />
       </div>
-    </>
+    
   );
 }
 

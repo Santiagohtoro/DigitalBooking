@@ -3,7 +3,7 @@ import styles from "../Styles/header.module.scss";
 import logo from "../assets/logo 1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 
 export default function Header() {
@@ -25,12 +25,12 @@ export default function Header() {
 
   function displayHome(e) {
     e.preventDefault();
-    navigate("/home");
+    navigate("/");
   }
 
   function logout(e) {
     e.preventDefault();
-    navigate("/home");
+    navigate("/");
     setIsLoggedIn(false);
   }
 
@@ -39,7 +39,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    
       <header className={styles.header}>
         <div className={styles.container}>
           <img src={logo} alt="Logo" onClick={displayHome} />
@@ -95,7 +95,7 @@ export default function Header() {
         ) : null}
       </header>
 
-      <Outlet />
-    </>
+      
+  
   );
 }
