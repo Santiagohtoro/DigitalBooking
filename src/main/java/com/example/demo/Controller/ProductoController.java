@@ -39,9 +39,9 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/{categoria}")
+    @GetMapping("/categoria/{categoria}")
     public ResponseEntity findByCategoria(@PathVariable String categoria){
-        List<Producto> productos = productoService.findByCiudad(categoria);
+        List<Producto> productos = productoService.findByCategoria(categoria);
 
         if(productos == null){
             return new ResponseEntity("No hay productos disponibles de esa categoria", HttpStatus.BAD_REQUEST);
