@@ -18,6 +18,7 @@ const useFormLogin = (validateInfo) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInfo(values));
+    console.log("VALORES LOGIN,", values);
   };
 
   return { handleChange, values, handleSubmit, errors };
