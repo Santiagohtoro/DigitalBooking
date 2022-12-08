@@ -8,7 +8,7 @@ import useFormLogin from "../hooks/useFormLogin";
 import validateInfo from "../validators/validateInfoLogin";
 
 function Login() {
-  const { handleChange, values, handleSubmit, errors } =
+  const { handleChange, values, handleSubmit, errors, login, isLoading } =
     useFormLogin(validateInfo);
   const [showPassword, setShowPassword] = React.useState(false);
 

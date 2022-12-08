@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 import { useAuthContext } from "./useAuthContext";
 
 const useFormRegister = (validateInfo) => {
@@ -13,6 +15,8 @@ const useFormRegister = (validateInfo) => {
   });
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate();
+
   const signup = async (values) => {
     setIsLoading(true);
     const response = await fetch(
@@ -24,7 +28,7 @@ const useFormRegister = (validateInfo) => {
       }
     );
 
-    const json = await response.json();
+    //const json = await response.json();
 
     if (!response.ok) {
       setIsLoading(false);
@@ -32,12 +36,11 @@ const useFormRegister = (validateInfo) => {
     }
     if (response.ok) {
       //save the user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
-
+      //localStorage.setItem("user", JSON.stringify(response));
       //update the auth context
-      dispatch({ type: "LOGIN", payload: json });
-
+      //dispatch({ type: "LOGIN", payload: response });
       setIsLoading(false);
+      navigate("/login");
     }
   };
 
