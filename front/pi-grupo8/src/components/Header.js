@@ -77,10 +77,10 @@ export default function Header() {
         </div>
       ) : (
         <div className={styles.userNameDesktop}>
-          <p></p>
+          <p>{`${user.name.slice(0, 1)}${user.surname.slice(0, 1)}`}</p>
           <div>
             <h4>Hola,</h4>
-            <h3>{user.name}</h3>
+            <h3 className={styles.userName}>{user.name}</h3>
           </div>
           <span>
             <FontAwesomeIcon icon={faXmark} onClick={logout} />

@@ -30,7 +30,7 @@ function MenuMobile(props) {
         </span>
         {user ? (
           <div className={styles.userName}>
-            <p>JP</p>
+            <p>{`${user.name.slice(0, 1)}${user.surname.slice(0, 1)}`}</p>
             <h4>Hola,</h4>
             <h3>{user.name}</h3>
           </div>
