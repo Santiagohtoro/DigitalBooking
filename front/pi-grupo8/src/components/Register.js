@@ -8,7 +8,7 @@ import validateInfo from "../validators/validateInfoRegister";
 import useFormRegister from "../hooks/useFormRegister";
 
 export default function Register() {
-  const { handleChange, values, handleSubmit, errors } =
+  const { handleChange, values, handleSubmit, errors, isLoading } =
     useFormRegister(validateInfo);
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -100,9 +100,11 @@ export default function Register() {
         </div>
 
         <div className={styles.btn}>
-          <button type="submit">Crear cuenta</button>
+          <button disabled={isLoading} type="submit">
+            Crear cuenta
+          </button>
           <p>
-            ¿Ya tienes una cuenta? <br />
+            ¿Ya tienes una cuenta?{" "}
             <Link className={styles.link} to="/login">
               Iniciar sesión
             </Link>

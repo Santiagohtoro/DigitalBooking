@@ -12,7 +12,7 @@
     width:100vw;
     padding: 0 1.5rem;
     box-shadow: var(--shadow);
-    z-index: 1;
+    z-index: 1000;
     .menu{
         display: none;
     }
@@ -39,8 +39,9 @@
             padding: 0.8rem;
             font-size: 1rem;
         }
-        h3{
+        .userName{
             color: var(--accent-color);
+            margin: 0;
         }
         span{
             

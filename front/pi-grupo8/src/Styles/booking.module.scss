@@ -24,6 +24,10 @@
     }
 }
 
+.alignContent{
+    display: flex;
+    justify-content: center;
+}
 /*-------------------Media queries TABLET--------------------*/
 @media (max-width: 768px){
     .grid{
@@ -33,4 +37,6 @@
 
 /*-------------------Media queries MOBILE--------------------*/
 @media (max-width: 426px){
+    
+
 }

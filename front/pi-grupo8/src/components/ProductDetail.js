@@ -15,12 +15,23 @@ import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
 import { useNavigate, useParams } from "react-router-dom";
 import MapRender from "./MapRender";
-import CalendarBooking from "./CalendarBooking";
+import  { Calendar } from "react-multi-date-picker";
+import calendar from "../Styles/calendar.module.scss";
 import Gallery from "./Gallery";
 import useApiMaps from "../api/useApiMaps";
 import useApiProductDetails from "../api/useApiProductDetails";
+import { useMediaQuery } from "../hooks/useScreenSize";
 
 function ProductDetail() {
+  function MobileCalendar() {
+    let isPageWide = useMediaQuery('(max-width: 570px)');
+    
+    if(isPageWide){
+      return 1
+    }else{
+      return 2
+    }
+  }
   const { info } = useApiMaps();
   const navigate = useNavigate();
   function redirectBooking(e) {
@@ -36,7 +47,21 @@ function ProductDetail() {
   }, []);
 
   console.log("INFO", data);
-
+  const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
   return (
 
       <div className={styles.container}>
@@ -98,7 +123,24 @@ function ProductDetail() {
         <div className={styles.calendar}>
           <h3 className={styles.dateTitle}>Fechas disponibles</h3>
           <div className={styles.alignContent}>
-            <CalendarBooking></CalendarBooking>
+          <Calendar
+            className= {`teal ${calendar.container}` }
+            
+            
+              containerStyle="days"
+                range
+                format="DD/MM/YY"
+                numberOfMonths={MobileCalendar()}
+                weekDays={weekDays}
+                months={months}
+                
+                styles={{}}
+              
+                
+                disableMonthPicker
+                disableYearPicker
+
+              />
 
             <div className={styles.bookingContainer}>
               <h5 className={styles.textBooking}>

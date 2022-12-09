@@ -16,8 +16,6 @@ function Login() {
     setShowPassword(!showPassword);
   }
 
-  console.log(values);
-
   return (
     <div className={styles.container}>
       <h2 className={styles.loginTitle}>Iniciar sesión</h2>
