@@ -92,7 +92,7 @@ export default function Header() {
         <MenuMobile
           isMenuVisible={isMenuVisible}
           setIsMenuVisible={setIsMenuVisible}
-          isLoggedIn={user}
+          user={user}
         />
       ) : null}
     </header>

@@ -2,17 +2,25 @@ import React from "react";
 import styles from "../Styles/menuMobile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialMedia from "./SocialMedia";
+import { useLogOut } from "../hooks/useLogOut";
 
 function MenuMobile(props) {
-  const { setIsMenuVisible, isLoggedIn } = props;
+  const { setIsMenuVisible, user } = props;
+  const { logOut } = useLogOut();
   const location = useLocation();
-  console.log(location);
+  const navigate = useNavigate();
 
   const closeMenu = () => {
     setIsMenuVisible(false);
   };
+
+  function logout(e) {
+    e.preventDefault();
+    logOut();
+    navigate("/");
+  }
 
   return (
     <div className={styles.container}>
@@ -20,27 +28,27 @@ function MenuMobile(props) {
         <span>
           <FontAwesomeIcon icon={faXmark} onClick={closeMenu} />
         </span>
-        {isLoggedIn ? (
+        {user ? (
           <div className={styles.userName}>
             <p>JP</p>
             <h4>Hola,</h4>
-            <h3>Juan Perez</h3>
+            <h3>{user.name}</h3>
           </div>
         ) : (
           <h4>MENÚ</h4>
         )}
       </div>
       <div className={styles.containerBottom}>
-        {isLoggedIn ? (
+        {user ? (
           <div className={styles.logOut}>
             <p>
-              ¿Deseas <span>cerrar sesión?</span>
+              ¿Deseas <span onClick={logout}>cerrar sesión?</span>
             </p>
             <SocialMedia />
           </div>
         ) : (
           <div className={styles.menuOptions}>
-            {location.pathname === "/home" ? (
+            {location.pathname === "/" ? (
               <div>
                 <Link to="/register" onClick={closeMenu}>
                   <p>Crear cuenta</p>
