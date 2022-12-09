@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import { useAuthContext } from "./useAuthContext";
-
 const useFormRegister = (validateInfo) => {
-  const { dispatch } = useAuthContext();
   const [isLoading, setIsLoading] = useState(null);
   const [values, setValues] = useState({
     name: "",
