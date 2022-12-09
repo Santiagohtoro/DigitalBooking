@@ -12,6 +12,8 @@ import java.util.Optional;
 public class ReservaService {
     @Autowired
     private IReservaRepository reservaRepository;
+    @Autowired
+    UserService userService;
 
     public ReservaService() {
     }
@@ -29,9 +31,9 @@ public class ReservaService {
         }
     }
 
-    public List<Reserva> findByProducto(String producto){
-        if (reservaRepository.findByProducto(producto) != null){
-            return reservaRepository.findByProducto(producto);
+    public List<Reserva> findByProducto(Long idProducto){
+        if (reservaRepository.findByProducto(idProducto) != null){
+            return reservaRepository.findByProducto(idProducto);
         } else {
             return null;
         }
@@ -47,7 +49,10 @@ public class ReservaService {
         if(findById(reserva.getId()) != null){
             return findById(reserva.getId());
         } else {
-            return reservaRepository.save(reserva);
+            if(userService.loadUserByEmail(reserva.getUser().getEmail())!= null){
+                reserva.setUser(userService.loadUserByEmail(reserva.getUser().getEmail()));
+            }
+        return reservaRepository.save(reserva);
         }
     }
 

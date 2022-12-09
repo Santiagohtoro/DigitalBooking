@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface IReservaRepository extends JpaRepository<Reserva, Long> {
-    @Query(value = "SELECT * FROM reserva WHERE PRODUCTO = ?1", nativeQuery = true)
-    List<Reserva> findByProducto(String producto);
+    @Query(value = "SELECT * FROM reserva WHERE producto_id = ?1", nativeQuery = true)
+    List<Reserva> findByProducto(Long id_producto);
 }

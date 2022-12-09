@@ -32,6 +32,8 @@
         width: 100%; 
             
         .recommendationName{
+            display: flex;
+            flex-wrap: wrap;
             span{
                 margin-right: 0.2rem;
                 font-weight: 500;

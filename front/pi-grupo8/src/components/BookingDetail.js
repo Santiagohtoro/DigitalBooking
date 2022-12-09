@@ -7,6 +7,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 
 function BookingDetail(props) {
+  console.log(props);
   const date = props.value
   const dateSplit = date.split(",")
   return (

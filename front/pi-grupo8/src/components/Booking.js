@@ -10,8 +10,18 @@ import  { useState} from "react";
 import BookingUserData from "./BookingUserData";
 import "react-multi-date-picker/styles/colors/teal.css";
 import "react-multi-date-picker/styles/colors/teal.css";
+import { useMediaQuery } from "../hooks/useScreenSize";
 
 function Booking() {
+  function MobileCalendar() {
+    let isPageWide = useMediaQuery('(max-width: 570px)');
+    
+    if(isPageWide){
+      return 1
+    }else{
+      return 2
+    }
+  }
   const [value, setValue] = useState(new DateObject());
     
     
@@ -44,24 +54,24 @@ function Booking() {
           <h3 className={styles.dateTitle}>Fechas disponibles</h3> 
           <div className={styles.alignContent}>
           <Calendar
-              className= {`teal ${calendar.container}` }
-              
-                value={value}
-                onChange={setValue}
-                containerStyle="days"
-                  range
-                  format="DD/MM/YY"
-                  numberOfMonths={2}
-                  weekDays={weekDays}
-                  months={months}
-                  
-                  styles={{}}
+            className= {`teal ${calendar.container}` }
+            
+              value={value}
+              onChange={setValue}
+              containerStyle="days"
+                range
+                format="DD/MM/YY"
+                numberOfMonths={MobileCalendar()}
+                weekDays={weekDays}
+                months={months}
                 
-                  
-                  disableMonthPicker
-                  disableYearPicker
+                styles={{}}
+              
+                
+                disableMonthPicker
+                disableYearPicker
 
-                />
+              />
           </div>
           <h2 className={styles.checkInTitle}>Tu horario de llegada</h2>
           <CheckInHours />

@@ -1,23 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const useScreenSize = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
+export function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => {
+      setMatches(media.matches);
     };
-  }, []);
+    media.addListener(listener);
+    return () => media.removeListener(listener);
+  }, [matches, query]);
 
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
-
-  return { width, height };
-};
-
-export default useScreenSize;
+  return matches;
+}

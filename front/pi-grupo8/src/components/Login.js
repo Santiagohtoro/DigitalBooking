@@ -52,7 +52,7 @@ function Login() {
         <button className={styles.btnLogin} type="submit">
           Ingresar
         </button>
-        <p>
+        <p className={styles.p}>
           ¿Aún no tienes cuenta? <Link to="/register">Regístrate</Link>
         </p>
       </form>
