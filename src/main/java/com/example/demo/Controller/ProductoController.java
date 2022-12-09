@@ -61,12 +61,6 @@ public class ProductoController {
         }
     }
 
-
-
-
-
-
-
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Producto producto){
         if(producto.getTitulo() == null || producto.getDescripcion() == null || producto.getCategoria() == null || producto.getCiudad() == null || producto.getCaracteristicas() == null || producto.getPoliticas() == null ){
