@@ -5,8 +5,18 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import Styles from "../Styles/search.module.scss";
 import "react-multi-date-picker/styles/colors/teal.css";
 import useApiCities from "../api/useApiCities";
+import { useMediaQuery } from "../hooks/useScreenSize";
 
 export default function Search() {
+  function MobileCalendar() {
+    let isPageWide = useMediaQuery('(max-width: 570px)');
+    
+    if(isPageWide){
+      return 1
+    }else{
+      return 2
+    }
+  }
   const { data, getData } = useApiCities();
   const [values, setValues] = useState([new DateObject()]);
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
@@ -57,7 +67,7 @@ export default function Search() {
               onChange={setValues}
               format="DD/MM/YY"
               range
-              numberOfMonths={2}
+              numberOfMonths={MobileCalendar()}
               weekDays={weekDays}
               months={months}
               ref={datePickerRef}

@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import galleryStyle from "../Styles/gallery.module.scss";
+import Carousel from 'react-gallery-carousel';
+import 'react-gallery-carousel/dist/index.css';
+
 
 export default function Gallery({ imgs }) {
-  //Componente Galeria sin terminar
-  const [model, setModel] = useState(false);
-  //const [tempmgSrc, setTempImgSrc] = useState('');
-  const getImg = (imgSrc) => {
-    setModel(true);
-    //setTempImgSrc(imgSrc);
-  };
+  function SeenGallery(imgs) {
+    imgs?.map((img)=>{
+      console.log(img?.url);
+      return <div><Carousel images={img?.url} isMaximized/></div>
+    })
+  }
+ 
 
   const images = imgs?.map((img, i) =>
     i < 5 ? (
       <div
         key={img?.id}
         className={galleryStyle.item}
-        onClick={() => getImg(img?.url)}
       >
         <img src={img?.url} alt={img?.titulo} className={galleryStyle.image} />
       </div>
@@ -24,10 +26,8 @@ export default function Gallery({ imgs }) {
 
   return (
     <>
-      <div
-        className={model ? `{galleryStyle.modelOpen}` : `{galleryStyle.model}`}
-      ></div>
       <div className={galleryStyle.container}>{images}</div>
+      <button onClick={SeenGallery(imgs)}>Ver Mas</button>
     </>
   );
 }

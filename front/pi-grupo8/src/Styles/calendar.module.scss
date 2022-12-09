@@ -23,6 +23,7 @@
 
 @media (max-width: 570px){
     .container{
-        display: none;
+       min-width: 265px;
+       
     }
 }
