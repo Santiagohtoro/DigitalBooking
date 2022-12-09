@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "../Styles/header.module.scss";
 import logo from "../assets/logo 1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
-import { AuthContext } from "../contexts/AuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogOut } from "../hooks/useLogOut";
 
 export default function Header() {
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
   const location = useLocation();
 
-  const user = useContext(AuthContext);
-
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const { user } = useAuthContext();
+  const { logOut } = useLogOut();
 
   const navigate = useNavigate();
   function onClick(e) {
@@ -33,8 +33,8 @@ export default function Header() {
 
   function logout(e) {
     e.preventDefault();
+    logOut();
     navigate("/");
-    setIsLoggedIn(false);
   }
 
   const handleClick = () => {
@@ -54,7 +54,7 @@ export default function Header() {
       <div className={styles.menu}>
         <FontAwesomeIcon icon={faBars} onClick={handleClick} />
       </div>
-      {!isLoggedIn ? (
+      {!user ? (
         <div className={styles.btnContainer}>
           {location.pathname === "/register" ? (
             <button className={styles.logginButton} onClick={onClick}>
@@ -80,7 +80,7 @@ export default function Header() {
           <p></p>
           <div>
             <h4>Hola,</h4>
-            <h3></h3>
+            <h3>{user.name}</h3>
           </div>
           <span>
             <FontAwesomeIcon icon={faXmark} onClick={logout} />
@@ -92,7 +92,7 @@ export default function Header() {
         <MenuMobile
           isMenuVisible={isMenuVisible}
           setIsMenuVisible={setIsMenuVisible}
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={user}
         />
       ) : null}
     </header>
