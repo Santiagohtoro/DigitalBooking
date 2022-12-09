@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "./useAuthContext";
+import jwt_decode from "jwt-decode";
 
 const useFormLogin = (validateInfo) => {
   const { dispatch } = useAuthContext();
@@ -28,7 +29,21 @@ const useFormLogin = (validateInfo) => {
     );
 
     const json = await response.json();
-    console.log(json);
+    console.log("JSON", json);
+
+    let token = json.token;
+    let decoded = jwt_decode(token);
+
+    console.log(decoded);
+
+    const userInfo = {
+      name: decoded?.user_info.name,
+      surname: decoded?.user_info.surname,
+      username: decoded?.user_info.username,
+      token: token,
+    };
+
+    console.log(userInfo);
 
     if (!response.ok) {
       setIsLoading(false);
@@ -36,9 +51,9 @@ const useFormLogin = (validateInfo) => {
     }
     if (response.ok) {
       //save the user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
+      localStorage.setItem("user", JSON.stringify(userInfo));
       //update the auth context
-      dispatch({ type: "LOGIN", payload: json });
+      dispatch({ type: "LOGIN", payload: userInfo });
       setIsLoading(false);
     }
   };
