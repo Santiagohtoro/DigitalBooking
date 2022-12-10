@@ -2629,3 +2629,23 @@ io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period
 [2022-12-07 13:15:18] [ INFO ] [JwtRequestFilter:42] Usuario con email: meli@gmail.com autenticado
 [2022-12-07 13:15:18] [ INFO ] [JwtRequestFilter:35] 
 [2022-12-07 13:15:18] [ INFO ] [JwtRequestFilter:42] Usuario con email: meli@gmail.com autenticado
+[2022-12-09 13:32:23] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:32:24] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:32:24] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:32:25] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:33:06] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:33:07] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:33:07] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:33:08] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:35:04] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:35:11] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:35:11] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:35:12] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:36:00] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:36:01] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:36:01] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:36:02] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:38:51] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:38:51] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
+[2022-12-09 13:38:51] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-09 13:38:52] [ INFO ] [JwtRequestFilter:42] Usuario con email: celi@gmail.com autenticado
