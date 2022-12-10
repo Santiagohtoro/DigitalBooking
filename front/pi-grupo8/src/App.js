@@ -2,6 +2,7 @@ import Search from "./components/Search";
 import ProductDetail from "./components/ProductDetail";
 import BookingSuccess from "./components/BookingSuccess";
 import Booking from "./components/Booking";
+import ProductSuccess from "./components/ProductSucess";
 import "./Styles/body.module.scss";
 import Categories from "./components/Categories";
 import RecommendationList from "./components/RecommendationList";
@@ -32,6 +33,7 @@ function App() {
           <Route path="register" element={<Register />}></Route>
           <Route path="product/:id" element={<ProductDetail />}></Route>
           <Route path="bookingSuccess" element={<BookingSuccess />}></Route>
+          <Route path="productSuccess" element={<ProductSuccess />}></Route>
           <Route path="booking" element={<Booking />}></Route>
           <Route path="admin" element={<AdminForm />}></Route>
         </Route>
