@@ -7,7 +7,7 @@ import 'react-gallery-carousel/dist/index.css';
 
 export default function Gallery({ imgs }) {
   const [open, setOpen] = React.useState(false);
-
+  
   const images = imgs?.map((img, i) =>
   i < 5 ? (
     <div
@@ -18,6 +18,7 @@ export default function Gallery({ imgs }) {
     </div>
   ) : null
 );
+ 
 
   return (
     <>
@@ -29,22 +30,10 @@ export default function Gallery({ imgs }) {
       <Lightbox
         open={open}
         close={() => setOpen(false)}
-        slides={[
-          {
-            src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg",
-            alt: "image 1",
-            width: 3840,
-            height: 2560,
-            srcSet: [
-              { src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg", width: 320, height: 213 },
-              { src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg", width: 640, height: 427 },
-              { src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg", width: 1200, height: 800 },
-              { src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg", width: 2048, height: 1365 },
-              { src: "https://digitalbooking-imagenes-grupo8.s3.us-east-2.amazonaws.com/imgs/categories/apartment-room.jpg", width: 3840, height: 2560 },
-            ]
-          },
-          // ...
-        ]}
+        slides={imgs?.map((image)=>({
+          src: image.url
+       }))
+        }
       />
       
     </>
