@@ -31,6 +31,7 @@
     background-color: var(--accent-color);
     border: none;
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    margin-left: 20px
 }
 
 
@@ -41,5 +42,8 @@
     .item:nth-child(1){
         grid-column-start: span 1 ;
         grid-row-start: span 1;
+    }
+    .buttonGallery{
+        margin-left: 34%;
     }
 }

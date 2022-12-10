@@ -23,10 +23,11 @@ export default function Gallery({ imgs }) {
   return (
     <>
       <div className={galleryStyle.container}>{images}
-        <button type="button" className={galleryStyle.buttonGallery} onClick={() => setOpen(true)}>
-          Ver Mas
-        </button>
+        
       </div>
+      <button type="button" className={galleryStyle.buttonGallery} onClick={() => setOpen(true)}>
+          Ver Mas
+      </button>
       <Lightbox
         open={open}
         close={() => setOpen(false)}
