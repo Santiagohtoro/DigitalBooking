@@ -22,7 +22,16 @@
     grid-row-start: span 2;
 }
 
-
+.buttonGallery{
+    height: 40px;
+    width: 120px;
+    appearance: none;
+    font-family: var(--typhography);
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    border: none;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+}
 
 
 @media (max-width: 426px) {

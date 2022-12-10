@@ -30,7 +30,8 @@
     "react-slick": "^0.29.0",
     "sass": "^1.55.0",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yet-another-react-lightbox": "^2.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
