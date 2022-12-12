@@ -1,10 +1,15 @@
 import React from "react";
 import styles from "../Styles/bookingSuccess.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function BookingSuccess() {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.bookingContainer}>
@@ -13,7 +18,7 @@ function BookingSuccess() {
         </div>
         <h1>¡Muchas gracias!</h1>
         <p>Su reserva se ha realizado con éxito</p>
-        <button>Ok</button>
+        <button onClick={handleSubmit}>Ok</button>
       </div>
     </div>
   );

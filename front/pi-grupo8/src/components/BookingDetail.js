@@ -4,12 +4,18 @@ import hotel1 from "../assets/imgs/products/hotels/hotel1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-
+import { useNavigate } from "react-router-dom";
 
 function BookingDetail(props) {
   console.log(props);
-  const date = props.value
-  const dateSplit = date.split(",")
+  const date = props.value;
+  const dateSplit = date.split(",");
+
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/bookingSuccess");
+  };
+
   return (
     <div className={styles.container}>
       <h3>Detalle de la reserva</h3>
@@ -47,7 +53,9 @@ function BookingDetail(props) {
             <hr />
           </div>
           <div className={styles.btnContainer}>
-            <button className={styles.btn}>Confirmar reserva</button>
+            <button onClick={handleSubmit} className={styles.btn}>
+              Confirmar reserva
+            </button>
           </div>
         </div>
       </div>
