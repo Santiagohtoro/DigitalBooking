@@ -1,32 +1,83 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../Styles/bookingDetail.module.scss";
-import hotel1 from "../assets/imgs/products/hotels/hotel1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 function BookingDetail(props) {
-  console.log(props);
+  const [loading, setLoading] = useState(true);
+  const [dataProducts, setDataProducts] = useState([]);
+  const baseUrl =
+    "http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081";
+
   const date = props.value;
   const dateSplit = date.split(",");
 
+  let { id } = useParams();
+  //const { data, getData } = useApiProductDetails(id);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/productos/${id}`);
+        setDataProducts(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+    // eslint-disable-next-line
+  }, []);
+
+  console.log("PRODUCTOS", dataProducts);
+
+  /* const [bookingdataProducts, setBookingdataProducts] = useState({
+    checkInTime: null,
+    checkInDate: null,
+    checkOutDate: null,
+    product: {
+      id: null,
+    },
+    user: {
+      id: null,
+    },
+  });*/
+
+  /*const userID = props.contextUser.id;
+  console.log(userID);*/
+
+  /*useEffect(() => {
+    setBookingdataProducts({
+      checkInDate: dateSplit[0],
+      checkOutDate: dateSplit[1],
+      product: {
+        id: props.productId,
+      },
+      user: {
+        id: userID,
+      },
+    });
+  }, [dateSplit[0], dateSplit[1], props.productId, userID]);*/
+
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     navigate("/bookingSuccess");
   };
 
-  return (
+  return !loading ? (
     <div className={styles.container}>
       <h3>Detalle de la reserva</h3>
       <div className={styles.card}>
         <div className={styles.img}>
-          <img src={hotel1} alt="room" />
+          <img src={dataProducts.imagenes[0].url} alt="room" />
         </div>
         <div className={styles.text}>
           <div className={styles.info}>
-            <span>Hotel</span>
-            <h4>Hermitage Hotel</h4>
+            <span>{dataProducts.categoria.titulo}</span>
+            <h4>{dataProducts.titulo}</h4>
             <div className={styles.stars}>
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faStar} />
@@ -35,8 +86,8 @@ function BookingDetail(props) {
               <FontAwesomeIcon icon={faStar} />
             </div>
             <p>
-              <FontAwesomeIcon icon={faLocationDot} /> Av.Colón 1643, Buenos
-              Aires, Ciudad Autónoma de Buenos Aires, Argentina
+              <FontAwesomeIcon icon={faLocationDot} />{" "}
+              {dataProducts.ciudad.ciudad}, {dataProducts.ciudad.pais}
             </p>
           </div>
           <div className={styles.dates}>
@@ -60,6 +111,8 @@ function BookingDetail(props) {
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 }
 export default BookingDetail;

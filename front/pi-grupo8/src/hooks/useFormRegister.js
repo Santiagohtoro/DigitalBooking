@@ -29,7 +29,6 @@ const useFormRegister = (validateInfo) => {
 
     if (!response.ok) {
       setIsLoading(false);
-      console.log(response);
     }
     if (response.ok) {
       //save the user to local storage
