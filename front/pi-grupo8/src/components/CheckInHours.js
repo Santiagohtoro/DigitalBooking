@@ -37,8 +37,6 @@ function CheckInHours() {
     setHour({ value: e.target.value, label: e.target.value });
   };
 
-  console.log(hour);
-
   return (
     <div className={styles.container}>
       <div className={styles.info}>

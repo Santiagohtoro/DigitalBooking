@@ -34,7 +34,7 @@ function App() {
           <Route path="product/:id" element={<ProductDetail />}></Route>
           <Route path="bookingSuccess" element={<BookingSuccess />}></Route>
           <Route path="productSuccess" element={<ProductSuccess />}></Route>
-          <Route path="booking" element={<Booking />}></Route>
+          <Route path="product/:id/booking" element={<Booking />}></Route>
           <Route path="admin" element={<AdminForm />}></Route>
         </Route>
       </Routes>

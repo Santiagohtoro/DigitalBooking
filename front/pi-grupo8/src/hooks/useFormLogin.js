@@ -29,21 +29,17 @@ const useFormLogin = (validateInfo) => {
     );
 
     const json = await response.json();
-    console.log("JSON", json);
 
     let token = json.token;
     let decoded = jwt_decode(token);
 
-    console.log(decoded);
-
     const userInfo = {
+      id: decoded?.user_info.id,
       name: decoded?.user_info.name,
       surname: decoded?.user_info.surname,
       username: decoded?.user_info.username,
       token: token,
     };
-
-    console.log(userInfo);
 
     if (!response.ok) {
       setIsLoading(false);
