@@ -24,6 +24,14 @@ public class Reserva {
     public Reserva() {
     }
 
+    public Reserva(LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, User user) {
+        this.horaReserva = horaReserva;
+        this.fechaInicial = fechaInicial;
+        this.fechaFin = fechaFin;
+        this.producto = producto;
+        this.user = user;
+    }
+
     public Reserva(Long id, LocalTime horaReserva, LocalDate fechaInicial, LocalDate fechaFin, Producto producto, User usuario) {
         this.id = id;
         this.horaReserva = horaReserva;

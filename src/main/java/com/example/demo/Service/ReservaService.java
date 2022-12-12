@@ -46,14 +46,7 @@ public class ReservaService {
     }
 
     public Reserva create(Reserva reserva){
-        if(findById(reserva.getId()) != null){
-            return findById(reserva.getId());
-        } else {
-            if(userService.loadUserByEmail(reserva.getUser().getEmail())!= null){
-                reserva.setUser(userService.loadUserByEmail(reserva.getUser().getEmail()));
-            }
         return reservaRepository.save(reserva);
-        }
     }
 
     public void delete(Long id){
