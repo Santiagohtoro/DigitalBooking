@@ -14,11 +14,11 @@ import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import ProductTitle from "./ProductTitle";
 import ProductPolicies from "./ProductPolicies";
 import { useNavigate, useParams } from "react-router-dom";
-import MapRender from "./MapRender";
+//import MapRender from "./MapRender";
 import { Calendar } from "react-multi-date-picker";
 import calendar from "../Styles/calendar.module.scss";
 import Gallery from "./Gallery";
-import useApiMaps from "../api/useApiMaps";
+//import useApiMaps from "../api/useApiMaps";
 import useApiProductDetails from "../api/useApiProductDetails";
 import { useMediaQuery } from "../hooks/useScreenSize";
 
@@ -33,7 +33,7 @@ function ProductDetail() {
     }
   }
 
-  const { info } = useApiMaps();
+  //const { info } = useApiMaps();
   const navigate = useNavigate();
 
   function redirectBooking(e) {
@@ -153,7 +153,15 @@ function ProductDetail() {
           <h2>¿Donde vas a estar?</h2>
           <hr />
         </section>
-        <MapRender information={info} />
+            {// eslint-disable-next-line
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8512.639220822153!2d-58.63264256120364!3d-34.65290926034985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc74e74b02d5f%3A0x6ac018d5e872a398!2sApartamentos%20Plaza!5e0!3m2!1ses!2sco!4v1670809931542!5m2!1ses!2sco"
+            width="600"
+            height="600"
+            style={{ border: "0"}}
+            allowfullscreen=""
+            loading="lazy"
+            className={styles.Map} ></iframe>}
       </div>
       <ProductPolicies />
     </div>

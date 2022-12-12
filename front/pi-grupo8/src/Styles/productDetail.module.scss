@@ -163,6 +163,7 @@
             border: none;
             margin-bottom: 2rem;
         }
+        
     }
     
 }
@@ -206,6 +207,13 @@
                 }
             }
         }
+        .containerMap{
+            height: 800px;
+            .Map{
+                max-width: 400px;
+                height: 800px;
+            }
+        }
     }
           
 
@@ -245,6 +253,14 @@
             }
         } 
     }
+    .containerMap{
+        height: 500px;
+        .Map{
+            max-width: 290px;
+            height: 300px;
+        }
+    }
+    
    
 }
 
