@@ -26,8 +26,8 @@ function ProductPolicies() {
           <div className={styles.policiesDetail}>
             <h3>Política de cancelación</h3>
             <p>
-              Agregá las fechas de tu viaje para obtener los detalles de
-              cancelación de esta estadía.
+              Cancelación Flexible: 48hs antes del check-in sin cargo(Exclusivo
+              web).
             </p>
           </div>
         </section>
