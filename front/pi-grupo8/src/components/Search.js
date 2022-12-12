@@ -6,8 +6,11 @@ import Styles from "../Styles/search.module.scss";
 import "react-multi-date-picker/styles/colors/teal.css";
 import useApiCities from "../api/useApiCities";
 import { useMediaQuery } from "../hooks/useScreenSize";
+import axios from "axios";
 
 export default function Search() {
+  
+
   function MobileCalendar() {
     let isPageWide = useMediaQuery('(max-width: 570px)');
     
@@ -17,8 +20,19 @@ export default function Search() {
       return 2
     }
   }
+
   const { data, getData } = useApiCities();
+  const [city , setCity] = useState();
+  console.log(city);
+  const onChange = (event)=>{
+    const c = event.target.value;
+    setCity(c)
+  }
   const [values, setValues] = useState([new DateObject()]);
+  var date = values.toString();
+  const dateSplit = date.split(",");
+  const fecha1 = Date.parse(dateSplit[0])
+  const fecha2 = Date.parse(dateSplit[1])
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const months = [
     "Enero",
@@ -35,12 +49,40 @@ export default function Search() {
     "Diciembre",
   ];
   const datePickerRef = useRef();
-
+  
   useEffect(() => {
     getData();
     // eslint-disable-next-line
   }, []);
   
+  
+
+  function handleSubmit(){
+    if(dateSplit.length>1&& city !== undefined){
+      var data = JSON.stringify({
+        "fechaInicio": fecha1,
+        "fechaFinal": fecha2,
+        "ciudad": city
+      });
+      
+      var config = {
+        method: 'post',
+        url: 'http://localhost:8081/productos/filter/',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+    }}
 
   
   return (
@@ -51,9 +93,10 @@ export default function Search() {
             Busca ofertas en hoteles, casas y mucho más
           </h1>
           <div className={Styles.containerInputs}>
-            <select className={`${Styles.selectCity} ${Styles.select}`}>
+            <select className={`${Styles.selectCity} ${Styles.select}`} onChange={onChange}>
+              <option defaultValue disabled selected>Ciudad</option>
               {data.map((place) => (
-                <option className={Styles.optionCity} key={place.id}>
+                <option className={Styles.optionCity} key={place.id} value={place.ciudad}>
                   <FontAwesomeIcon icon={faLocationDot} />
                   {place.ciudad},{" "}
                   <span className={Styles.special}> {place.pais}</span>
@@ -119,7 +162,7 @@ export default function Search() {
               className={Styles.search}
               type="submit"
               value="Buscar"
-            ></input>
+            onClick={handleSubmit}></input>
           </div>
         </div>
       </section>

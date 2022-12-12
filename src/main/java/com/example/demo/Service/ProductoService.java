@@ -5,6 +5,7 @@ import com.example.demo.Repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ public class ProductoService {
             return null;
         }
     }
-
+    @Transactional
     public List<Producto> findByCityAndDate(String city, LocalDate fechaInicio, LocalDate fechaFin){
         if (productoRepository.findByCiudadAndFecha(city, fechaInicio, fechaFin) != null){
             return productoRepository.findByCiudadAndFecha(city, fechaInicio, fechaFin);
