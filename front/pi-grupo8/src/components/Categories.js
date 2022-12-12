@@ -7,6 +7,7 @@ import axios from "axios";
 
 function Categories() {
   const { data, getData } = useCategoriesApi();
+  // eslint-disable-next-line
   const [categoria, setCategoria] = useState();
   let config = {
     method: 'get',
