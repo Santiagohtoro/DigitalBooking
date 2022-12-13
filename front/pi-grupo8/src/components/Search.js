@@ -67,7 +67,7 @@ export default function Search() {
       
       var config = {
         method: 'post',
-        url: 'http://localhost:8081/productos/filter/',
+        url: 'http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/productos/filter/',
         headers: { 
           'Content-Type': 'application/json'
         },
