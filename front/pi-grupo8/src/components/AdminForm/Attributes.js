@@ -11,18 +11,18 @@ function Attributes({ handleChange, values }) {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value={values.televisor}
-              handleChange={handleChange}
-              name="televisor"
+              value={values.accesible}
+              onChange={handleChange}
+              name="accesible"
             />
-            Televisor
+            Accesibilidad
           </label>
           <label className={styles.options}>
             <input
               className={styles.checkbox}
               type="checkbox"
               value={values.pileta}
-              handleChange={handleChange}
+              onChange={handleChange}
               name="pileta"
             />
             Pileta
@@ -32,7 +32,7 @@ function Attributes({ handleChange, values }) {
               className={styles.checkbox}
               type="checkbox"
               value={values.estacionamiento}
-              handleChange={handleChange}
+              onChange={handleChange}
               name="estacionamiento"
             />
             Estacionamiento
@@ -42,7 +42,7 @@ function Attributes({ handleChange, values }) {
               className={styles.checkbox}
               type="checkbox"
               value={values.mascotas}
-              handleChange={handleChange}
+              onChange={handleChange}
               name="mascotas"
             />
             Apto mascotas
@@ -52,7 +52,7 @@ function Attributes({ handleChange, values }) {
               className={styles.checkbox}
               type="checkbox"
               value={values.wifi}
-              handleChange={handleChange}
+              onChange={handleChange}
               name="wifi"
             />
             Wifi
@@ -62,7 +62,7 @@ function Attributes({ handleChange, values }) {
               className={styles.checkbox}
               type="checkbox"
               value={values.aire}
-              handleChange={handleChange}
+              onChange={handleChange}
               name="aire"
             />
             Aire acondicionado

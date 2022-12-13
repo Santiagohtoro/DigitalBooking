@@ -1,11 +1,9 @@
 import { useAuthContext } from "./useAuthContext";
-import validateInfo from "../validators/validateInfoAdmin";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const useFormAdmin = (validateInfo) => {
   const { user } = useAuthContext();
-    console.log("hola");
   const [isLoading, setIsLoading] = useState(null);
   const [values, setValues] = useState({
     titulo: "",
@@ -18,12 +16,12 @@ const useFormAdmin = (validateInfo) => {
     imagen5: "",
     descripcion: "",
     isAvailable: true,
-    televisor: true,
-    pileta: true,
-    wifi: true,
-    estacionamiento: true,
-    mascotas: true,
-    aire: true,
+    accesible: false,
+    pileta: false,
+    wifi: false,
+    estacionamiento: false,
+    mascotas: false,
+    aire: false,
   });
   const [errors, setErrors] = useState({});
 
@@ -38,9 +36,6 @@ const useFormAdmin = (validateInfo) => {
         {
           method: "POST",
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "POST, GET, PUT, DELETE, OPTIONS, HEAD, Authorization, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin",
             "Content-Type": "application/json",
             Authorization: "Bearer " + user.token,
           },
@@ -48,12 +43,17 @@ const useFormAdmin = (validateInfo) => {
         }
       );
 
+      console.log("hola entré al método del post");
+      console.log(response)
+
       if (!response.created) {
         setIsLoading(false);
+        console.log(response)
       }
       if (response.created) {
         setIsLoading(false);
         navigate("/productSuccess");
+        console.log(response)
       }
     } catch (err) {
       console.log(err);
@@ -69,7 +69,6 @@ const useFormAdmin = (validateInfo) => {
   };
 
   const mapFormValuesForProductCreation = (values) => {
-    console.log("VALUES MAP FORM: ", values);
     const {
       titulo,
       categoria,
@@ -81,7 +80,7 @@ const useFormAdmin = (validateInfo) => {
       imagen5,
       descripcion,
       isAvailable,
-      televisor,
+      accesible,
       pileta,
       wifi,
       estacionamiento,
@@ -89,6 +88,8 @@ const useFormAdmin = (validateInfo) => {
       aire,
     } = values;
 
+
+    console.log(values.accesible)
     const data = {
         "titulo": titulo,
         "categoria": {
@@ -100,66 +101,68 @@ const useFormAdmin = (validateInfo) => {
         "imagenes": [],
         "descripcion": descripcion,
         "caracteristicas": [],
-        "isAvailable": true,
-        "politicas": []
+        "available": isAvailable,
+        "politicas": [{
+
+        }],
+        "reservas": []
     };
 
 
     if (imagen1){
-        data.imagenes.push("url:" + imagen1 + "}")
+        data.imagenes.push("{titulo: 'img', url: " + imagen1 + "}")
     }
 
     if (imagen2){
-        data.imagenes.push("{url:" + imagen2 + "}")
+        data.imagenes.push("{titulo: 'img', url: " + imagen2 + "}")
     }
 
     if (imagen3){
-        data.imagenes.push("{url:" + imagen3 + "}")
+        data.imagenes.push("{titulo: 'img', url: " + imagen3 + "}")
     }
 
     if (imagen4){
-        data.imagenes.push("{url:" + imagen4 + "}")
+        data.imagenes.push("{titulo: 'img', url: " + imagen4 + "}")
     }
 
     if (imagen5){
-        data.imagenes.push("{url:" + imagen5 + "}")
+        data.imagenes.push("{titulo: 'img', url: " + imagen5 + "}")
     }
 
-    if (televisor){
-        data.caracteristicas.push(televisor)
+    if (accesible){
+        data.caracteristicas.push("{id: 3}")
     }
 
     if (pileta){
-        data.caracteristicas.push(pileta)
+        data.caracteristicas.push("{id: 2}")
     }
 
     if (aire){
-        data.caracteristicas.push(aire)
+        data.caracteristicas.push("{id: 5}")
     }
 
     if (wifi){
-        data.caracteristicas.push(wifi)
+        data.caracteristicas.push("{id: 1}")
     }
 
     if (mascotas){
-        data.caracteristicas.push(mascotas)
+        data.caracteristicas.push("{id: 4}")
     }
 
     if (estacionamiento){
-        data.caracteristicas.push(estacionamiento)
+        data.caracteristicas.push("{id: 7}")
     }
 
-    console.log("DATA MAP FORM: ", data)
+    console.log(data)
     return data;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(validateInfo(values));
-    console.log("VALORES ADMIN,", values);
     const transformedData = mapFormValuesForProductCreation(values);
-    console.log(transformedData)
-    
+    createProduct(transformedData)
+    console.log("hola entré al método del handlesubmit");
   };
 
   

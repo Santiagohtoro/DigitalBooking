@@ -16,7 +16,6 @@ function AdminForm() {
 
   const { handleChange, values, handleSubmit, errors, isLoading } =
     useFormAdmin(validateInfo);
-    console.log(handleChange);
   
   return handleChange ? (
     <div className={styles.container}>

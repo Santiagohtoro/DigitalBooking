@@ -9,6 +9,7 @@ const useCategoriesApi = () => {
   const getData = async () => {
     const response = await axios.get(`${baseUrl}/categorias/todos`);
     setData(response.data);
+    console.log(response.status)
   };
   return { data, getData };
 };
