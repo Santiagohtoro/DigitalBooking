@@ -41,6 +41,7 @@ const useFormLogin = (validateInfo) => {
       surname: decoded?.user_info.surname,
       username: decoded?.user_info.username,
       token: token,
+      role: decoded?.user_info.authorities[0].authority
     };
 
     if (!response.ok) {

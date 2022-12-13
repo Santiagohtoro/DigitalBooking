@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Styles/header.module.scss";
 import logo from "../assets/logo 1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark, faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -13,6 +13,7 @@ export default function Header() {
   const location = useLocation();
 
   const { user } = useAuthContext();
+  //console.log(user.role);
   const { logOut } = useLogOut();
 
   const navigate = useNavigate();
@@ -35,6 +36,11 @@ export default function Header() {
     e.preventDefault();
     logOut();
     navigate("/");
+  }
+
+  function adminPage(e){
+    e.preventDefault();
+    navigate("/admin");
   }
 
   const handleClick = () => {
@@ -76,6 +82,7 @@ export default function Header() {
           )}
         </div>
       ) : (
+        <> {user?.role === "ROLE_USER" ? (
         <div className={styles.userNameDesktop}>
           <p>{`${user.name.slice(0, 1)}${user.surname.slice(0, 1)}`}</p>
           <div>
@@ -86,6 +93,22 @@ export default function Header() {
             <FontAwesomeIcon icon={faXmark} onClick={logout} />
           </span>
         </div>
+        ) : (
+          <div className={styles.userNameDesktop}>
+          <p>{`${user.name.slice(0, 1)}${user.surname.slice(0, 1)}`}</p>
+          <div>
+            <h4>Hola,</h4>
+            <h3 className={styles.userName}>{user.name}</h3>
+          </div>
+          <span>
+            <FontAwesomeIcon icon={faScrewdriverWrench} onClick={adminPage}/>
+          </span>
+          <span>
+            <FontAwesomeIcon icon={faXmark} onClick={logout} />
+          </span>
+        </div>
+        )}
+        </>
       )}
 
       {isMenuVisible ? (
