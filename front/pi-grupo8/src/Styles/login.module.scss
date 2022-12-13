@@ -22,6 +22,14 @@ body{
         align-items: space-evenly;
         gap: 10px;
         padding: 2rem;
+        .error{
+            color: rgb(150, 5, 5);
+            background-color: #f0a9a9;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
         span{
             margin-top: 0.2rem;
             color: red;
@@ -83,6 +91,7 @@ body{
         flex-direction: column;
         justify-content: center;
         width: 70%;
+        height: 100vh;
     }
     .formLogin{
         .btnLogin{

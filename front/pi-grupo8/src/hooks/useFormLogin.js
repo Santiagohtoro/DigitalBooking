@@ -11,6 +11,7 @@ const useFormLogin = (validateInfo) => {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [errorLogin, setErrorLogin] = useState(null);
 
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const useFormLogin = (validateInfo) => {
     );
 
     const json = await response.json();
+    console.log(json);
 
     let token = json.token;
     let decoded = jwt_decode(token);
@@ -66,11 +68,25 @@ const useFormLogin = (validateInfo) => {
     e.preventDefault();
     setErrors(validateInfo(values));
     console.log("VALORES LOGIN,", values);
-    await login(values);
-    navigate("/");
+    try {
+      await login(values);
+      navigate("/");
+    } catch (errors) {
+      setErrorLogin(
+        "Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde."
+      );
+    }
   };
 
-  return { handleChange, values, handleSubmit, errors, login, isLoading };
+  return {
+    handleChange,
+    values,
+    handleSubmit,
+    errors,
+    login,
+    isLoading,
+    errorLogin,
+  };
 };
 
 export default useFormLogin;

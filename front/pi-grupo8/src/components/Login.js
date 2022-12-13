@@ -8,7 +8,7 @@ import useFormLogin from "../hooks/useFormLogin";
 import validateInfo from "../validators/validateInfoLogin";
 
 function Login() {
-  const { handleChange, values, handleSubmit, errors } =
+  const { handleChange, values, handleSubmit, errors, errorLogin } =
     useFormLogin(validateInfo);
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -20,6 +20,7 @@ function Login() {
     <div className={styles.container}>
       <h2 className={styles.loginTitle}>Iniciar sesión</h2>
       <form className={styles.formLogin} onSubmit={handleSubmit}>
+        {errorLogin && <div className={styles.error}>{errorLogin}</div>}
         <label>Correo electrónico</label>
         <input
           type="email"
