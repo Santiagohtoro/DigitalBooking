@@ -106,7 +106,7 @@ const useFormAdmin = (validateInfo) => {
 
 
     if (imagen1){
-        data.imagenes.push("{titulo: " + titulo + "imagen1" + ", url:" + imagen1 + "}")
+        data.imagenes.push("url:" + imagen1 + "}")
     }
 
     if (imagen2){
