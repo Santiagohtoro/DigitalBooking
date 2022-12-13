@@ -7,14 +7,13 @@ import Policies from "./Policies";
 import Images from "./Images";
 import useFormAdmin from "../../hooks/useFormAdmin";
 import validateInfo from "../../validators/validateInfoAdmin";
-import axios from "axios";
-import { useAuthContext } from "../../hooks/useAuthContext";
+
 
 
 
 function AdminForm() {
 
-  const { handleChange, values, handleSubmit, errors, isLoading } =
+  const { handleChange, values, handleSubmit } =
     useFormAdmin(validateInfo);
   
   return handleChange ? (
