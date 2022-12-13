@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "../Styles/categoryCard.module.scss";
 
+
 function CategoryCard(props) {
   const { name, picture, amount } = props;
-
+  
+  
   return (
     <div className={styles.categoryCard}>
       <div className={styles.categoryCardImg}>

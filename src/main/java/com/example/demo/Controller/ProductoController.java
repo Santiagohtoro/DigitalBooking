@@ -1,8 +1,10 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Configuration.FilterRequest;
 import com.example.demo.Model.Producto;
 import com.example.demo.Service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,9 +52,10 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/filter")
-    public ResponseEntity findByFechaAndCiudad(@RequestBody String ciudad, LocalDate fechaInicio, LocalDate fechaFin){
-        List<Producto> productos = productoService.findByCityAndDate(ciudad, fechaInicio, fechaFin);
+
+    @PostMapping("/filter")
+    public ResponseEntity findByFechaAndCiudad(@RequestBody FilterRequest filterRequest){
+        List<Producto> productos = productoService.findByCityAndDate(filterRequest.getCiudad(), filterRequest.getFechaInicio(), filterRequest.getFechaFin());
 
         if(productos == null){
             return new ResponseEntity("No hay productos disponibles en esa ciudad y fechas.", HttpStatus.BAD_REQUEST);
@@ -60,6 +63,8 @@ public class ProductoController {
             return new ResponseEntity(productos, HttpStatus.OK);
         }
     }
+
+
 
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Producto producto){
