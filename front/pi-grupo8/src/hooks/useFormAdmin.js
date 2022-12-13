@@ -96,7 +96,7 @@ const useFormAdmin = (validateInfo) => {
             "titulo": categoria
         },
         "ciudad": {
-            "ciudad": ciudad,
+            "ciudad": ciudad
         },
         "imagenes": [],
         "descripcion": descripcion,
@@ -110,43 +110,43 @@ const useFormAdmin = (validateInfo) => {
 
 
     if (imagen1){
-        data.imagenes.push("{titulo: 'img', url: " + imagen1 + "}")
+        data.imagenes.push(`{"titulo": "img", "url": ${imagen1} }`)
     }
 
     if (imagen2){
-        data.imagenes.push("{titulo: 'img', url: " + imagen2 + "}")
+        data.imagenes.push(`{"titulo": "img", "url": ${imagen2} }`)
     }
 
     if (imagen3){
-        data.imagenes.push("{titulo: 'img', url: " + imagen3 + "}")
+        data.imagenes.push(`{"titulo": "img", "url": ${imagen3} }`)
     }
 
     if (imagen4){
-        data.imagenes.push("{titulo: 'img', url: " + imagen4 + "}")
+        data.imagenes.push(`{"titulo": "img", "url": ${imagen4} }`)
     }
 
     if (imagen5){
-        data.imagenes.push("{titulo: 'img', url: " + imagen5 + "}")
+        data.imagenes.push(`{"titulo": "img", "url": ${imagen5} }`)
     }
 
     if (accesible){
-        data.caracteristicas.push("{id: 3}")
+        data.caracteristicas.push("{'id': 3}")
     }
 
     if (pileta){
-        data.caracteristicas.push("{id: 2}")
+        data.caracteristicas.push("{'id': 2}")
     }
 
     if (aire){
-        data.caracteristicas.push("{id: 5}")
+        data.caracteristicas.push("{'id': 5}")
     }
 
     if (wifi){
-        data.caracteristicas.push("{id: 1}")
+        data.caracteristicas.push("{'id': 1}")
     }
 
     if (mascotas){
-        data.caracteristicas.push("{id: 4}")
+        data.caracteristicas.push("{'id': 4}")
     }
 
     if (estacionamiento){
@@ -163,6 +163,7 @@ const useFormAdmin = (validateInfo) => {
     const transformedData = mapFormValuesForProductCreation(values);
     createProduct(transformedData)
     console.log("hola entré al método del handlesubmit");
+    navigate("/productSuccess");
   };
 
   
