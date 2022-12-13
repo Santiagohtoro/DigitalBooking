@@ -16,8 +16,9 @@ function AdminForm() {
 
   const { handleChange, values, handleSubmit, errors, isLoading } =
     useFormAdmin(validateInfo);
+    console.log(handleChange);
   
-  return (
+  return handleChange ? (
     <div className={styles.container}>
       <ProductTitle title="Administración" />
       <h2>Crear propiedad</h2>
@@ -31,6 +32,8 @@ function AdminForm() {
         </div>
       </form >
     </div>
+  ) : (
+    <></>
   );
 }
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const useFormAdmin = (validateInfo) => {
   const { user } = useAuthContext();
-
+    console.log("hola");
   const [isLoading, setIsLoading] = useState(null);
   const [values, setValues] = useState({
     titulo: "",
@@ -42,7 +42,7 @@ const useFormAdmin = (validateInfo) => {
             "Access-Control-Allow-Headers":
               "POST, GET, PUT, DELETE, OPTIONS, HEAD, Authorization, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin",
             "Content-Type": "application/json",
-            Authorization: "Bearer" + user.token,
+            Authorization: "Bearer " + user.token,
           },
           body: JSON.stringify(transformedData),
         }
@@ -68,15 +68,8 @@ const useFormAdmin = (validateInfo) => {
     });
   };
 
-  const handleSubmit = async (e, values) => {
-    e.preventDefault();
-    setErrors(validateInfo(values));
-    console.log("VALORES ADMIN,", values);
-    const transformedData = mapFormValuesForProductCreation(values);
-    await createProduct(transformedData);
-  };
-
   const mapFormValuesForProductCreation = (values) => {
+    console.log("VALUES MAP FORM: ", values);
     const {
       titulo,
       categoria,
@@ -96,16 +89,87 @@ const useFormAdmin = (validateInfo) => {
       aire,
     } = values;
 
-    const data = {};
-
-    return {
-      handleChange,
-      values,
-      handleSubmit,
-      errors,
-      createProduct,
-      isLoading,
+    const data = {
+        "titulo": titulo,
+        "categoria": {
+            "titulo": categoria
+        },
+        "ciudad": {
+        "ciudad": ciudad,
+        },
+        "imagenes": [],
+        "descripcion": descripcion,
+        "caracteristicas": [],
+        "isAvailable": true,
+        "politicas": []
     };
+
+
+    if (imagen1){
+        data.imagenes.push(imagen1)
+    }
+
+    if (imagen2){
+        data.imagenes.push(imagen2)
+    }
+
+    if (imagen3){
+        data.imagenes.push(imagen3)
+    }
+
+    if (imagen4){
+        data.imagenes.push(imagen4)
+    }
+
+    if (imagen5){
+        data.imagenes.push(imagen5)
+    }
+
+    if (televisor){
+        data.caracteristicas.push(televisor)
+    }
+
+    if (pileta){
+        data.caracteristicas.push(televisor)
+    }
+
+    if (aire){
+        data.caracteristicas.push(televisor)
+    }
+
+    if (wifi){
+        data.caracteristicas.push(televisor)
+    }
+
+    if (mascotas){
+        data.caracteristicas.push(televisor)
+    }
+
+    if (estacionamiento){
+        data.caracteristicas.push(televisor)
+    }
+
+    console.log("DATA MAP FORM: ", data)
+    return data;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors(validateInfo(values));
+    console.log("VALORES ADMIN,", values);
+    const transformedData = mapFormValuesForProductCreation(values);
+    console.log(transformedData)
+    
+  };
+
+  
+  return {
+    handleChange,
+    values,
+    handleSubmit,
+    errors,
+    createProduct,
+    isLoading,
   };
 };
 
