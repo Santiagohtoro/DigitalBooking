@@ -48,10 +48,10 @@ const useFormAdmin = (validateInfo) => {
         }
       );
 
-      if (!response.ok) {
+      if (!response.created) {
         setIsLoading(false);
       }
-      if (response.ok) {
+      if (response.created) {
         setIsLoading(false);
         navigate("/productSuccess");
       }
@@ -95,7 +95,7 @@ const useFormAdmin = (validateInfo) => {
             "titulo": categoria
         },
         "ciudad": {
-        "ciudad": ciudad,
+            "ciudad": ciudad,
         },
         "imagenes": [],
         "descripcion": descripcion,
@@ -106,23 +106,23 @@ const useFormAdmin = (validateInfo) => {
 
 
     if (imagen1){
-        data.imagenes.push(imagen1)
+        data.imagenes.push("{titulo: " + titulo + "imagen1" + ", url:" + imagen1 + "}")
     }
 
     if (imagen2){
-        data.imagenes.push(imagen2)
+        data.imagenes.push("{url:" + imagen2 + "}")
     }
 
     if (imagen3){
-        data.imagenes.push(imagen3)
+        data.imagenes.push("{url:" + imagen3 + "}")
     }
 
     if (imagen4){
-        data.imagenes.push(imagen4)
+        data.imagenes.push("{url:" + imagen4 + "}")
     }
 
     if (imagen5){
-        data.imagenes.push(imagen5)
+        data.imagenes.push("{url:" + imagen5 + "}")
     }
 
     if (televisor){
@@ -130,23 +130,23 @@ const useFormAdmin = (validateInfo) => {
     }
 
     if (pileta){
-        data.caracteristicas.push(televisor)
+        data.caracteristicas.push(pileta)
     }
 
     if (aire){
-        data.caracteristicas.push(televisor)
+        data.caracteristicas.push(aire)
     }
 
     if (wifi){
-        data.caracteristicas.push(televisor)
+        data.caracteristicas.push(wifi)
     }
 
     if (mascotas){
-        data.caracteristicas.push(televisor)
+        data.caracteristicas.push(mascotas)
     }
 
     if (estacionamiento){
-        data.caracteristicas.push(televisor)
+        data.caracteristicas.push(estacionamiento)
     }
 
     console.log("DATA MAP FORM: ", data)
