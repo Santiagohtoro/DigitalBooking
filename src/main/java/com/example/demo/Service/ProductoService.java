@@ -70,9 +70,6 @@ public class ProductoService {
         if(findByTitulo(producto.getTitulo()) != null){
             return findByTitulo(producto.getTitulo());
         } else {
-            if(categoriaService.findByTitulo(producto.getCategoria().getTitulo())!= null){
-                producto.setCategoria(categoriaService.findByTitulo(producto.getCategoria().getTitulo()));
-            }
             return productoRepository.save(producto);
         }
     }

@@ -15,8 +15,8 @@ public class Producto {
     private Long id;
     private String titulo;
     //@JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoria_id")
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
 
     @ManyToOne

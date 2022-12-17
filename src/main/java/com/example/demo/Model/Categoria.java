@@ -3,6 +3,8 @@ package com.example.demo.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Categoria {
@@ -12,7 +14,8 @@ public class Categoria {
     private Long id;
     private String titulo;
     private String descripcion;
-
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private Set<Producto> productos = new HashSet<>();
     @OneToOne
     @JoinColumn(name="id_imagen")
     private Imagen imagen;
