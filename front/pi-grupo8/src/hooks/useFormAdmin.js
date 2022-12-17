@@ -42,18 +42,14 @@ const useFormAdmin = (validateInfo) => {
         {
           method: "POST",
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "POST, GET, PUT, DELETE, OPTIONS, HEAD, Authorization, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin",
             "Content-Type": "application/json",
             Authorization: "Bearer " + user.token,
+            Accept: "application/json",
           },
-          body: JSON.stringify(transformedData),
+          body: transformedData,
         }
       );
-
-      console.log("hola entré al método del post");
-      console.log(response);
+      console.log(transformedData);
 
       if (!response.created) {
         setIsLoading(false);
@@ -118,7 +114,7 @@ const useFormAdmin = (validateInfo) => {
       politicas: [{}],
       reservas: [],
     }; */
-    let data = JSON.stringify({
+    let data = {
       titulo: titulo,
       categoria: {
         titulo: categoria,
@@ -129,48 +125,47 @@ const useFormAdmin = (validateInfo) => {
       caracteristicas: [],
       available: true,
       politicas: [],
-      reservas: [{}],
-    });
+    };
 
     //Imagenes
     if (imagen1) {
-      data.imagenes.push(`{"titulo": "img", "url": ${imagen1} }`);
+      data.imagenes.push({ titulo: "img", url: imagen1 });
     }
 
     if (imagen2) {
-      data.imagenes.push(`{"titulo": "img", "url": ${imagen2} }`);
+      data.imagenes.push({ titulo: "img", url: imagen2 });
     }
 
     if (imagen3) {
-      data.imagenes.push(`{"titulo": "img", "url": ${imagen3} }`);
+      data.imagenes.push({ titulo: "img", url: imagen3 });
     }
 
     if (imagen4) {
-      data.imagenes.push(`{"titulo": "img", "url": ${imagen4} }`);
+      data.imagenes.push({ titulo: "img", url: imagen4 });
     }
 
     if (imagen5) {
-      data.imagenes.push(`{"titulo": "img", "url": ${imagen5} }`);
+      data.imagenes.push({ titulo: "img", url: imagen5 });
     }
 
     //Caracteristicas
     if (accesible) {
-      data.caracteristicas.push("{'id': 3}");
+      data.caracteristicas.push({ id: 3 });
     }
     if (pileta) {
-      data.caracteristicas.push("{'id': 2}");
+      data.caracteristicas.push({ id: 2 });
     }
     if (aire) {
-      data.caracteristicas.push("{'id': 5}");
+      data.caracteristicas.push({ id: 5 });
     }
     if (wifi) {
-      data.caracteristicas.push("{'id': 1}");
+      data.caracteristicas.push({ id: 1 });
     }
     if (mascotas) {
-      data.caracteristicas.push("{'id': 4}");
+      data.caracteristicas.push({ id: 4 });
     }
     if (estacionamiento) {
-      data.caracteristicas.push("{id: 7}");
+      data.caracteristicas.push({ id: 7 });
     }
 
     //Ciudades
@@ -188,25 +183,25 @@ const useFormAdmin = (validateInfo) => {
 
     //Politicas
     if (checkIn) {
-      data.politicas.push("{id: 1}");
+      data.politicas.push({ id: 1 });
     }
     if (fumar) {
-      data.politicas.push("{id: 2}");
+      data.politicas.push({ id: 2 });
     }
     if (fiestas) {
-      data.politicas.push("{id: 3}");
+      data.politicas.push({ id: 3 });
     }
     if (deposito) {
-      data.politicas.push("{id: 4}");
+      data.politicas.push({ id: 4 });
     }
     if (cancelacion) {
-      data.politicas.push("{id: 5}");
+      data.politicas.push({ id: 5 });
     }
     if (checkOut) {
-      data.politicas.push("{id: 7}");
+      data.politicas.push({ id: 7 });
     }
 
-    console.log(data);
+    //console.log(data);
     return data;
   };
 
