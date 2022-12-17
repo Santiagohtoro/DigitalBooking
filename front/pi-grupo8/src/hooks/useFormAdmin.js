@@ -46,7 +46,7 @@ const useFormAdmin = (validateInfo) => {
             Authorization: "Bearer " + user.token,
             Accept: "application/json",
           },
-          body: transformedData,
+          body: JSON.stringify(transformedData),
         }
       );
       console.log(transformedData);
@@ -117,7 +117,7 @@ const useFormAdmin = (validateInfo) => {
     let data = {
       titulo: titulo,
       categoria: {
-        titulo: categoria,
+        id: {},
       },
       ciudad: {},
       imagenes: [],
@@ -179,6 +179,17 @@ const useFormAdmin = (validateInfo) => {
       data.ciudad.id = 4;
     } else {
       data.ciudad.id = 5;
+    }
+
+    //Categoria
+    if (categoria == "Hotel") {
+      data.categoria.id = 1;
+    } else if (categoria == "Hostel") {
+      data.categoria.id = 2;
+    } else if (categoria == "Departamento") {
+      data.categoria.id = 3;
+    } else if (categoria == "Bed and breakfast") {
+      data.categoria.id = 4;
     }
 
     //Politicas
