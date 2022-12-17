@@ -84,7 +84,6 @@ const useFormAdmin = (validateInfo) => {
       imagen4,
       imagen5,
       descripcion,
-      isAvailable,
       accesible,
       pileta,
       wifi,
@@ -117,7 +116,7 @@ const useFormAdmin = (validateInfo) => {
     let data = {
       titulo: titulo,
       categoria: {
-        id: {},
+        
       },
       ciudad: {},
       imagenes: [],
@@ -169,26 +168,26 @@ const useFormAdmin = (validateInfo) => {
     }
 
     //Ciudades
-    if (ciudad == "Buenos Aires") {
+    if (ciudad === "Buenos Aires") {
       data.ciudad.id = 1;
-    } else if (ciudad == "Mendoza") {
+    } else if (ciudad === "Mendoza") {
       data.ciudad.id = 2;
-    } else if (ciudad == "Cordoba") {
+    } else if (ciudad === "Cordoba") {
       data.ciudad.id = 3;
-    } else if (ciudad == "San Carlos de Bariloche") {
+    } else if (ciudad === "San Carlos de Bariloche") {
       data.ciudad.id = 4;
     } else {
       data.ciudad.id = 5;
     }
 
     //Categoria
-    if (categoria == "Hotel") {
+    if (categoria === "Hotel") {
       data.categoria.id = 1;
-    } else if (categoria == "Hostel") {
+    } else if (categoria === "Hostel") {
       data.categoria.id = 2;
-    } else if (categoria == "Departamento") {
+    } else if (categoria === "Departamento") {
       data.categoria.id = 3;
-    } else if (categoria == "Bed and breakfast") {
+    } else if (categoria === "Bed and breakfast") {
       data.categoria.id = 4;
     }
 
