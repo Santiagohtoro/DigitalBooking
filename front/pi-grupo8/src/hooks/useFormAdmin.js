@@ -22,6 +22,12 @@ const useFormAdmin = (validateInfo) => {
     estacionamiento: false,
     mascotas: false,
     aire: false,
+    checkIn: false,
+    fumar: false,
+    fiestas: false,
+    deposito: false,
+    cancelacion: false,
+    checkOut: false,
   });
   const [errors, setErrors] = useState({});
 
@@ -38,22 +44,21 @@ const useFormAdmin = (validateInfo) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + user.token,
+            Accept: "application/json",
           },
           body: JSON.stringify(transformedData),
         }
       );
-
-      console.log("hola entré al método del post");
-      console.log(response)
+      console.log(transformedData);
 
       if (!response.created) {
         setIsLoading(false);
-        console.log(response)
+        console.log(response);
       }
       if (response.created) {
         setIsLoading(false);
         navigate("/productSuccess");
-        console.log(response)
+        console.log(response);
       }
     } catch (err) {
       console.log(err);
@@ -79,81 +84,134 @@ const useFormAdmin = (validateInfo) => {
       imagen4,
       imagen5,
       descripcion,
-      isAvailable,
       accesible,
       pileta,
       wifi,
       estacionamiento,
       mascotas,
       aire,
+      checkIn,
+      fumar,
+      fiestas,
+      deposito,
+      cancelacion,
+      checkOut,
     } = values;
 
-
-    console.log(values.accesible)
-    const data = {
-        "titulo": titulo,
-        "categoria": {
-            "titulo": categoria
-        },
-        "ciudad": {
-            "ciudad": ciudad
-        },
-        "imagenes": [],
-        "descripcion": descripcion,
-        "caracteristicas": [],
-        "available": isAvailable,
-        "politicas": [{
-
-        }],
-        "reservas": []
+    /*const data = {
+      titulo: "",
+      categoria: {
+        titulo: categoria,
+      },
+      ciudad: {
+        ciudad: ciudad,
+      },
+      imagenes: [],
+      descripcion: descripcion,
+      caracteristicas: [],
+      available: isAvailable,
+      politicas: [{}],
+      reservas: [],
+    }; */
+    let data = {
+      titulo: titulo,
+      categoria: {
+        
+      },
+      ciudad: {},
+      imagenes: [],
+      descripcion: descripcion,
+      caracteristicas: [],
+      available: true,
+      politicas: [],
     };
 
-
-    if (imagen1){
-        data.imagenes.push(`{"titulo": "img", "url": ${imagen1} }`)
+    //Imagenes
+    if (imagen1) {
+      data.imagenes.push({ titulo: "img", url: imagen1 });
     }
 
-    if (imagen2){
-        data.imagenes.push(`{"titulo": "img", "url": ${imagen2} }`)
+    if (imagen2) {
+      data.imagenes.push({ titulo: "img", url: imagen2 });
     }
 
-    if (imagen3){
-        data.imagenes.push(`{"titulo": "img", "url": ${imagen3} }`)
+    if (imagen3) {
+      data.imagenes.push({ titulo: "img", url: imagen3 });
     }
 
-    if (imagen4){
-        data.imagenes.push(`{"titulo": "img", "url": ${imagen4} }`)
+    if (imagen4) {
+      data.imagenes.push({ titulo: "img", url: imagen4 });
     }
 
-    if (imagen5){
-        data.imagenes.push(`{"titulo": "img", "url": ${imagen5} }`)
+    if (imagen5) {
+      data.imagenes.push({ titulo: "img", url: imagen5 });
     }
 
-    if (accesible){
-        data.caracteristicas.push("{'id': 3}")
+    //Caracteristicas
+    if (accesible) {
+      data.caracteristicas.push({ id: 3 });
+    }
+    if (pileta) {
+      data.caracteristicas.push({ id: 2 });
+    }
+    if (aire) {
+      data.caracteristicas.push({ id: 5 });
+    }
+    if (wifi) {
+      data.caracteristicas.push({ id: 1 });
+    }
+    if (mascotas) {
+      data.caracteristicas.push({ id: 4 });
+    }
+    if (estacionamiento) {
+      data.caracteristicas.push({ id: 7 });
     }
 
-    if (pileta){
-        data.caracteristicas.push("{'id': 2}")
+    //Ciudades
+    if (ciudad === "Buenos Aires") {
+      data.ciudad.id = 1;
+    } else if (ciudad === "Mendoza") {
+      data.ciudad.id = 2;
+    } else if (ciudad === "Cordoba") {
+      data.ciudad.id = 3;
+    } else if (ciudad === "San Carlos de Bariloche") {
+      data.ciudad.id = 4;
+    } else {
+      data.ciudad.id = 5;
     }
 
-    if (aire){
-        data.caracteristicas.push("{'id': 5}")
+    //Categoria
+    if (categoria === "Hotel") {
+      data.categoria.id = 1;
+    } else if (categoria === "Hostel") {
+      data.categoria.id = 2;
+    } else if (categoria === "Departamento") {
+      data.categoria.id = 3;
+    } else if (categoria === "Bed and breakfast") {
+      data.categoria.id = 4;
     }
 
-    if (wifi){
-        data.caracteristicas.push("{'id': 1}")
+    //Politicas
+    if (checkIn) {
+      data.politicas.push({ id: 1 });
+    }
+    if (fumar) {
+      data.politicas.push({ id: 2 });
+    }
+    if (fiestas) {
+      data.politicas.push({ id: 3 });
+    }
+    if (deposito) {
+      data.politicas.push({ id: 4 });
+    }
+    if (cancelacion) {
+      data.politicas.push({ id: 5 });
+    }
+    if (checkOut) {
+      data.politicas.push({ id: 7 });
     }
 
-    if (mascotas){
-        data.caracteristicas.push("{'id': 4}")
-    }
-
-    if (estacionamiento){
-        data.caracteristicas.push("{id: 7}")
-    }
-
-    console.log(data)
+    //console.log(data);
     return data;
   };
 
@@ -161,12 +219,11 @@ const useFormAdmin = (validateInfo) => {
     e.preventDefault();
     setErrors(validateInfo(values));
     const transformedData = mapFormValuesForProductCreation(values);
-    createProduct(transformedData)
+    createProduct(transformedData);
     console.log("hola entré al método del handlesubmit");
     navigate("/productSuccess");
   };
 
-  
   return {
     handleChange,
     values,
