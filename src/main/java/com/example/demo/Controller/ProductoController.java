@@ -68,12 +68,9 @@ public class ProductoController {
 
     @PostMapping("/crear")
     public ResponseEntity create(@RequestBody Producto producto){
-        if(producto.getTitulo() == null || producto.getDescripcion() == null || producto.getCategoria() == null || producto.getCiudad() == null || producto.getCaracteristicas() == null || producto.getPoliticas() == null ){
-            return new ResponseEntity("No se puede crear el producto porque hay datos faltantes", HttpStatus.NOT_ACCEPTABLE);
-        } else{
+
             productoService.create(producto);
             return new ResponseEntity("Se ha creado el producto: " + producto.getTitulo(), HttpStatus.OK);
-        }
     }
 
     @DeleteMapping("/eliminar/{id}")

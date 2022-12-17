@@ -31,8 +31,9 @@ export default function Search() {
   const [values, setValues] = useState([new DateObject()]);
   var date = values.toString();
   const dateSplit = date.split(",");
-  const fecha1 = Date.parse(dateSplit[0])
-  const fecha2 = Date.parse(dateSplit[1])
+  const fecha1 = dateSplit[0]
+  const fecha2 = dateSplit[1]
+  console.log(fecha1);
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const months = [
     "Enero",
@@ -76,7 +77,7 @@ export default function Search() {
       
       axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -108,7 +109,7 @@ export default function Search() {
               inputClass={`${Styles.selectDay} ${Styles.select}`}
               value={values}
               onChange={setValues}
-              format="DD/MM/YY"
+              format="YYYY-MM-DD"
               range
               numberOfMonths={MobileCalendar()}
               weekDays={weekDays}

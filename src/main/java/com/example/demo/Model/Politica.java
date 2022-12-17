@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ public class Politica {
     private String titulo;
     private String descripcion;
     @ManyToMany(mappedBy = "politicas")
+    @JsonBackReference
     private Set<Producto> productos;
 
     public Politica(Long id, String titulo, String descripcion, Set<Producto> productos) {

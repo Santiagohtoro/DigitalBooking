@@ -12,10 +12,10 @@ public class Imagen {
     private Long id;
     private String titulo;
     private String url;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
-
+*/
     @OneToOne(mappedBy = "imagen")
     private Categoria categoria;
 

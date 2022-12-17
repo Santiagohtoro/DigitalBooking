@@ -17,6 +17,8 @@ public class ProductoService {
     private IProductoRepository productoRepository;
     @Autowired
     CiudadService ciudadService;
+    @Autowired
+    CategoriaService categoriaService;
 
     public ProductoService(IProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
@@ -50,15 +52,16 @@ public class ProductoService {
         }
     }
 
-/*
+
     public List<Producto> findAll(){
         return productoRepository.findAll();
-    }*/
+    }
+    /*
     public List<Producto> findAll(){
         List<Producto> producto = productoRepository.findAll();
         Collections.shuffle(producto);
         return producto;
-    }
+    }*/
     public Producto findByTitulo(String titulo){
         return productoRepository.findByTitulo(titulo);
     }
@@ -67,8 +70,8 @@ public class ProductoService {
         if(findByTitulo(producto.getTitulo()) != null){
             return findByTitulo(producto.getTitulo());
         } else {
-            if(ciudadService.findByNombre(producto.getCiudad().getCiudad())!= null){
-                producto.setCiudad(ciudadService.findByNombre(producto.getCiudad().getCiudad()));
+            if(categoriaService.findByTitulo(producto.getCategoria().getTitulo())!= null){
+                producto.setCategoria(categoriaService.findByTitulo(producto.getCategoria().getTitulo()));
             }
             return productoRepository.save(producto);
         }
