@@ -42,11 +42,11 @@ public class Producto {
     )
 
     @ManyToMany
-    @JsonManagedReference
+    //@JsonManagedReference
     private Set<Politica> politicas;
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnore
+    //@JsonIgnore
     private Set<Reserva> reservas ;
 
 

@@ -66,7 +66,7 @@ public class ProductoController {
 
 
 
-    @PostMapping("/crear")
+    @PostMapping(value ="/crear", consumes = {"application/json"})
     public ResponseEntity create(@RequestBody Producto producto){
 
             productoService.create(producto);
