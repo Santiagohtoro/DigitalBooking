@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,37 +14,40 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_sequence")
     private Long id;
     private String titulo;
-
+    //@JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "ciudad_id")
+    @JoinColumn(name = "ciudad_id", referencedColumnName = "id")
     private Ciudad ciudad;
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    private Set<Imagen> imagenes = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    private Set<Imagen> imagenes;
     private String descripcion;
     @JoinTable(
             name = "rel_products_chars",
             joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
             inverseJoinColumns = @JoinColumn(name="FK_CHAR", nullable = false)
     )
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Caracteristica> caracteristicas = new HashSet<>();
+
+    @ManyToMany
+    private Set<Caracteristica> caracteristicas;
     private boolean isAvailable;
     @JoinTable(
             name = "rel_products_policies",
             joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
             inverseJoinColumns = @JoinColumn(name="FK_POLICY", nullable = false)
     )
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Politica> politicas = new HashSet<>();
+
+    @ManyToMany
+    @JsonManagedReference
+    private Set<Politica> politicas;
+
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Reserva> reservas = new HashSet<>();
+    private Set<Reserva> reservas ;
 
 
     public Producto(Long id, String titulo, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, String descripcion, Set<Caracteristica> caracteristicas, boolean isAvailable, Set<Politica> politicas) {
@@ -112,6 +116,7 @@ public class Producto {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
 
     public Set<Politica> getPoliticas() {
         return politicas;
