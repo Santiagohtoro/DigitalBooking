@@ -33,38 +33,75 @@ function BookingDetail(props) {
 
   console.log("PRODUCTOS", dataProducts);
 
-  /* const [bookingdataProducts, setBookingdataProducts] = useState({
-    checkInTime: null,
-    checkInDate: null,
-    checkOutDate: null,
-    product: {
+   const [bookingdataProducts, setBookingdataProducts] = useState({
+    horaReserva: null,
+    fechaInicial: null,
+    fechaFin: null,
+    producto: {
       id: null,
     },
     user: {
       id: null,
     },
-  });*/
+  });
+  
+  const userID = props?.contextUser?.id;
+  console.log(userID);
 
-  /*const userID = props.contextUser.id;
-  console.log(userID);*/
-
-  /*useEffect(() => {
+  useEffect(() => {
     setBookingdataProducts({
-      checkInDate: dateSplit[0],
-      checkOutDate: dateSplit[1],
-      product: {
+      //falta la hora
+      fechaInicial: dateSplit[0],
+      fechaFin: dateSplit[1],
+      producto: {
         id: props.productId,
       },
       user: {
         id: userID,
       },
     });
-  }, [dateSplit[0], dateSplit[1], props.productId, userID]);*/
+  }, [dateSplit[0], dateSplit[1], props.productId, userID]);
 
+  console.log("booking data",bookingdataProducts)
   const navigate = useNavigate();
+
+  const createReserva = async (bookingdataProducts) => {
+    try {
+      const response = await fetch(
+        "http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/reservas/crear",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + props?.contextUser?.token,
+            Accept: "application/json",
+          },
+          body: JSON.stringify(bookingdataProducts),
+        }
+      );
+      console.log(bookingdataProducts);
+
+      if (!response.created) {
+        console.log(response);
+      }
+      if (response.created) {
+        navigate("/bookingSuccess");
+        console.log(response);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/bookingSuccess");
+    if(bookingdataProducts.checkOutDate!= null){
+      createReserva(bookingdataProducts) 
+    }
+
+
+    
   };
 
   return !loading ? (

@@ -32,13 +32,20 @@ function ProductDetail() {
       return 2;
     }
   }
+  
 
   //const { info } = useApiMaps();
   const navigate = useNavigate();
 
   function redirectBooking(e) {
-    e.preventDefault();
-    navigate(`/product/${id}/booking`);
+    if(localStorage.length!==0){
+      e.preventDefault();
+      navigate(`/product/${id}/booking`);
+    }else{
+      e.preventDefault();
+      navigate(`/login`);
+    }
+   
   }
 
   let { id } = useParams();
