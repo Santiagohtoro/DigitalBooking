@@ -53,15 +53,15 @@ public class ProductoService {
     }
 
 
-    public List<Producto> findAll(){
+   /* public List<Producto> findAll(){
         return productoRepository.findAll();
-    }
-    /*
+    }*/
+
     public List<Producto> findAll(){
         List<Producto> producto = productoRepository.findAll();
         Collections.shuffle(producto);
         return producto;
-    }*/
+    }
     public Producto findByTitulo(String titulo){
         return productoRepository.findByTitulo(titulo);
     }
