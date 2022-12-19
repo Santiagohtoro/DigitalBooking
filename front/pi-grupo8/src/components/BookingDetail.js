@@ -14,7 +14,7 @@ function BookingDetail(props) {
 
   const date = props.value;
   const dateSplit = date.split(",");
-
+  
   let { id } = useParams();
   //const { data, getData } = useApiProductDetails(id);
   useEffect(() => {
@@ -38,29 +38,33 @@ function BookingDetail(props) {
     fechaInicial: null,
     fechaFin: null,
     producto: {
-      id: null,
+      id: null
     },
     user: {
-      id: null,
-    },
+      id: null
+    }
   });
   
+  const hourValue = props?.hour?.value;
+  const idProduct = parseInt(props.productId)
   const userID = props?.contextUser?.id;
   console.log(userID);
+  console.log("hora: ", hourValue)
 
   useEffect(() => {
     setBookingdataProducts({
-      //falta la hora
+      horaReserva : hourValue,
       fechaInicial: dateSplit[0],
       fechaFin: dateSplit[1],
       producto: {
-        id: props.productId,
+        id: idProduct
       },
       user: {
-        id: userID,
-      },
+        id: userID
+      }
     });
-  }, [dateSplit[0], dateSplit[1], props.productId, userID]);
+    // eslint-disable-next-line
+  }, [hourValue, dateSplit[0], dateSplit[1], idProduct, userID]);
 
   console.log("booking data",bookingdataProducts)
   const navigate = useNavigate();
@@ -80,11 +84,7 @@ function BookingDetail(props) {
         }
       );
       console.log(bookingdataProducts);
-
-      if (!response.created) {
-        console.log(response);
-      }
-      if (response.created) {
+      if (response.status === 200) {
         navigate("/bookingSuccess");
         console.log(response);
       }
@@ -95,13 +95,12 @@ function BookingDetail(props) {
 
 
   const handleSubmit = (e) => {
+    console.log("entro en el submit");
     e.preventDefault();
-    if(bookingdataProducts.checkOutDate!= null){
+    if(bookingdataProducts.fechaFin!= null && bookingdataProducts.horaReserva !== undefined){
       createReserva(bookingdataProducts) 
-    }
-
-
-    
+      console.log("se envio la informacion");
+    }   
   };
 
   return !loading ? (

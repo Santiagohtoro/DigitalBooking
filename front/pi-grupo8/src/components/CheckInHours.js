@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import styles from "../Styles/checkIn.module.scss";
+import stylesHour from "../Styles/checkIn.module.scss";
 
 const options = [
   { value: "1:00AM", label: "1:00AM" },
@@ -38,8 +38,8 @@ function CheckInHours() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.info}>
+    <div className={stylesHour.container}>
+      <div className={stylesHour.info}>
         <FontAwesomeIcon icon={faCheckCircle} />
         <p>
           Tu habitación va a estar lista para el check-in entre las 10:00 AM y

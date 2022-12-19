@@ -3398,3 +3398,17 @@ io.jsonwebtoken.security.SignatureException: JWT signature does not match locall
 [2022-12-17 16:53:12] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
 [2022-12-17 16:53:12] [ INFO ] [JwtRequestFilter:35] 
 [2022-12-17 16:53:13] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:18:14] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:18:15] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:18:15] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:18:15] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:29:52] [ ERROR] [JwtEntryPoint:20] Fallo en el metodo commence
+[2022-12-17 21:29:52] [ ERROR] [JwtEntryPoint:21] Fail method commence. Message: Full authentication is required to access this resource. Cause: null
+[2022-12-17 21:30:12] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:30:13] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:30:13] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:30:14] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:30:45] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:30:46] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
+[2022-12-17 21:30:46] [ INFO ] [JwtRequestFilter:35] 
+[2022-12-17 21:30:47] [ INFO ] [JwtRequestFilter:42] Usuario con email: santi@gmail.com autenticado
