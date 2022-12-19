@@ -6,10 +6,8 @@ import Styles from "../Styles/search.module.scss";
 import "react-multi-date-picker/styles/colors/teal.css";
 import useApiCities from "../api/useApiCities";
 import { useMediaQuery } from "../hooks/useScreenSize";
-import axios from "axios";
 
-export default function Search() {
-  
+export default function Search(props) {
 
   function MobileCalendar() {
     let isPageWide = useMediaQuery('(max-width: 570px)');
@@ -20,20 +18,21 @@ export default function Search() {
       return 2
     }
   }
-
+  
+  const {setDateBooking, setLocation} = props
   const { data, getData } = useApiCities();
   const [city , setCity] = useState();
-  console.log(city);
+  
   const onChange = (event)=>{
     const c = event.target.value;
     setCity(c)
   }
   const [values, setValues] = useState([new DateObject()]);
-  var date = values.toString();
-  const dateSplit = date.split(",");
-  const fecha1 = dateSplit[0]
-  const fecha2 = dateSplit[1]
-  console.log(fecha1);
+  var dates = values.toString();
+  const dateSplit = dates.split(",");
+  
+
+  
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const months = [
     "Enero",
@@ -56,34 +55,19 @@ export default function Search() {
     // eslint-disable-next-line
   }, []);
   
-  
+
 
   function handleSubmit(){
-    if(dateSplit.length>1&& city !== undefined){
-      var data = JSON.stringify({
-        "fechaInicio": fecha1,
-        "fechaFinal": fecha2,
-        "ciudad": city
-      });
-      
-      var config = {
-        method: 'post',
-        url: 'http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/productos/filter/',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
-      axios(config)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      
-    }}
+    if(dateSplit.length>1){
+      const fecha1 = dateSplit[0]
+      const fecha2 = dateSplit[1]
+      console.log(fecha1);
+    console.log(fecha2);
+      setDateBooking([fecha1,fecha2]);
+      setLocation(city)
+    }
+    
+    }
 
   
   return (
