@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Styles/categoryCard.module.scss";
+import stylescardscat from "../styles/categoryCard.module.scss";
 
 
 function CategoryCard(props) {
@@ -7,11 +7,11 @@ function CategoryCard(props) {
   
   
   return (
-    <div className={styles.categoryCard}>
-      <div className={styles.categoryCardImg}>
+    <div className={stylescardscat.categoryCard}>
+      <div className={stylescardscat.categoryCardImg}>
         <img src={picture} alt={name} />
       </div>
-      <div className={styles.categoryCardText}>
+      <div className={stylescardscat.categoryCardText}>
         <h3>{name}</h3>
         <p>
           {amount} {name}

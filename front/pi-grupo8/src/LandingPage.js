@@ -7,11 +7,12 @@ import RecommendationList from "./components/RecommendationList";
 export default function LandingPage(){
     const [dateBooking , setDateBooking] = useState();
     const [location, setLocation] = useState()
+    const [filterBy, setFilterBy] = useState()
     return(
         <div className={styles.appContainer}>
                 <Search setDateBooking={setDateBooking} setLocation={setLocation}/>
-                <Categories />
-                <RecommendationList dateBooking={dateBooking} location={location}/>
+                <Categories  setFilterBy={setFilterBy} />
+                <RecommendationList dateBooking={dateBooking} location={location} filterBy={filterBy} />
         </div>
 
     )

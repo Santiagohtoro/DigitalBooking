@@ -2,18 +2,20 @@ import React from "react";
 import styles from "../Styles/header.module.scss";
 import logo from "../assets/logo 1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark, faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, useLocation } from "react-router-dom";
+import { faBars, faXmark, faScrewdriverWrench, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate, useLocation} from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogOut } from "../hooks/useLogOut";
+
 
 export default function Header() {
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
   const location = useLocation();
 
   const { user } = useAuthContext();
-  //console.log(user.role);
+  
+  console.log(user?.id);
   const { logOut } = useLogOut();
 
   const navigate = useNavigate();
@@ -44,6 +46,10 @@ export default function Header() {
     navigate("/admin");
   }
 
+  function MyBookingPage(e) {
+    e.preventDefault();
+    navigate(`/${user?.id}/booking`);
+  }
   const handleClick = () => {
     setIsMenuVisible(!isMenuVisible);
   };
@@ -85,6 +91,7 @@ export default function Header() {
       ) : (
         <> {user?.role === "ROLE_USER" ? (
         <div className={styles.userNameDesktop}>
+          <FontAwesomeIcon icon={faBookmark} onClick={MyBookingPage}/>
           <p>{`${user.name.slice(0, 1)}${user.surname.slice(0, 1)}`}</p>
           <div>
             <h4>Hola,</h4>

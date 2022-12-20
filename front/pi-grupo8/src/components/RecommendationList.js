@@ -1,10 +1,10 @@
-import React, { useEffect ,useState } from "react";
+import React, { useEffect } from "react";
 import RecommendationCard from "./RecommendationCard";
 import styles from "../Styles/recommendationList.module.scss";
 import useApiProducts from "../api/useApiProducts";
 import axios from "axios";
 function RecommendationList(props) {
-  const {location, dateBooking} = props;
+  const {location, dateBooking, filterBy} = props;
   console.log( "recomendationList", props)
   const { data, getData, setData} = useApiProducts();
   
@@ -38,10 +38,25 @@ function RecommendationList(props) {
           console.log(error);
         });
         
+      }else if(filterBy !== undefined){
+        
+        console.log("filtro",filterBy)
+        let config = {
+          method: 'get',
+          url: `http://ec2-18-217-236-88.us-east-2.compute.amazonaws.com:8081/productos/categoria/${filterBy}`,
+          headers: { }
+        };
+        axios(config)
+        .then((resp) => {
+          console.log(JSON.stringify(resp.data));
+          setData(resp.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       }
-    },[dateBooking, location])
-    
-
+      // eslint-disable-next-line
+    },[dateBooking, location, filterBy])
   
   return (
  

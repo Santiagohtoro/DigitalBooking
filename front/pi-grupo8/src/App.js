@@ -14,6 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import AdminForm from "./components/AdminForm/AdminForm";
 import LandingPage from "./LandingPage";
+import MyBooking from "./components/MyBooking/MyBooking";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="productSuccess" element={<ProductSuccess />}></Route>
           <Route path="product/:id/booking" element={<Booking />}></Route>
           <Route path="admin" element={<AdminForm />}></Route>
+          <Route path=":userId/booking" element={<MyBooking/>}></Route>
         </Route>
       </Routes>
     </div>
