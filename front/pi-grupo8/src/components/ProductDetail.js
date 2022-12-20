@@ -32,20 +32,20 @@ function ProductDetail() {
       return 2;
     }
   }
-  
 
   //const { info } = useApiMaps();
   const navigate = useNavigate();
 
   function redirectBooking(e) {
-    if(localStorage.length!==0){
+    let user = localStorage.getItem("user");
+
+    if (user !== null) {
       e.preventDefault();
       navigate(`/product/${id}/booking`);
-    }else{
+    } else {
       e.preventDefault();
       navigate(`/login`);
     }
-   
   }
 
   let { id } = useParams();
@@ -160,15 +160,18 @@ function ProductDetail() {
           <h2>¿Donde vas a estar?</h2>
           <hr />
         </section>
-            {// eslint-disable-next-line
-            <iframe
+        {
+          // eslint-disable-next-line
+          <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8512.639220822153!2d-58.63264256120364!3d-34.65290926034985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc74e74b02d5f%3A0x6ac018d5e872a398!2sApartamentos%20Plaza!5e0!3m2!1ses!2sco!4v1670809931542!5m2!1ses!2sco"
             width="600"
             height="600"
-            style={{ border: "0"}}
+            style={{ border: "0" }}
             allowfullscreen=""
             loading="lazy"
-            className={styles.Map} ></iframe>}
+            className={styles.Map}
+          ></iframe>
+        }
       </div>
       <ProductPolicies />
     </div>
