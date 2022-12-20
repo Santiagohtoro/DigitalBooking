@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import stylesBooking from "../../Styles/myBookingCard.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faWifi } from "@fortawesome/free-solid-svg-icons";
-import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import axios from "axios";
+import RecommendationCard from "../RecommendationCard";
 
 function MyBooking(props) {
   let { userId } = useParams();
@@ -31,63 +27,30 @@ function MyBooking(props) {
     // eslint-disable-next-line
   }, [user]);
 
-  console.log("DATA", data);
+  const bookings = data.filter((r) => r?.user?.id === parseInt(userId));
+  console.log(bookings);
 
-  function bookings(data) {
-    data?.map((b) => {
-      return b?.user?.id == userId ? (
-        <div className={stylesBooking.recommendationCard}>
-          <div className={stylesBooking.recommendationImg}>
-            <img src={b?.imagenes?.url} alt={b?.imagenes?.titulo} />
-          </div>
-          <div className={stylesBooking.recommendationInfo}>
-            <div className={stylesBooking.recommendationText}>
-              <div className={stylesBooking.recommendationName}>
-                <span>category</span>
-                <span className={stylesBooking.stars}>
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                </span>
-                <h2>title</h2>
-              </div>
-              <div className={stylesBooking.recommendationRating}>
-                <span>8</span>
-                <p>Muy bueno</p>
-              </div>
-            </div>
-            <div className={stylesBooking.recommendationDescription}>
-              <p className={stylesBooking.recommendationLocation}>
-                <FontAwesomeIcon icon={faLocationDot} />
-                <p>location</p>
-                <span className={stylesBooking.recommendationMap}>
-                  MOSTRAR EN EL MAPA
-                </span>
-              </p>
-              <span className={stylesBooking.recommendationAmmenities}>
-                <FontAwesomeIcon icon={faWifi} />
-                <FontAwesomeIcon icon={faSwimmer} />
-              </span>
-              <p className={stylesBooking.recommendationComment}>
-                description
-                <a href="#url">Más...</a>
-              </p>
-            </div>
-            <div className={stylesBooking.recommendationButton}>
-              <button></button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        console.log("no hay datos")
-      );
-    });
-  }
+  const userBookings = bookings.map((b) => {
+    console.log(b?.producto?.imagenes?.url);
+    return (
+      <RecommendationCard
+        key={b?.id}
+        picture={
+          b?.producto?.imagenes?.length
+            ? b?.producto?.imagenes[0]?.url
+            : "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184305239.jpg?k=2d22fe63ae1f8960e057238c98fb436f7bd9f65854e3a5e918607c5cfa1d0a52&o=&hp=1"
+        }
+        title={b?.producto?.titulo}
+        category={b?.producto?.categoria?.titulo}
+        location={b?.producto?.ciudad?.ciudad}
+        id={b?.id}
+        description={b?.producto?.descripcion}
+      />
+    );
+  });
 
   return (
-    <div className={stylesBooking.recommendationsBlock}>{bookings(data)}</div>
+    <div className={stylesBooking.recommendationsBlock}>{userBookings}</div>
   );
 }
 

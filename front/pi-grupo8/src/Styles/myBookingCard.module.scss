@@ -1,11 +1,11 @@
 @use './variables';
 
 .recommendationsBlock{
-    width: 95%;
+    width: 45%;
     margin: 7rem  auto 0.5rem;
-    height: 80vw;
+    height: 100vh;
     .recommendationCard{
-    background-color: white;
+        background-color: white;
         flex: 0 1 49%;
         box-shadow: var(--shadow);
         border-radius: 8px;
@@ -121,16 +121,18 @@
     }
 }
 
-/*@media (max-width: 768px){
-    .recommendationCard{
+
+
+@media (max-width: 768px){
+    .recommendationBlock{
         width: 100%;
-        img{
-            flex: 1 0 50%;
-        }
     }
-}*/
+}
 
 @media (max-width: 426px){
+    .recommendationBlock{
+        width: 95%;
+    }
     .recommendationCard{
         flex-direction: column;
         padding: 0;
