@@ -11,7 +11,7 @@ const useApiProducts = () => {
     setData(response.data);
   };
   
-  return { data, getData };
+  return { data, getData, setData };
 };
 
 export default useApiProducts;

@@ -62,7 +62,7 @@ export default function Search(props) {
       const fecha1 = dateSplit[0]
       const fecha2 = dateSplit[1]
       console.log(fecha1);
-    console.log(fecha2);
+      console.log(fecha2);
       setDateBooking([fecha1,fecha2]);
       setLocation(city)
     }

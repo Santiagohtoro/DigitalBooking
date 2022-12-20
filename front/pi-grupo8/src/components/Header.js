@@ -30,6 +30,7 @@ export default function Header() {
   function displayHome(e) {
     e.preventDefault();
     navigate("/");
+    window.location.reload()
   }
 
   function logout(e) {

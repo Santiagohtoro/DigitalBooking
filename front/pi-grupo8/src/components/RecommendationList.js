@@ -6,8 +6,7 @@ import axios from "axios";
 function RecommendationList(props) {
   const {location, dateBooking} = props;
   console.log( "recomendationList", props)
-  const [info, setinfo] = useState()
-  const { data, getData } = useApiProducts();
+  const { data, getData, setData} = useApiProducts();
   
   useEffect(() => {
     getData()
@@ -15,9 +14,8 @@ function RecommendationList(props) {
   }, []);
 
   
-console.log(info, "info");
     useEffect(()=>{
-      if(dateBooking !== undefined || location !== undefined ){
+      if(dateBooking !== undefined && location !== undefined ){
         var values = JSON.stringify({
           "fechaInicio": dateBooking[0],
           "fechaFinal": dateBooking[1],
@@ -34,14 +32,14 @@ console.log(info, "info");
         axios(config)
         .then(function (response) {
           console.log(response.data);
-          setinfo(response.data)
+          setData(response.data)
         })
         .catch(function (error) {
           console.log(error);
         });
         
       }
-    },[])
+    },[dateBooking, location])
     
 
   
