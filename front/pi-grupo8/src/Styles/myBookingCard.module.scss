@@ -3,7 +3,7 @@
 .recommendationsBlock{
     width: 45%;
     margin: 7rem  auto 0.5rem;
-    height: 100vh;
+    min-height: 95vh;
     .recommendationCard{
         background-color: white;
         flex: 0 1 49%;
@@ -122,15 +122,15 @@
 }
 
 
-
-@media (max-width: 768px){
-    .recommendationBlock{
-        width: 100%;
+@media screen and (max-width: 768px){
+    .recommendationsBlock{
+        width: 90%;
     }
 }
 
+
 @media (max-width: 426px){
-    .recommendationBlock{
+    .recommendationsBlock{
         width: 95%;
     }
     .recommendationCard{
